@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
+
 import Board from './components/Board'
 
 const boardData = {
