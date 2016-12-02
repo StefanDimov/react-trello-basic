@@ -1,11 +1,11 @@
-var webpack = require('webpack')
+var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     devtool: 'inline-source-map',
-    entry: __dirname + '/src/app.js',
+    entry: path.join(__dirname, 'src', 'app.js'),
     output: {
-        path: __dirname + '/build',
+        path: path.join(__dirname, 'build'),
         filename: 'bundle.js'
     },
     module: {
@@ -20,9 +20,14 @@ module.exports = {
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' }
         ]
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'build'),
+        inline: true,
+        noInfo: true
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/src/index.html',
+            template: path.join(__dirname, 'src', 'index.html'),
             inject: 'body'
         })
     ]

@@ -13,6 +13,10 @@ const boardData = {
             cards: [{ title: 'Develop app' }, { title: 'Test app' }]
         },
         {
+            title: 'ToDo',
+            cards: [{ title: 'Learn Redux' }]
+        },
+        {
             title: 'In Progress',
             cards: [{ title: 'Learn React' }, { title: 'Try Flux' }]
         },

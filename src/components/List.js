@@ -1,20 +1,22 @@
 import React from 'react'
 import Card from './Card'
+import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 export default class List extends React.Component {
     render() {
         const {title, cards} = this.props
         return (
-            <div>
-                <h2>{title}</h2>
-                <div>
-                    {cards.map(card =>
-                        <Card
-                            key={card.title}
-                            title={card.title}/>)
+            <Panel header={title}>
+                <ListGroup>
+                    {
+                        cards.map(card =>
+                            <ListGroupItem>
+                                <Card key={card.title} title={card.title}/>
+                            </ListGroupItem>
+                        )
                     }
-                </div>
-            </div>
+                </ListGroup>
+            </Panel>
         )
     }
 }
