@@ -1,10 +1,19 @@
 import React from 'react'
 import List from './List'
-import { Navbar, Grid, Row, Col } from 'react-bootstrap'
+import { Navbar, Grid, Row, Col, Button } from 'react-bootstrap'
 
 export default class Board extends React.Component {
     render() {
-        const { title, lists } = this.props
+        const { title, lists, onCardClick, onCreateCardClick } = this.props
+
+        const listElements = lists.map(list =>
+            <Col key={list.title} sm={3}>
+                <List title={list.title} cards={list.cards} onCardClick={onCardClick}>
+                    <Button bsStyle="primary" block onClick={onCreateCardClick}>Add Card</Button>
+                </List>
+            </Col>
+        )
+
         return (
             <div>
                 <Navbar fluid={true}>
@@ -14,21 +23,17 @@ export default class Board extends React.Component {
                 </Navbar>
 
                 <Grid fluid={true}>
-                    <Row>
-                        {lists.map(list =>
-                            <Col sm={3}>
-                                <List key={list.title} title={list.title} cards={list.cards} />
-                            </Col>
-                        )}
-                    </Row>
+                    <Row>{listElements}</Row>
                 </Grid>
             </div>
         )
     }
 }
 
-const { string, array } = React.PropTypes
+const { string, array, func } = React.PropTypes
 Board.propTypes = {
     title: string.isRequired,
-    lists: array.isRequired
+    lists: array.isRequired,
+    onCardClick: func.isRequired,
+    onCreateCardClick: func.isRequired
 }

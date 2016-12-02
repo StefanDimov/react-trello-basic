@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 
-import Board from './components/Board'
+import BoardContainer from './containers/BoardContainer'
 
 const boardData = {
     title: 'First Board',
@@ -27,4 +27,4 @@ const boardData = {
     ]
 }
 
-render(<Board title={boardData.title} lists={boardData.lists} />, document.getElementById('app'))
+render(<BoardContainer boardData={boardData} />, document.getElementById('app'))

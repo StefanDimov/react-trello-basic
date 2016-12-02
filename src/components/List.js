@@ -4,25 +4,26 @@ import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 export default class List extends React.Component {
     render() {
-        const {title, cards} = this.props
+        const {title, cards, onCardClick, children} = this.props
+
+        const cardElements = cards.map(card =>
+            <ListGroupItem onClick={onCardClick} key={card.title}>
+                <Card title={card.title}/>
+            </ListGroupItem>
+        )
+
         return (
             <Panel header={title}>
-                <ListGroup>
-                    {
-                        cards.map(card =>
-                            <ListGroupItem>
-                                <Card key={card.title} title={card.title}/>
-                            </ListGroupItem>
-                        )
-                    }
-                </ListGroup>
+                {(cardElements.length > 0) && <ListGroup>{cardElements}</ListGroup>}
+                {children}
             </Panel>
         )
     }
 }
 
-const { string, array } = React.PropTypes
+const { string, array, func } = React.PropTypes
 List.propTypes = {
     title: string.isRequired,
-    cards: array.isRequired
+    cards: array.isRequired,
+    onCardClick: func.isRequired
 }
