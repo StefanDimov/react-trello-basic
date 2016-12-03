@@ -1,15 +1,15 @@
 import React from 'react'
+import cardUtils from '../utils/cardUtils'
 
 export default class Card extends React.Component {
     render() {
-        const { title } = this.props
+        const { title } = this.props.card
         return (
             <div>{title}</div>
         )
     }
 }
 
-const { string } = React.PropTypes
 Card.propTypes = {
-    title: string.isRequired
+    card: cardUtils.cardPropType.isRequired
 }

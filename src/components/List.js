@@ -7,8 +7,8 @@ export default class List extends React.Component {
         const {title, cards, onCardClick, children} = this.props
 
         const cardElements = cards.map(card =>
-            <ListGroupItem onClick={onCardClick} key={card.title}>
-                <Card title={card.title}/>
+            <ListGroupItem onClick={() => onCardClick(card)} key={card.id}>
+                <Card card={card}/>
             </ListGroupItem>
         )
 

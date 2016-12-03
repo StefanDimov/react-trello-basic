@@ -9,7 +9,7 @@ export default class Board extends React.Component {
         const listElements = lists.map(list =>
             <Col key={list.title} sm={3}>
                 <List title={list.title} cards={list.cards} onCardClick={onCardClick}>
-                    <Button bsStyle="primary" block onClick={onCreateCardClick}>Add Card</Button>
+                    <Button bsStyle="primary" block onClick={() => onCreateCardClick(list)}>Add Card</Button>
                 </List>
             </Col>
         )

@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from '../components/Board'
+import cardUtils from '../utils/cardUtils'
 import CardDetails from '../components/CardDetails'
 import { Modal } from 'react-bootstrap'
 
@@ -7,24 +8,39 @@ export default class BoardContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showCardDetails: false
+            showCardDetails: false,
+            cardToView: null
         }
+
+        this.viewCardDetails = this.viewCardDetails.bind(this)
+        this.createCardHandler = this.createCardHandler.bind(this)
+        this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
     }
 
-    closeModal(modalKey) {
+    viewCardDetails(card) {
         this.setState({
-            [modalKey]: false
+            showCardDetails: true,
+            cardToView: card
         })
     }
 
-    cardClickHandler() {
+    createCardHandler(list) {
+
+        // TODO Fix Mutation?
+        let newCard = cardUtils.createEmptyCard()
+        list.cards.push(newCard)
+
         this.setState({
-            showCardDetails: true
+            showCardDetails: true,
+            cardToView: newCard
         })
     }
 
-    createCardHandler() {
-        console.log('add card clicked')
+    closeCardDetailsModal() {
+        this.setState({
+            showCardDetails: false,
+            cardToView: null
+        })
     }
 
     render() {
@@ -35,12 +51,12 @@ export default class BoardContainer extends React.Component {
                 <Board
                     title={boardData.title}
                     lists={boardData.lists}
-                    onCardClick={this.cardClickHandler.bind(this)}
-                    onCreateCardClick={this.createCardHandler.bind(this)} />
+                    onCardClick={this.viewCardDetails}
+                    onCreateCardClick={this.createCardHandler} />
 
-                <Modal show={this.state.showCardDetails} onHide={this.closeModal.bind(this, 'showCardDetails')}>
+                <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
                     <Modal.Body>
-                        <CardDetails></CardDetails>
+                        {this.state.cardToView && <CardDetails card={this.state.cardToView}></CardDetails>}
                     </Modal.Body>
                 </Modal>
             </div>

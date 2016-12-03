@@ -10,15 +10,15 @@ const boardData = {
     lists: [
         {
             title: 'Backlog',
-            cards: [{ title: 'Develop app' }, { title: 'Test app' }]
+            cards: [{ id:'1', title: 'Develop app' }, { id:'2', title: 'Test app' }]
         },
         {
             title: 'ToDo',
-            cards: [{ title: 'Learn Redux' }]
+            cards: [{ id:'3', title: 'Learn Redux' }]
         },
         {
             title: 'In Progress',
-            cards: [{ title: 'Learn React' }, { title: 'Try Flux' }]
+            cards: [{ id:'4', title: 'Learn React' }, { id:'5', title: 'Try Flux' }]
         },
         {
             title: 'Done',
