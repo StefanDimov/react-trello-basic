@@ -1,11 +1,18 @@
 import React from 'react'
 import cardUtils from '../utils/cardUtils'
+import { Glyphicon } from 'react-bootstrap'
 
 export default class Card extends React.Component {
     render() {
-        const { title } = this.props.card
+        const { title, description } = this.props.card
         return (
-            <div>{title}</div>
+            <div>
+                {title}
+                
+                <span className="pull-right">
+                    { description && <Glyphicon glyph="align-left" /> }
+                </span>
+            </div>
         )
     }
 }

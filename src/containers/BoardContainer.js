@@ -13,7 +13,8 @@ export default class BoardContainer extends React.Component {
         }
 
         this.viewCardDetails = this.viewCardDetails.bind(this)
-        this.createCardHandler = this.createCardHandler.bind(this)
+        this.createCard = this.createCard.bind(this)
+        this.saveCard = this.saveCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
     }
 
@@ -24,15 +25,10 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    createCardHandler(list) {
-
-        // TODO Fix Mutation?
-        let newCard = cardUtils.createEmptyCard()
-        list.cards.push(newCard)
-
+    createCard(listId) {
         this.setState({
             showCardDetails: true,
-            cardToView: newCard
+            cardToView: cardUtils.createEmptyCard(listId)
         })
     }
 
@@ -41,6 +37,11 @@ export default class BoardContainer extends React.Component {
             showCardDetails: false,
             cardToView: null
         })
+    }
+
+    saveCard(newCard) {
+        // TODO: Implement: Save card action
+        console.log(newCard);
     }
 
     render() {
@@ -52,11 +53,12 @@ export default class BoardContainer extends React.Component {
                     title={boardData.title}
                     lists={boardData.lists}
                     onCardClick={this.viewCardDetails}
-                    onCreateCardClick={this.createCardHandler} />
+                    onCreateCardClick={this.createCard} />
 
                 <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
                     <Modal.Body>
-                        {this.state.cardToView && <CardDetails card={this.state.cardToView}></CardDetails>}
+                        {this.state.cardToView &&
+                            <CardDetails card={this.state.cardToView} onCardSave={this.saveCard} />}
                     </Modal.Body>
                 </Modal>
             </div>
