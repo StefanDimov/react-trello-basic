@@ -14,7 +14,7 @@ export default class List extends React.Component {
         )
 
         return (
-            <Panel header={title} className="my-list">
+            <Panel header={title} className="my-list-container-item">
                 {(cardElements.length > 0) && <ListGroup>{cardElements}</ListGroup>}
                 {children}
             </Panel>

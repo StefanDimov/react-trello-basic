@@ -2,9 +2,9 @@
     white-space: nowrap;
 }
 
-.my-list {
+.my-list-container-item {
     width: 300px;
     display: inline-block;
-    margin: 1em;
+    margin: 0 1em;
     vertical-align: top;
 }

@@ -16,6 +16,7 @@ export default class BoardContainer extends React.Component {
         this.createCard = this.createCard.bind(this)
         this.saveCard = this.saveCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
+        this.createNewList = this.createNewList.bind(this)
     }
 
     viewCardDetails(card) {
@@ -30,6 +31,10 @@ export default class BoardContainer extends React.Component {
             showCardDetails: true,
             cardToView: cardUtils.createEmptyCard(listId)
         })
+    }
+
+    createNewList(listName) {
+        console.log(listName);
     }
 
     closeCardDetailsModal() {
@@ -53,7 +58,8 @@ export default class BoardContainer extends React.Component {
                     title={boardData.title}
                     lists={boardData.lists}
                     onCardClick={this.viewCardDetails}
-                    onCreateCardClick={this.createCard} />
+                    onCreateCardClick={this.createCard}
+                    onCreateNewList={this.createNewList} />
 
                 <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
                     <Modal.Body>
