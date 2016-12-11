@@ -19,6 +19,11 @@ describe('Card', () => {
         expect(wrapper.find('span').first().text()).toBe(card.title)
     })
 
+    it('should display icons on the right', () => {
+        const wrapper = shallow(<Card card={card}/>)
+        expect(wrapper.find('span').last().prop('className')).toBe('pull-right')
+    })
+
     it('shows description icon when description is present', () => {
         card.description = 'description'
         const wrapper = shallow(<Card card={card}/>)
