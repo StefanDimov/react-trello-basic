@@ -1,6 +1,6 @@
 import React from 'react'
 import List from './List'
-import ListsContainer from './ListsContainer'
+import ListsWrapper from './ListsWrapper'
 import AddNewListInput from './AddNewListInput'
 import { Navbar, Button } from 'react-bootstrap'
 
@@ -22,10 +22,10 @@ export default class Board extends React.Component {
                     </Navbar.Header>
                 </Navbar>
 
-                <ListsContainer>
+                <ListsWrapper>
                     {listElements}
                     <AddNewListInput onCreateList={onCreateNewList} />
-                </ListsContainer>
+                </ListsWrapper>
             </div>
         )
     }

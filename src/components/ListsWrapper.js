@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function ListsContainer(props) {
+export default function ListsWrapper(props) {
     return <div className="my-lists-container">{props.children}</div>
 }
