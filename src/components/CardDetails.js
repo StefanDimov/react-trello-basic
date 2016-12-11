@@ -25,7 +25,7 @@ export default class CardDetails extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         // doesn't do anything
-        // just do disable page reload on hitting enter
+        // just to disable page reload on hitting enter
     }
 
     componentWillUnmount() {
