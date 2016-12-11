@@ -8,6 +8,9 @@
     "build": "webpack",
     "test": "jest"
   },
+  "jest": {
+      "verbose": true
+  },
   "author": "StefanDimov",
   "license": "MIT",
   "dependencies": {
