@@ -7,8 +7,8 @@ export default class Card extends React.Component {
         const { title, description } = this.props.card
         return (
             <div>
-                {title}
-                
+                <span>{title}</span>
+
                 <span className="pull-right">
                     { description && <Glyphicon glyph="align-left" /> }
                 </span>
