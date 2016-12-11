@@ -1,0 +1,143 @@
+exports[`CardDetails rendering should render correctly when given card with description 1`] = `
+<form
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Title
+    </label>
+    <input
+      className="form-control"
+      id="card-details-title-input"
+      onChange={[Function]}
+      placeholder="Title..."
+      type="text"
+      value={undefined} />
+  </div>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Description
+    </label>
+    <textarea
+      className="form-control"
+      id="card-details-description-input"
+      onChange={[Function]}
+      placeholder="Description..."
+      type={undefined}
+      value="description" />
+  </div>
+</form>
+`;
+
+exports[`CardDetails rendering should render correctly when given card with title 1`] = `
+<form
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Title
+    </label>
+    <input
+      className="form-control"
+      id="card-details-title-input"
+      onChange={[Function]}
+      placeholder="Title..."
+      type="text"
+      value="title" />
+  </div>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Description
+    </label>
+    <textarea
+      className="form-control"
+      id="card-details-description-input"
+      onChange={[Function]}
+      placeholder="Description..."
+      type={undefined}
+      value={undefined} />
+  </div>
+</form>
+`;
+
+exports[`CardDetails rendering should render correctly when given card with title and description 1`] = `
+<form
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Title
+    </label>
+    <input
+      className="form-control"
+      id="card-details-title-input"
+      onChange={[Function]}
+      placeholder="Title..."
+      type="text"
+      value="title" />
+  </div>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Description
+    </label>
+    <textarea
+      className="form-control"
+      id="card-details-description-input"
+      onChange={[Function]}
+      placeholder="Description..."
+      type={undefined}
+      value="description" />
+  </div>
+</form>
+`;
+
+exports[`CardDetails rendering should render correctly when given empty card 1`] = `
+<form
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Title
+    </label>
+    <input
+      className="form-control"
+      id="card-details-title-input"
+      onChange={[Function]}
+      placeholder="Title..."
+      type="text"
+      value={undefined} />
+  </div>
+  <div
+    className="form-group">
+    <label
+      className="control-label"
+      htmlFor={undefined}>
+      Description
+    </label>
+    <textarea
+      className="form-control"
+      id="card-details-description-input"
+      onChange={[Function]}
+      placeholder="Description..."
+      type={undefined}
+      value={undefined} />
+  </div>
+</form>
+`;

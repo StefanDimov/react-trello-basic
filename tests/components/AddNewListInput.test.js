@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
 
 import AddNewListInput from '../../src/components/AddNewListInput'
 import { FormGroup, FormControl } from 'react-bootstrap'

@@ -43,19 +43,21 @@ export default class CardDetails extends React.Component {
                 <FormGroup>
                     <ControlLabel>Title</ControlLabel>
                     <FormControl
-                         type="text"
-                         value={this.state.title}
-                         placeholder="Title..."
-                         onChange={this.handleTitleChange} />
+                        id="card-details-title-input"
+                        type="text"
+                        value={this.state.title}
+                        placeholder="Title..."
+                        onChange={this.handleTitleChange} />
                 </FormGroup>
 
                 <FormGroup>
                     <ControlLabel>Description</ControlLabel>
                     <FormControl
-                         componentClass="textarea"
-                         value={this.state.description}
-                         placeholder="Description..."
-                         onChange={this.handleDescriptionChange} />
+                        id="card-details-description-input"
+                        componentClass="textarea"
+                        value={this.state.description}
+                        placeholder="Description..."
+                        onChange={this.handleDescriptionChange} />
                 </FormGroup>
             </form>
         )
