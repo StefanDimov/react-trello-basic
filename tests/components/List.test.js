@@ -15,15 +15,6 @@ describe('List', () => {
         onCardClick.mockClear()
     })
 
-    it('should render children', () => {
-        const wrapper = shallow(
-            <List list={list} onCardClick={onCardClick}>
-                <span>unique</span>
-            </List>
-        )
-        expect(wrapper.containsMatchingElement(<span>unique</span>)).toBe(true)
-    })
-
     describe('container', () => {
 
         it('should be bootstrap panel', () => {
@@ -40,6 +31,15 @@ describe('List', () => {
         it('should have proper custom styles', () => {
             const wrapper = shallow(<List list={list} onCardClick={onCardClick} />)
             expect(wrapper.prop('className')).toBe('my-list-container-item')
+        })
+
+        it('should render children', () => {
+            const wrapper = shallow(
+                <List list={list} onCardClick={onCardClick}>
+                    <span>unique</span>
+                </List>
+            )
+            expect(wrapper.containsMatchingElement(<span>unique</span>)).toBe(true)
         })
     })
 
