@@ -4,12 +4,19 @@ describe('boardUtils', () => {
 
     describe('createEmptyBoard', () => {
 
-        it('it should create empty board', () => {
-            const empryBoard = boardUtils.createEmptyBoard()
-            expect(typeof empryBoard.id).toBe('string')
-            expect(empryBoard.title).toBe('')
-            expect(empryBoard.lists).toBe([])
+        it('should create empty board', () => {
+            const emptyBoard = boardUtils.createEmptyBoard()
+            expect(typeof emptyBoard.id).toBe('string')
+            expect(emptyBoard.title).toBe('')
+            expect(emptyBoard.lists instanceof Array).toBe(true)
+            expect(emptyBoard.lists.length).toBe(0)
         })
 
+        it('should generate unique ids', () => {
+            const emptyBoard = boardUtils.createEmptyBoard()
+            const anotherBoard = boardUtils.createEmptyBoard()
+
+            expect(emptyBoard.id).not.toBe(anotherBoard.id)
+        })
     })
 })
