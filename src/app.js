@@ -5,7 +5,7 @@ import CustomStyles from './styles/_index.css'
 
 import BoardContainer from './containers/BoardContainer'
 
-const boardData = {
+const board = {
     title: 'First Board',
     id: '1',
     lists: [
@@ -36,4 +36,4 @@ const boardData = {
     ]
 }
 
-render(<BoardContainer boardData={boardData} />, document.getElementById('app'))
+render(<BoardContainer board={board} />, document.getElementById('app'))

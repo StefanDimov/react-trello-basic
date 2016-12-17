@@ -30,8 +30,7 @@ describe('Board', () => {
         it('should render properly with empty title and no lists', () => {
             const tree = renderer.create(
                 <Board
-                    title=''
-                    lists={noLists}
+                    board={{ title: '', lists: noLists }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -43,8 +42,7 @@ describe('Board', () => {
         it('should render properly with a title and no lists', () => {
             const tree = renderer.create(
                 <Board
-                    title={title}
-                    lists={noLists}
+                    board={{ title: title, lists: noLists }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -56,8 +54,7 @@ describe('Board', () => {
         it('should render properly with a title and a single list', () => {
             const tree = renderer.create(
                 <Board
-                    title={title}
-                    lists={oneList}
+                    board={{ title: title, lists: oneList }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -69,8 +66,7 @@ describe('Board', () => {
         it('should render properly with a title and two lists', () => {
             const tree = renderer.create(
                 <Board
-                    title={title}
-                    lists={twoLists}
+                    board={{ title: title, lists: twoLists }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -85,8 +81,7 @@ describe('Board', () => {
         it('should have a AddNewListInput child with onCreateNewList passed to it', () => {
             const wrapper = shallow(
                 <Board
-                    title={title}
-                    lists={oneList}
+                    board={{ title: '', lists: oneList }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -100,8 +95,7 @@ describe('Board', () => {
         it('should be passed onCardClick func', () => {
             const wrapper = shallow(
                 <Board
-                    title={title}
-                    lists={oneList}
+                    board={{ title: '', lists: oneList }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -113,8 +107,7 @@ describe('Board', () => {
         it('should have a button child', () => {
             const wrapper = shallow(
                 <Board
-                    title={title}
-                    lists={oneList}
+                    board={{ title: '', lists: oneList }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -126,8 +119,7 @@ describe('Board', () => {
         it('should call onCreateCardClick with list id when the child button clicked', () => {
             const wrapper = shallow(
                 <Board
-                    title={title}
-                    lists={oneList}
+                    board={{ title: '', lists: oneList }}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />

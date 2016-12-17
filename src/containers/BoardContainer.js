@@ -1,8 +1,10 @@
 import React from 'react'
-import Board from '../components/Board'
-import cardUtils from '../utils/cardUtils'
-import CardDetails from '../components/CardDetails'
 import { Modal } from 'react-bootstrap'
+
+import cardUtils from '../utils/cardUtils'
+import boardUtils from '../utils/boardUtils'
+import Board from '../components/Board'
+import CardDetails from '../components/CardDetails'
 
 export default class BoardContainer extends React.Component {
     constructor(props) {
@@ -13,7 +15,7 @@ export default class BoardContainer extends React.Component {
         }
 
         this.viewCardDetails = this.viewCardDetails.bind(this)
-        this.createCard = this.createCard.bind(this)
+        this.initCreateCard = this.initCreateCard.bind(this)
         this.saveCard = this.saveCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
         this.createNewList = this.createNewList.bind(this)
@@ -26,7 +28,7 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    createCard(listId) {
+    initCreateCard(listId) {
         this.setState({
             showCardDetails: true,
             cardToView: cardUtils.createEmptyCard(listId)
@@ -34,6 +36,7 @@ export default class BoardContainer extends React.Component {
     }
 
     createNewList(listName) {
+        // TODO: Implement: Create new list
         console.log(listName);
     }
 
@@ -50,15 +53,14 @@ export default class BoardContainer extends React.Component {
     }
 
     render() {
-        const { boardData } = this.props
+        const { board } = this.props
 
         return (
             <div>
                 <Board
-                    title={boardData.title}
-                    lists={boardData.lists}
+                    board={board}
                     onCardClick={this.viewCardDetails}
-                    onCreateCardClick={this.createCard}
+                    onCreateCardClick={this.initCreateCard}
                     onCreateNewList={this.createNewList} />
 
                 <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
@@ -70,4 +72,8 @@ export default class BoardContainer extends React.Component {
             </div>
         )
     }
+}
+
+BoardContainer.propTypes = {
+    board: boardUtils.boardPropType.isRequired
 }

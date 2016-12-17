@@ -1,12 +1,16 @@
 import React from 'react'
+import { Navbar, Button } from 'react-bootstrap'
+
+import boardUtils from '../utils/boardUtils'
 import List from './List'
 import ListsWrapper from './ListsWrapper'
 import AddNewListInput from './AddNewListInput'
-import { Navbar, Button } from 'react-bootstrap'
+
 
 export default class Board extends React.Component {
     render() {
-        const { title, lists, onCardClick, onCreateCardClick, onCreateNewList } = this.props
+        const { board, onCardClick, onCreateCardClick, onCreateNewList } = this.props
+        const { title, lists } = board
 
         const listElements = lists.map(list =>
             <List key={list.id} list={list} onCardClick={onCardClick}>
@@ -33,8 +37,7 @@ export default class Board extends React.Component {
 
 const { string, array, func } = React.PropTypes
 Board.propTypes = {
-    title: string.isRequired,
-    lists: array.isRequired,
+    board: boardUtils.boardPropType.isRequired,
     onCardClick: func.isRequired,
     onCreateCardClick: func.isRequired,
     onCreateNewList: func.isRequired
