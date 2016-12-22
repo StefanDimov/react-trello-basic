@@ -1,4 +1,3 @@
-import React from 'react'
 import cardUtils from '../../src/utils/cardUtils'
 
 describe('cardUtils', () => {
@@ -23,7 +22,7 @@ describe('cardUtils', () => {
             const emptyCard = cardUtils.createEmptyCard()
             const anotherCard = cardUtils.createEmptyCard()
             const thirdCard = cardUtils.createEmptyCard()
-            
+
             expect(emptyCard.id).not.toBe(anotherCard.id)
             expect(emptyCard.id).not.toBe(thirdCard.id)
         })

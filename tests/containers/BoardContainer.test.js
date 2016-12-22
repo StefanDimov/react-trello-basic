@@ -2,15 +2,20 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
+import boardStore from '../../src/stores/boardStore'
 
 import BoardContainer from '../../src/containers/BoardContainer'
 import Board from '../../src/components/Board'
 import CardDetails from '../../src/components/CardDetails'
 import { Modal } from 'react-bootstrap'
 
+// TODO: Add missing tests - sub to store, getting data from store, actions
+
 describe('BoardContainer', () => {
 
     let emptyBoard, boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists, card
+
+    boardStore.getBoard = jest.fn()
 
     beforeEach(() => {
         emptyBoard = { id: 'uniqueId', title: '', lists: [] }
@@ -29,37 +34,51 @@ describe('BoardContainer', () => {
             ]
         }
         card = { id: 'uniqueId', title: 'cardTitle' }
+
+        boardStore.getBoard.mockClear()
     })
 
     describe('rendering', () => {
 
         it('should render correctly an empty board', () => {
+
+            boardStore.getBoard.mockReturnValueOnce(emptyBoard)
+
             const tree = renderer.create(
-                <BoardContainer board={emptyBoard}/>
+                <BoardContainer />
             ).toJSON()
 
             expect(tree).toMatchSnapshot();
         })
 
         it('should render correctly a board with a title', () => {
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitle)
+
             const tree = renderer.create(
-                <BoardContainer board={boardWithTitle}/>
+                <BoardContainer />
             ).toJSON()
 
             expect(tree).toMatchSnapshot();
         })
 
         it('should render correctly a board with a title and a list', () => {
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+
             const tree = renderer.create(
-                <BoardContainer board={boardWithTitleAndOneList}/>
+                <BoardContainer />
             ).toJSON()
 
             expect(tree).toMatchSnapshot();
         })
 
         it('should render correctly a board with a title and two lists', () => {
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndTwoLists)
+
             const tree = renderer.create(
-                <BoardContainer board={boardWithTitleAndTwoLists}/>
+                <BoardContainer />
             ).toJSON()
 
             expect(tree).toMatchSnapshot();
@@ -69,7 +88,9 @@ describe('BoardContainer', () => {
     describe('card creation', () => {
 
         it('should open card creation modal with appropriate card and save function', () => {
-            const wrapper = shallow(<BoardContainer board={emptyBoard} />)
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+            const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
@@ -81,7 +102,9 @@ describe('BoardContainer', () => {
         })
 
         it('should hide card creation modal and clear the state', () => {
-            const wrapper = shallow(<BoardContainer board={emptyBoard} />)
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+            const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
@@ -95,7 +118,9 @@ describe('BoardContainer', () => {
         })
 
         it('should call card creation modal with empty card', () => {
-            const wrapper = shallow(<BoardContainer board={emptyBoard} />)
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+            const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
             const listId = 'someId'
 
@@ -113,7 +138,9 @@ describe('BoardContainer', () => {
 
     describe('Board', () => {
         it('should be passed the right functions', () => {
-            const wrapper = shallow(<BoardContainer board={emptyBoard} />)
+
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+            const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
             expect(wrapper.find(Board).prop('onCardClick')).toBe(instance.viewCardDetails)

@@ -3,28 +3,54 @@ import { Modal } from 'react-bootstrap'
 
 import cardUtils from '../utils/cardUtils'
 import boardUtils from '../utils/boardUtils'
+
+import boardStore from '../stores/boardStore'
+import * as boardActions from '../actions/boardActions'
+
 import Board from '../components/Board'
 import CardDetails from '../components/CardDetails'
 
 export default class BoardContainer extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            showCardDetails: false,
-            cardToView: null
-        }
 
+        this.setBoard = this.setBoard.bind(this)
         this.viewCardDetails = this.viewCardDetails.bind(this)
         this.initCreateCard = this.initCreateCard.bind(this)
         this.saveCard = this.saveCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
         this.createNewList = this.createNewList.bind(this)
+
+        this.state = {
+            board: boardStore.getBoard(),
+            showCardDetails: false,
+            cardToView: null
+        }
+    }
+
+    componentWillMount() {
+        boardStore.on('change', this.setBoard)
+    }
+
+    componentWillUnmount() {
+        boardStore.unbindListener('change', this.setBoard)
+    }
+
+    setBoard() {
+        this.setState({ board: boardStore.getBoard() })
     }
 
     viewCardDetails(card) {
         this.setState({
             showCardDetails: true,
             cardToView: card
+        })
+    }
+
+    closeCardDetailsModal() {
+        this.setState({
+            showCardDetails: false,
+            cardToView: null
         })
     }
 
@@ -36,15 +62,7 @@ export default class BoardContainer extends React.Component {
     }
 
     createNewList(listName) {
-        // TODO: Implement: Create new list
-        console.log(listName);
-    }
-
-    closeCardDetailsModal() {
-        this.setState({
-            showCardDetails: false,
-            cardToView: null
-        })
+        boardActions.addNewList(listName);
     }
 
     saveCard(newCard) {
@@ -53,7 +71,7 @@ export default class BoardContainer extends React.Component {
     }
 
     render() {
-        const { board } = this.props
+        const { board } = this.state
 
         return (
             <div>
@@ -72,8 +90,4 @@ export default class BoardContainer extends React.Component {
             </div>
         )
     }
-}
-
-BoardContainer.propTypes = {
-    board: boardUtils.boardPropType.isRequired
 }

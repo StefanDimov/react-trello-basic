@@ -9,12 +9,13 @@
     "test": "jest"
   },
   "jest": {
-      "verbose": true
+    "verbose": true
   },
   "author": "StefanDimov",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "flux": "^3.1.2",
     "ramda": "^0.22.1",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
