@@ -7,10 +7,8 @@ describe('cardUtils', () => {
         it('creates empty card only with unique id when no args are passed', () => {
             const emptyCard = cardUtils.createEmptyCard()
 
-            expect(emptyCard.listId).toBe(null)
             expect(typeof emptyCard.id).toBe('string')
-            expect(emptyCard.title).toBe('')
-            expect(emptyCard.description).toBe('')
+            expect(emptyCard).toMatchObject({ listId: null, title: '', description: '' })
         })
 
         it('sets listId when passed as argument', () => {
