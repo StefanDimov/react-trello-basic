@@ -1,10 +1,10 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 
-import cardUtils from '../utils/cardUtils'
+import cardUtils from '../../utils/cardUtils'
 
-import boardStore from '../stores/boardStore'
-import * as boardActions from '../actions/boardActions'
+import boardStore from '../../stores/boardStore'
+import * as boardActions from '../../actions/boardActions'
 
 import Board from '../components/Board'
 import CardDetails from '../components/CardDetails'

@@ -1,6 +1,6 @@
 import React from 'react'
 import R from 'ramda'
-import cardUtils from '../utils/cardUtils'
+import cardUtils from '../../utils/cardUtils'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
 export default class CardDetails extends React.Component {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import List from '../../src/components/List'
-import Card from '../../src/components/Card'
+import List from '../../../src/views/components/List'
+import Card from '../../../src/views/components/Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 describe('List', () => {

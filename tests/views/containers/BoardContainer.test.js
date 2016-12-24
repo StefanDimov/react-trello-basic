@@ -2,11 +2,11 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import boardStore from '../../src/stores/boardStore'
+import boardStore from '../../../src/stores/boardStore'
 
-import BoardContainer from '../../src/containers/BoardContainer'
-import Board from '../../src/components/Board'
-import CardDetails from '../../src/components/CardDetails'
+import BoardContainer from '../../../src/views/containers/BoardContainer'
+import Board from '../../../src/views/components/Board'
+import CardDetails from '../../../src/views/components/CardDetails'
 import { Modal } from 'react-bootstrap'
 
 // TODO: Add missing tests - sub to store, getting data from store, actions

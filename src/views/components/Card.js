@@ -1,5 +1,5 @@
 import React from 'react'
-import cardUtils from '../utils/cardUtils'
+import cardUtils from '../../utils/cardUtils'
 import { Glyphicon } from 'react-bootstrap'
 
 export default class Card extends React.Component {

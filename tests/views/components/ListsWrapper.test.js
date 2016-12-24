@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ListsWrapper from '../../src/components/ListsWrapper'
+import ListsWrapper from '../../../src/views/components/ListsWrapper'
 
 describe('ListsWrapper', () => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import AddNewListInput from '../../src/components/AddNewListInput'
+import AddNewListInput from '../../../src/views/components/AddNewListInput'
 import { FormGroup, FormControl } from 'react-bootstrap'
 
 describe('AddNewListInput', () => {

@@ -2,9 +2,9 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import Board from '../../src/components/Board'
-import List from '../../src/components/List'
-import AddNewListInput from '../../src/components/AddNewListInput'
+import Board from '../../../src/views/components/Board'
+import List from '../../../src/views/components/List'
+import AddNewListInput from '../../../src/views/components/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
 describe('Board', () => {

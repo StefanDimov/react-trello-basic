@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import CardDetails from '../../src/components/CardDetails'
+import CardDetails from '../../../src/views/components/CardDetails'
 
 describe('CardDetails', () => {
 

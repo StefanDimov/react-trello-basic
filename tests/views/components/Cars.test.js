@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Card from '../../src/components/Card'
+import Card from '../../../src/views/components/Card'
 import { Glyphicon } from 'react-bootstrap'
 
 describe('Card', () => {
