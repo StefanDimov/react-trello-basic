@@ -33,7 +33,7 @@ describe('BoardContainer', () => {
                 { id: 'uniqueId2', title: 'list2', cards: [] }
             ]
         }
-        card = { id: 'uniqueId', title: 'cardTitle' }
+        card = { listId: 'listId', id: 'uniqueId', title: 'cardTitle' }
 
         boardStore.getBoard.mockClear()
     })

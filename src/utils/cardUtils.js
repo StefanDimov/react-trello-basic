@@ -4,7 +4,7 @@ import { generate as generateId } from 'shortid'
 const cardUtils = {}
 
 cardUtils.cardPropType = React.PropTypes.shape({
-    listId: React.PropTypes.string,
+    listId: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     title: React.PropTypes.string,
     description: React.PropTypes.string

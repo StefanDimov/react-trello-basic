@@ -10,7 +10,7 @@ describe('Card', () => {
     let card;
 
     beforeEach(() => {
-        card = { id: 'uniqueId' }
+        card = { listId: 'listId', id: 'uniqueId' }
     })
 
     it('sets the cards title', () => {

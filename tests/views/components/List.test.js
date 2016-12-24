@@ -45,8 +45,8 @@ describe('List', () => {
 
     describe('cards', () => {
 
-        const cardWithId = {id: 'uniqueId'}
-        const anotherCardWithId = {id: 'uniqueId2'}
+        const cardWithId = { listId: '1', id: 'uniqueId' }
+        const anotherCardWithId = { listId: '2', id: 'uniqueId2' }
 
         it('should have a ListGroup container', () => {
             list.cards = [cardWithId]

@@ -13,7 +13,7 @@ describe('CardDetails', () => {
     let onCardSave = jest.fn()
 
     beforeEach(() => {
-        card = { id: 'uniqueId' }
+        card = { listId: 'listId', id: 'uniqueId' }
         onCardSave.mockClear()
     })
 
