@@ -116,7 +116,7 @@ describe('Board', () => {
             expect(wrapper.find(List).find(Button).length).toBe(1)
         })
 
-        it('should call onCreateCardClick with list id when the child button clicked', () => {
+        it('should have a button that calls onCreateCardClick with list id', () => {
             const wrapper = shallow(
                 <Board
                     board={{ id: '1', title: '', lists: oneList }}
