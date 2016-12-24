@@ -7,11 +7,8 @@ describe('listUtils', () => {
         it('creates empty list only with unique id when no args are passed', () => {
             const emptyList = listUtils.createEmptyList()
 
-            expect(emptyList.boardId).toBe(null)
             expect(typeof emptyList.id).toBe('string')
-            expect(emptyList.title).toBe('')
-            expect(emptyList.cards instanceof Array).toBe(true)
-            expect(emptyList.cards.length).toBe(0)
+            expect(emptyList).toMatchObject({ boardId: null, title: '', cards: [] })
         })
 
         it('sets boardId when passed as argument', () => {
