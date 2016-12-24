@@ -7,9 +7,7 @@ describe('boardUtils', () => {
         it('should create empty board', () => {
             const emptyBoard = boardUtils.createEmptyBoard()
             expect(typeof emptyBoard.id).toBe('string')
-            expect(emptyBoard.title).toBe('')
-            expect(emptyBoard.lists instanceof Array).toBe(true)
-            expect(emptyBoard.lists.length).toBe(0)
+            expect(emptyBoard).toMatchObject({ title: '', lists: [] })
         })
 
         it('should generate unique ids', () => {
