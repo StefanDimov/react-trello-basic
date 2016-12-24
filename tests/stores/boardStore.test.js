@@ -5,6 +5,24 @@ import { boardActionTypes } from '../../src/actionTypes'
 
 describe('boardStore', () => {
 
+    describe('getBoard', () => {
+
+        it('should return a board', () => {
+            const board = boardStore.getBoard()
+
+            expect(board).toBeDefined()
+            expect(typeof board).toBe('object')
+        })
+
+        it('should returned board should not be a reference to the private state', () => {
+            const board = boardStore.getBoard()
+            const boardSecond = boardStore.getBoard()
+
+            expect(board).toMatchObject(boardSecond)
+            expect(board).not.toBe(boardSecond)
+        })
+    })
+
     describe('handleActions', () => {
 
         let card

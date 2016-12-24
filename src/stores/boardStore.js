@@ -6,6 +6,8 @@ import { boardActionTypes } from '../actionTypes'
 
 import listUtils from '../utils/listUtils'
 
+// TODO: must get id from url path and get board data from local storage
+
 function _getBoardWithNewList(board, listTitle) {
     const resultBoard = R.clone(board)
 
@@ -36,6 +38,7 @@ function _getBoardWithSavedCard(board, card) {
 class BoardStore extends EventEmitter {
     constructor() {
         super()
+
         this.board = {
             title: 'First Board',
             id: '1',
