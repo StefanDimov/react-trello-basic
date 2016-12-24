@@ -4,6 +4,7 @@ import dispatcher from '../../src/dispatcher'
 
 describe('boardActions', () => {
 
+    const card = { listId: 'someId', id: 'someOther', title: 'card' }
     dispatcher.dispatch = jest.fn()
 
     beforeEach(() => {
@@ -21,6 +22,20 @@ describe('boardActions', () => {
             boardActions.addNewList('list title')
             expect(dispatcher.dispatch.mock.calls.length).toBe(1)
             expect(dispatcher.dispatch.mock.calls[0][0].listTitle).toBe('list title')
+        })
+    })
+
+    describe('saveCard', () => {
+        it('should pass the proper action type', () => {
+            boardActions.saveCard({ listId: 'someId', id: 'someOther', title: 'card' })
+            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
+            expect(dispatcher.dispatch.mock.calls[0][0].type).toBe(boardActionTypes.SAVE_CARD)
+        })
+
+        it('should pass the right card', () => {
+            boardActions.saveCard(card)
+            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
+            expect(dispatcher.dispatch.mock.calls[0][0].card).toBe(card)
         })
     })
 })
