@@ -7,3 +7,10 @@ export function addNewList(listTitle) {
         listTitle
     })
 }
+
+export function saveCard(card) {
+    dispatcher.dispatch({
+        type: boardActionTypes.SAVE_CARD,
+        card
+    })
+}

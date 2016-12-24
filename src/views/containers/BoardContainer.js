@@ -67,12 +67,11 @@ export default class BoardContainer extends React.Component {
     }
 
     createNewList(listName) {
-        boardActions.addNewList(listName);
+        boardActions.addNewList(listName)
     }
 
-    saveCard(newCard) {
-        // TODO: Implement: Save card action
-        console.log(newCard);
+    saveCard(card) {
+        boardActions.saveCard(card)
     }
 
     render() {
