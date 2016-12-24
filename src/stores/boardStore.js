@@ -6,8 +6,32 @@ import { boardActionTypes } from '../actionTypes'
 
 import listUtils from '../utils/listUtils'
 
-// TODO Fix mutations
-// TODO Refactor `handleActions`
+function _getBoardWithNewList(board, listTitle) {
+    const resultBoard = R.clone(board)
+
+    const newList = listUtils.createEmptyList(resultBoard.id)
+    newList.title = listTitle
+    resultBoard.lists.push(newList)
+
+    return resultBoard
+}
+
+function _getBoardWithSavedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    const listToSaveCardTo = R.find(R.propEq('id', card.listId), resultBoard.lists)
+    const cardInListIndex = R.findIndex(R.propEq('id', card.id), listToSaveCardTo.cards)
+
+    // if it exists in list - update
+    if (cardInListIndex !== -1) {
+        listToSaveCardTo.cards[cardInListIndex] = card
+    } else {
+        // if new card - add to cards
+        listToSaveCardTo.cards.push(card)
+    }
+
+    return resultBoard
+}
 
 class BoardStore extends EventEmitter {
     constructor() {
@@ -45,33 +69,20 @@ class BoardStore extends EventEmitter {
     }
 
     getBoard() {
-        return this.board
+        return R.clone(this.board)
     }
 
     handleActions(action) {
         switch (action.type) {
             case boardActionTypes.ADD_NEW_LIST:
-                const newList = listUtils.createEmptyList(this.board.id)
-                newList.title = action.listTitle
-                this.board.lists.push(newList)
+                this.board = _getBoardWithNewList(this.board, action.listTitle)
                 this.emit('change')
+                break;
 
             case boardActionTypes.SAVE_CARD:
-                const { card } = action
-
-                console.log(card)
-
-                const listToSaveCardTo = R.find(R.propEq('id', card.listId), this.board.lists)
-                const cardInListIndex = R.findIndex(R.propEq('id', card.id), listToSaveCardTo.cards)
-
-                // if it exists in list - update
-                if (cardInListIndex !== -1) {
-                    listToSaveCardTo.cards[cardInListIndex] = card
-                } else {
-                    // if new card - add to cards
-                    listToSaveCardTo.cards.push(card)
-                }
+                this.board = _getBoardWithSavedCard(this.board, action.card)
                 this.emit('change')
+                break;
         }
     }
 }
