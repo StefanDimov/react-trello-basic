@@ -1,0 +1,16 @@
+exports[`AddNewListInput should render correctly 1`] = `
+<form
+  className="my-list-container-item"
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <input
+      className="form-control"
+      id={undefined}
+      onChange={[Function]}
+      placeholder="Add new list..."
+      type="text"
+      value="" />
+  </div>
+</form>
+`;
