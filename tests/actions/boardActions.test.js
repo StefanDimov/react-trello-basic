@@ -1,5 +1,5 @@
 import * as boardActions from '../../src/actions/boardActions'
-import boardActionTypes from '../../src/actions/boardActionTypes'
+import { boardActionTypes } from '../../src/actionTypes'
 import dispatcher from '../../src/dispatcher'
 
 describe('boardActions', () => {

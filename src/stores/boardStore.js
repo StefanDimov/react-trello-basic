@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 
 import dispatcher from '../dispatcher'
-import boardActionTypes from '../actions/boardActionTypes'
+import { boardActionTypes } from '../actionTypes'
 
 import listUtils from '../utils/listUtils'
 

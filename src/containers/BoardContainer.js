@@ -2,7 +2,6 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 import cardUtils from '../utils/cardUtils'
-import boardUtils from '../utils/boardUtils'
 
 import boardStore from '../stores/boardStore'
 import * as boardActions from '../actions/boardActions'
@@ -29,17 +28,21 @@ export default class BoardContainer extends React.Component {
     }
 
     componentWillMount() {
+        // subscribes to store
         boardStore.on('change', this.setBoard)
     }
 
     componentWillUnmount() {
+        // unsubscribes to store
         boardStore.unbindListener('change', this.setBoard)
     }
 
     setBoard() {
+        // sets board state from store
         this.setState({ board: boardStore.getBoard() })
     }
 
+    // opens CardDetails with card
     viewCardDetails(card) {
         this.setState({
             showCardDetails: true,
@@ -47,6 +50,7 @@ export default class BoardContainer extends React.Component {
         })
     }
 
+    // closes CardDetails and clears state
     closeCardDetailsModal() {
         this.setState({
             showCardDetails: false,
@@ -54,6 +58,7 @@ export default class BoardContainer extends React.Component {
         })
     }
 
+    // opens CardDetails with new empty card
     initCreateCard(listId) {
         this.setState({
             showCardDetails: true,

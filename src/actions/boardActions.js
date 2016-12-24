@@ -1,5 +1,5 @@
 import dispatcher from '../dispatcher'
-import boardActionTypes from './boardActionTypes'
+import { boardActionTypes } from '../actionTypes'
 
 export function addNewList(listTitle) {
     dispatcher.dispatch({
