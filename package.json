@@ -9,7 +9,8 @@
     "test": "jest"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testEnvironment": "node"
   },
   "author": "StefanDimov",
   "license": "MIT",
