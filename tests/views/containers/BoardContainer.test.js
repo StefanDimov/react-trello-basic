@@ -103,7 +103,7 @@ describe('BoardContainer', () => {
             instance.viewCardDetails(card)
 
             expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails).length).toBe(1)
+            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
             expect(wrapper.find(Modal).find(CardDetails).prop('card')).toBe(card)
             expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
         })
@@ -116,12 +116,12 @@ describe('BoardContainer', () => {
 
             instance.viewCardDetails(card)
             expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails).length).toBe(1)
+            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
 
             expect(wrapper.find(Modal).prop('onHide')).toBe(instance.closeCardDetailsModal)
             instance.closeCardDetailsModal()
             expect(wrapper.find(Modal).prop('show')).toBe(false)
-            expect(wrapper.find(Modal).find(CardDetails).length).toBe(0)
+            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(0)
         })
 
         it('should call card creation modal with empty card', () => {
@@ -133,7 +133,7 @@ describe('BoardContainer', () => {
 
             instance.initCreateCard(listId)
             expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails).length).toBe(1)
+            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
 
             expect(wrapper.find(Modal).prop('onHide')).toBe(instance.closeCardDetailsModal)
             expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
@@ -191,22 +191,22 @@ describe('BoardContainer', () => {
         })
 
         it('should get initial state from store', () => {
-            expect(boardStore.getBoard.mock.calls.length).toBe(0)
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(0)
             const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.getBoard.mock.calls.length).toBe(1)
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
         })
 
         it('should subscribe to store on mount', () => {
-            expect(boardStore.on.mock.calls.length).toBe(0)
+            expect(boardStore.on).toHaveBeenCalledTimes(0)
             const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.on.mock.calls.length).toBe(1)
+            expect(boardStore.on).toHaveBeenCalledTimes(1)
         })
 
         it('should subscribe to store on unmount', () => {
 
             boardStore.unbindListener = jest.fn()
 
-            expect(boardStore.unbindListener.mock.calls.length).toBe(0)
+            expect(boardStore.unbindListener).toHaveBeenCalledTimes(0)
             const wrapper = shallow(<BoardContainer />)
             wrapper.unmount()
             expect(boardStore.unbindListener).toHaveBeenCalledTimes(1)

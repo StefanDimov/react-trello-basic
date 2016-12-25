@@ -61,8 +61,8 @@ describe('CardDetails', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} />)
             const event = { preventDefault: jest.fn() }
             wrapper.simulate('submit', event)
-            expect(event.preventDefault.mock.calls.length).toBe(1)
-            expect(onCardSave.mock.calls.length).toBe(0)
+            expect(event.preventDefault).toHaveBeenCalledTimes(1)
+            expect(onCardSave).toHaveBeenCalledTimes(0)
         })
     })
 
@@ -93,16 +93,16 @@ describe('CardDetails', () => {
             // must have a change so onCardSave will be called
             wrapper.find(titleInputSelector).simulate('change', event)
             // should'n te called before unmount
-            expect(onCardSave.mock.calls.length).toBe(0)
+            expect(onCardSave).toHaveBeenCalledTimes(0)
 
             wrapper.unmount();
-            expect(onCardSave.mock.calls.length).toBe(1)
+            expect(onCardSave).toHaveBeenCalledTimes(1)
         })
 
         it('should not be called if the card has not changed', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} />)
             wrapper.unmount();
-            expect(onCardSave.mock.calls.length).toBe(0)
+            expect(onCardSave).toHaveBeenCalledTimes(0)
         })
     })
 })

@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap'
 
 describe('Board', () => {
 
-    let title, noLists, oneList, twoLists
+    let title, emptyBoard, boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
 
     let onCardClick = jest.fn()
     let onCreateCardClick = jest.fn()
@@ -17,9 +17,10 @@ describe('Board', () => {
 
     beforeEach(() => {
         title = 'boardTitle'
-        noLists = []
-        oneList = [{ id: 'uniqueId', title: 'listTitle', cards: [] }]
-        twoLists = [{ id: 'uniqueId', title: 'listTitle', cards: [] }, { id: 'uniqueId2', title: 'listTitle2', cards: [] }]
+        emptyBoard = { id: '0', title: '', lists: [] }
+        boardWithTitle = { id: '1', title: title, lists: [] }
+        boardWithTitleAndOneList = { id: '2', title: title, lists: [{ id: 'uniqueId', title: 'listTitle', cards: [] }] }
+        boardWithTitleAndTwoLists = { id: '2', title: title, lists: [{ id: 'uniqueId', title: 'listTitle', cards: [] }, { id: 'uniqueId2', title: 'listTitle2', cards: [] }] }
 
         onCardClick.mockClear()
         onCreateCardClick.mockClear()
@@ -30,31 +31,31 @@ describe('Board', () => {
         it('should render properly with empty title and no lists', () => {
             const tree = renderer.create(
                 <Board
-                    board={{ id: '1', title: '', lists: noLists }}
+                    board={emptyBoard}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
-            ).toJSON();
+            ).toJSON()
 
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render properly with a title and no lists', () => {
             const tree = renderer.create(
                 <Board
-                    board={{ id: '1', title: title, lists: noLists }}
+                    board={boardWithTitle}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
-            ).toJSON();
+            ).toJSON()
 
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render properly with a title and a single list', () => {
             const tree = renderer.create(
                 <Board
-                    board={{ id: '1', title: title, lists: oneList }}
+                    board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -66,7 +67,7 @@ describe('Board', () => {
         it('should render properly with a title and two lists', () => {
             const tree = renderer.create(
                 <Board
-                    board={{ id: '1', title: title, lists: twoLists }}
+                    board={boardWithTitleAndTwoLists}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -74,14 +75,13 @@ describe('Board', () => {
 
             expect(tree).toMatchSnapshot();
         })
-
     })
 
     describe('lists wrapper', () => {
         it('should have a AddNewListInput child with onCreateNewList passed to it', () => {
             const wrapper = shallow(
                 <Board
-                    board={{ id: '1', title: '', lists: oneList }}
+                    board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -95,7 +95,7 @@ describe('Board', () => {
         it('should be passed onCardClick func', () => {
             const wrapper = shallow(
                 <Board
-                    board={{ id: '1', title: '', lists: oneList }}
+                    board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -107,7 +107,7 @@ describe('Board', () => {
         it('should have a button child', () => {
             const wrapper = shallow(
                 <Board
-                    board={{ id: '1', title: '', lists: oneList }}
+                    board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -119,7 +119,7 @@ describe('Board', () => {
         it('should have a button that calls onCreateCardClick with list id', () => {
             const wrapper = shallow(
                 <Board
-                    board={{ id: '1', title: '', lists: oneList }}
+                    board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
@@ -127,8 +127,8 @@ describe('Board', () => {
 
             wrapper.find(List).find(Button).simulate('click')
 
-            expect(onCreateCardClick.mock.calls.length).toBe(1)
-            expect(onCreateCardClick.mock.calls[0][0]).toBe(oneList[0].id)
+            expect(onCreateCardClick).toHaveBeenCalledTimes(1)
+            expect(onCreateCardClick).toHaveBeenCalledWith(boardWithTitleAndOneList.lists[0].id)
         })
     })
 })

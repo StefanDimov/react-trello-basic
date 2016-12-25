@@ -50,8 +50,8 @@ describe('boardStore', () => {
                 .toBeDefined()
 
             // expect to emit change event after
-            expect(boardStore.emit.mock.calls.length).toBe(1)
-            expect(boardStore.emit.mock.calls[0][0]).toBe('change')
+            expect(boardStore.emit).toHaveBeenCalledTimes(1)
+            expect(boardStore.emit).toHaveBeenCalledWith('change')
         })
 
         it('should save a new card', () => {
@@ -72,8 +72,8 @@ describe('boardStore', () => {
                 .toBeDefined()
 
             // expect to emit change event after
-            expect(boardStore.emit.mock.calls.length).toBe(1)
-            expect(boardStore.emit.mock.calls[0][0]).toBe('change')
+            expect(boardStore.emit).toHaveBeenCalledTimes(1)
+            expect(boardStore.emit).toHaveBeenCalledWith('change')
         })
 
         it('should save edits to a card', () => {
@@ -101,8 +101,8 @@ describe('boardStore', () => {
             expect(resultFirstCard).not.toMatchObject(intialFirstCard)
 
             // expect to emit change event after
-            expect(boardStore.emit.mock.calls.length).toBe(1)
-            expect(boardStore.emit.mock.calls[0][0]).toBe('change')
+            expect(boardStore.emit).toHaveBeenCalledTimes(1)
+            expect(boardStore.emit).toHaveBeenCalledWith('change')
         })
     })
 })

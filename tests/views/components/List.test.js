@@ -74,10 +74,10 @@ describe('List', () => {
             const wrapper = shallow(<List list={list} onCardClick={onCardClick} />)
 
             wrapper.find(ListGroupItem).first().simulate('click')
-            expect(onCardClick.mock.calls[0][0]).toBe(cardWithId)
+            expect(onCardClick).toHaveBeenLastCalledWith(cardWithId)
 
             wrapper.find(ListGroupItem).last().simulate('click')
-            expect(onCardClick.mock.calls[1][0]).toBe(anotherCardWithId)
+            expect(onCardClick).toHaveBeenLastCalledWith(anotherCardWithId)
         })
     })
 })

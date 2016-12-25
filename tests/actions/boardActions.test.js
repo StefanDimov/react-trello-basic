@@ -12,30 +12,18 @@ describe('boardActions', () => {
     })
 
     describe('addNewList', () => {
-        it('should pass the proper action type', () => {
+        it('should pass the proper params to dispatcher', () => {
             boardActions.addNewList('list title')
-            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
-            expect(dispatcher.dispatch.mock.calls[0][0].type).toBe(boardActionTypes.ADD_NEW_LIST)
-        })
-
-        it('should pass the list name', () => {
-            boardActions.addNewList('list title')
-            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
-            expect(dispatcher.dispatch.mock.calls[0][0].listTitle).toBe('list title')
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.ADD_NEW_LIST, listTitle: 'list title' })
         })
     })
 
     describe('saveCard', () => {
-        it('should pass the proper action type', () => {
+        it('should pass the proper params to dispatcher', () => {
             boardActions.saveCard({ listId: 'someId', id: 'someOther', title: 'card' })
-            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
-            expect(dispatcher.dispatch.mock.calls[0][0].type).toBe(boardActionTypes.SAVE_CARD)
-        })
-
-        it('should pass the right card', () => {
-            boardActions.saveCard(card)
-            expect(dispatcher.dispatch.mock.calls.length).toBe(1)
-            expect(dispatcher.dispatch.mock.calls[0][0].card).toBe(card)
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.SAVE_CARD, card: card })
         })
     })
 })
