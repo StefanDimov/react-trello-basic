@@ -3,6 +3,10 @@ exports[`List rendering should render correctly with a card 1`] = `
   className="my-list-container-item panel panel-default"
   id={undefined}>
   <div
+    className="panel-heading">
+    list title
+  </div>
+  <div
     className="panel-body">
     <div
       className="list-group">
@@ -26,6 +30,10 @@ exports[`List rendering should render correctly with children 1`] = `
   className="my-list-container-item panel panel-default"
   id={undefined}>
   <div
+    className="panel-heading">
+    list title
+  </div>
+  <div
     className="panel-body">
     <span>
       unique
@@ -37,7 +45,12 @@ exports[`List rendering should render correctly with children 1`] = `
 exports[`List rendering should render correctly with no cards 1`] = `
 <div
   className="my-list-container-item panel panel-default"
-  id={undefined} />
+  id={undefined}>
+  <div
+    className="panel-heading">
+    list title
+  </div>
+</div>
 `;
 
 exports[`List rendering should render correctly with title 1`] = `
@@ -55,6 +68,10 @@ exports[`List rendering should render correctly with two card 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>
+  <div
+    className="panel-heading">
+    list title
+  </div>
   <div
     className="panel-body">
     <div

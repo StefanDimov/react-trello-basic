@@ -7,16 +7,17 @@ import Card from '../../../src/views/components/Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
+import { getEmptyList } from '../../_mocks/List.mocks'
 
 describe('List', () => {
 
-    let list
-    let onCardClick = jest.fn()
     const cardWithId = getCardOnlyWithIds(1)
     const anotherCardWithId = getCardOnlyWithIds(2)
+    let list
+    let onCardClick = jest.fn()
 
     beforeEach(() => {
-        list = { id: 'uniqueId', cards: [] }
+        list = getEmptyList()
         onCardClick.mockClear()
     })
 

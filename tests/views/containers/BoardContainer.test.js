@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import { getBasicCard } from '../../_mocks/Card.mocks'
+import { getEmptyList } from '../../_mocks/List.mocks'
 
 import boardStore from '../../../src/stores/boardStore'
 
@@ -23,7 +24,7 @@ describe('BoardContainer', () => {
         boardWithTitleAndOneList = {
             id: 'uniqueId',
             title: 'BoardTitle',
-            lists: [{ id: 'uniqueId', title: 'list', cards: [] }]
+            lists: [getEmptyList()]
         }
 
         boardStore.getBoard.mockClear()
@@ -70,10 +71,7 @@ describe('BoardContainer', () => {
             const boardWithTitleAndTwoLists = {
                 id: 'uniqueId',
                 title: 'BoardTitle',
-                lists: [
-                    { id: 'uniqueId', title: 'list', cards: [] },
-                    { id: 'uniqueId2', title: 'list2', cards: [] }
-                ]
+                lists: [getEmptyList(1), getEmptyList(2)]
             }
 
             boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndTwoLists)

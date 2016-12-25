@@ -2,6 +2,8 @@ import React from 'react'
 import Card from './Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
+import listUtils from '../../utils/listUtils'
+
 export default class List extends React.Component {
     render() {
         const { list, onCardClick, children} = this.props
@@ -22,8 +24,7 @@ export default class List extends React.Component {
     }
 }
 
-const { object, array, func } = React.PropTypes
 List.propTypes = {
-    list: object.isRequired,
-    onCardClick: func.isRequired
+    list: listUtils.listPropType.isRequired,
+    onCardClick: React.PropTypes.func.isRequired
 }

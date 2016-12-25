@@ -7,20 +7,21 @@ import List from '../../../src/views/components/List'
 import AddNewListInput from '../../../src/views/components/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
+import { getEmptyList } from '../../_mocks/List.mocks'
+
 describe('Board', () => {
 
-    let title, emptyBoard, boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
+    const onCardClick = jest.fn()
+    const onCreateCardClick = jest.fn()
+    const onCreateNewList = jest.fn()
 
-    let onCardClick = jest.fn()
-    let onCreateCardClick = jest.fn()
-    let onCreateNewList = jest.fn()
+    let emptyBoard, boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
 
     beforeEach(() => {
-        title = 'boardTitle'
         emptyBoard = { id: '0', title: '', lists: [] }
-        boardWithTitle = { id: '1', title: title, lists: [] }
-        boardWithTitleAndOneList = { id: '2', title: title, lists: [{ id: 'uniqueId', title: 'listTitle', cards: [] }] }
-        boardWithTitleAndTwoLists = { id: '2', title: title, lists: [{ id: 'uniqueId', title: 'listTitle', cards: [] }, { id: 'uniqueId2', title: 'listTitle2', cards: [] }] }
+        boardWithTitle = { id: '1', title: 'boardTitle', lists: [] }
+        boardWithTitleAndOneList = { id: '2', title: 'boardTitle', lists: [getEmptyList()] }
+        boardWithTitleAndTwoLists = { id: '2', title: 'boardTitle', lists: [getEmptyList(1), getEmptyList(2)] }
 
         onCardClick.mockClear()
         onCreateCardClick.mockClear()

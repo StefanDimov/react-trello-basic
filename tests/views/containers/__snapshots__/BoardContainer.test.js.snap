@@ -60,7 +60,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
         id={undefined}>
         <div
           className="panel-heading">
-          list
+          list title
         </div>
         <div
           className="panel-body">
@@ -116,7 +116,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
         id={undefined}>
         <div
           className="panel-heading">
-          list
+          list title1
         </div>
         <div
           className="panel-body">
@@ -134,7 +134,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
         id={undefined}>
         <div
           className="panel-heading">
-          list2
+          list title2
         </div>
         <div
           className="panel-body">

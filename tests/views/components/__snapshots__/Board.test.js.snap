@@ -21,7 +21,7 @@ exports[`Board rendering should render properly with a title and a single list 1
       id={undefined}>
       <div
         className="panel-heading">
-        listTitle
+        list title
       </div>
       <div
         className="panel-body">
@@ -111,7 +111,7 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
       id={undefined}>
       <div
         className="panel-heading">
-        listTitle
+        list title1
       </div>
       <div
         className="panel-body">
@@ -129,7 +129,7 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
       id={undefined}>
       <div
         className="panel-heading">
-        listTitle2
+        list title2
       </div>
       <div
         className="panel-body">
