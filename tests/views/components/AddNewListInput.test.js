@@ -21,7 +21,7 @@ describe('AddNewListInput', () => {
             <AddNewListInput onCreateList={onCreateList} />
         ).toJSON()
 
-        expect(tree).toMatchSnapshot();
+        expect(tree).toMatchSnapshot()
     })
 
     it('should call onCreateList with the new list\'s name on submit', () => {

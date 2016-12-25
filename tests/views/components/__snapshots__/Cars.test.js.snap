@@ -1,0 +1,28 @@
+exports[`Card should not render description icon when description is not present 1`] = `
+<div>
+  <span />
+  <span
+    className="pull-right" />
+</div>
+`;
+
+exports[`Card should render correctly card with title 1`] = `
+<div>
+  <span>
+    title
+  </span>
+  <span
+    className="pull-right" />
+</div>
+`;
+
+exports[`Card shows render description icon when description is present 1`] = `
+<div>
+  <span />
+  <span
+    className="pull-right">
+    <span
+      className="glyphicon glyphicon-align-left" />
+  </span>
+</div>
+`;

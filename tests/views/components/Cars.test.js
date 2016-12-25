@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import Card from '../../../src/views/components/Card'
 import { Glyphicon } from 'react-bootstrap'
@@ -13,26 +13,21 @@ describe('Card', () => {
         card = { listId: 'listId', id: 'uniqueId' }
     })
 
-    it('sets the cards title', () => {
+    it('should render correctly card with title', () => {
         card.title = 'title'
-        const wrapper = shallow(<Card card={card}/>)
-        expect(wrapper.find('span').first().text()).toBe(card.title)
+        const tree = renderer.create(<Card card={card}/>).toJSON()
+        expect(tree).toMatchSnapshot()
     })
 
-    it('should display icons on the right', () => {
-        const wrapper = shallow(<Card card={card}/>)
-        expect(wrapper.find('span').last().prop('className')).toBe('pull-right')
-    })
-
-    it('shows description icon when description is present', () => {
+    it('shows render description icon when description is present', () => {
         card.description = 'description'
-        const wrapper = shallow(<Card card={card}/>)
-        expect(wrapper.contains(descriptionIcon)).toBe(true)
+        const tree = renderer.create(<Card card={card}/>).toJSON()
+        expect(tree).toMatchSnapshot()
     })
 
-    it('does not show description icon when description is not present', () => {
+    it('should not render description icon when description is not present', () => {
         card.description = undefined;
-        const wrapper = shallow(<Card card={card}/>)
-        expect(wrapper.contains(descriptionIcon)).toBe(false)
+        const tree = renderer.create(<Card card={card}/>).toJSON()
+        expect(tree).toMatchSnapshot()
     })
 })
