@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 
 import List from '../../../src/views/components/List'
 import Card from '../../../src/views/components/Card'
-import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 
 import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
 import { getEmptyList } from '../../_mocks/List.mocks'

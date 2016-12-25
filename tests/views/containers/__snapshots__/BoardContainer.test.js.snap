@@ -10,7 +10,7 @@ exports[`BoardContainer rendering should render correctly a board with a title 1
           className="navbar-header">
           <span
             className="navbar-brand">
-            BoardTitle
+            boardTitle
           </span>
         </div>
       </div>
@@ -48,7 +48,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
           className="navbar-header">
           <span
             className="navbar-brand">
-            BoardTitle
+            boardTitle
           </span>
         </div>
       </div>
@@ -60,7 +60,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
         id={undefined}>
         <div
           className="panel-heading">
-          list title
+          list title0
         </div>
         <div
           className="panel-body">
@@ -104,13 +104,31 @@ exports[`BoardContainer rendering should render correctly a board with a title a
           className="navbar-header">
           <span
             className="navbar-brand">
-            BoardTitle
+            boardTitle
           </span>
         </div>
       </div>
     </nav>
     <div
       className="my-lists-container">
+      <div
+        className="my-list-container-item panel panel-default"
+        id={undefined}>
+        <div
+          className="panel-heading">
+          list title0
+        </div>
+        <div
+          className="panel-body">
+          <button
+            className="btn btn-primary btn-block"
+            disabled={false}
+            onClick={[Function]}
+            type="button">
+            Add Card
+          </button>
+        </div>
+      </div>
       <div
         className="my-list-container-item panel panel-default"
         id={undefined}>
@@ -129,62 +147,6 @@ exports[`BoardContainer rendering should render correctly a board with a title a
           </button>
         </div>
       </div>
-      <div
-        className="my-list-container-item panel panel-default"
-        id={undefined}>
-        <div
-          className="panel-heading">
-          list title2
-        </div>
-        <div
-          className="panel-body">
-          <button
-            className="btn btn-primary btn-block"
-            disabled={false}
-            onClick={[Function]}
-            type="button">
-            Add Card
-          </button>
-        </div>
-      </div>
-      <form
-        className="my-list-container-item"
-        onSubmit={[Function]}>
-        <div
-          className="form-group">
-          <input
-            className="form-control"
-            id={undefined}
-            onChange={[Function]}
-            placeholder="Add new list..."
-            type="text"
-            value="" />
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`BoardContainer rendering should render correctly an empty board 1`] = `
-<div>
-  <div
-    className="my-navbar-top-padding">
-    <nav
-      className="navbar navbar-default navbar-fixed-top">
-      <div
-        className="container-fluid">
-        <div
-          className="navbar-header">
-          <span
-            className="navbar-brand">
-            
-          </span>
-        </div>
-      </div>
-    </nav>
-    <div
-      className="my-lists-container">
       <form
         className="my-list-container-item"
         onSubmit={[Function]}>

@@ -7,7 +7,7 @@ import List from '../../../src/views/components/List'
 import AddNewListInput from '../../../src/views/components/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
-import { getEmptyList } from '../../_mocks/List.mocks'
+import { getEmptyBoard, getEmptyBoardWithLists } from '../../_mocks/Board.mocks'
 
 describe('Board', () => {
 
@@ -15,13 +15,12 @@ describe('Board', () => {
     const onCreateCardClick = jest.fn()
     const onCreateNewList = jest.fn()
 
-    let emptyBoard, boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
+    let boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
 
     beforeEach(() => {
-        emptyBoard = { id: '0', title: '', lists: [] }
-        boardWithTitle = { id: '1', title: 'boardTitle', lists: [] }
-        boardWithTitleAndOneList = { id: '2', title: 'boardTitle', lists: [getEmptyList()] }
-        boardWithTitleAndTwoLists = { id: '2', title: 'boardTitle', lists: [getEmptyList(1), getEmptyList(2)] }
+        boardWithTitle = getEmptyBoard()
+        boardWithTitleAndOneList = getEmptyBoardWithLists(undefined, 1)
+        boardWithTitleAndTwoLists = getEmptyBoardWithLists(undefined, 2)
 
         onCardClick.mockClear()
         onCreateCardClick.mockClear()
@@ -29,18 +28,6 @@ describe('Board', () => {
     })
 
     describe('rendering', () => {
-        it('should render properly with empty title and no lists', () => {
-            const tree = renderer.create(
-                <Board
-                    board={emptyBoard}
-                    onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
-                    onCreateNewList={onCreateNewList} />
-            ).toJSON()
-
-            expect(tree).toMatchSnapshot()
-        })
-
         it('should render properly with a title and no lists', () => {
             const tree = renderer.create(
                 <Board

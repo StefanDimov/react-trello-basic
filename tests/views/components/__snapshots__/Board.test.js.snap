@@ -21,7 +21,7 @@ exports[`Board rendering should render properly with a title and a single list 1
       id={undefined}>
       <div
         className="panel-heading">
-        list title
+        list title0
       </div>
       <div
         className="panel-body">
@@ -111,7 +111,7 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
       id={undefined}>
       <div
         className="panel-heading">
-        list title1
+        list title0
       </div>
       <div
         className="panel-body">
@@ -129,7 +129,7 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
       id={undefined}>
       <div
         className="panel-heading">
-        list title2
+        list title1
       </div>
       <div
         className="panel-body">
@@ -142,42 +142,6 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
         </button>
       </div>
     </div>
-    <form
-      className="my-list-container-item"
-      onSubmit={[Function]}>
-      <div
-        className="form-group">
-        <input
-          className="form-control"
-          id={undefined}
-          onChange={[Function]}
-          placeholder="Add new list..."
-          type="text"
-          value="" />
-      </div>
-    </form>
-  </div>
-</div>
-`;
-
-exports[`Board rendering should render properly with empty title and no lists 1`] = `
-<div
-  className="my-navbar-top-padding">
-  <nav
-    className="navbar navbar-default navbar-fixed-top">
-    <div
-      className="container-fluid">
-      <div
-        className="navbar-header">
-        <span
-          className="navbar-brand">
-          
-        </span>
-      </div>
-    </div>
-  </nav>
-  <div
-    className="my-lists-container">
     <form
       className="my-list-container-item"
       onSubmit={[Function]}>
