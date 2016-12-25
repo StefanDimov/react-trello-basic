@@ -10,7 +10,7 @@ describe('AddNewListInput', () => {
     const inputChangeEventDataWithName = {
         target: { value: 'list name' }
     }
-    let onCreateList = jest.fn()
+    const onCreateList = jest.fn()
 
     beforeEach(() => {
         onCreateList.mockClear()

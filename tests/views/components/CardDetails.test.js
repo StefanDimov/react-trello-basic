@@ -3,17 +3,19 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import CardDetails from '../../../src/views/components/CardDetails'
+import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
 
 describe('CardDetails', () => {
 
     const titleInputSelector = { id: 'card-details-title-input' }
     const titleDescriptionSelector = { id: 'card-details-description-input' }
+
     const event = { target: { value: 'some value' } }
+    const onCardSave = jest.fn()
     let card
-    let onCardSave = jest.fn()
 
     beforeEach(() => {
-        card = { listId: 'listId', id: 'uniqueId' }
+        card = getCardOnlyWithIds()
         onCardSave.mockClear()
     })
 

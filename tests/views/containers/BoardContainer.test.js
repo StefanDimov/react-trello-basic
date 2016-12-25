@@ -2,6 +2,8 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
+import { getBasicCard } from '../../_mocks/Card.mocks'
+
 import boardStore from '../../../src/stores/boardStore'
 
 import BoardContainer from '../../../src/views/containers/BoardContainer'
@@ -9,8 +11,6 @@ import Board from '../../../src/views/components/Board'
 import CardDetails from '../../../src/views/components/CardDetails'
 import { Modal } from 'react-bootstrap'
 import * as boardActions from '../../../src/actions/boardActions'
-
-// TODO: Add missing tests - sub to store, getting data from store, actions
 
 describe('BoardContainer', () => {
 
@@ -91,7 +91,7 @@ describe('BoardContainer', () => {
         let card
 
         beforeEach(() => {
-            card = { listId: 'listId', id: 'uniqueId', title: 'cardTitle' }
+            card = getBasicCard()
         })
 
         it('should open card creation modal with appropriate card and save function', () => {

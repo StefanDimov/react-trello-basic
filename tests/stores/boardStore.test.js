@@ -3,6 +3,8 @@ import R from 'ramda'
 import boardStore from '../../src/stores/boardStore'
 import { boardActionTypes } from '../../src/actionTypes'
 
+import { getBasicCard } from '../_mocks/Card.mocks'
+
 describe('boardStore', () => {
 
     describe('getBoard', () => {
@@ -29,7 +31,7 @@ describe('boardStore', () => {
         boardStore.emit = jest.fn()
 
         beforeEach(() => {
-            card = { listId: '1', id: 'uniqueId' }
+            card = getBasicCard()
             boardStore.emit.mockClear()
         })
 

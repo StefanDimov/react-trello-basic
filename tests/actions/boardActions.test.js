@@ -2,9 +2,11 @@ import * as boardActions from '../../src/actions/boardActions'
 import { boardActionTypes } from '../../src/actionTypes'
 import dispatcher from '../../src/dispatcher'
 
+import { getBasicCard } from '../_mocks/Card.mocks'
+
 describe('boardActions', () => {
 
-    const card = { listId: 'someId', id: 'someOther', title: 'card' }
+    const card = getBasicCard()
     dispatcher.dispatch = jest.fn()
 
     beforeEach(() => {
@@ -21,7 +23,7 @@ describe('boardActions', () => {
 
     describe('saveCard', () => {
         it('should pass the proper params to dispatcher', () => {
-            boardActions.saveCard({ listId: 'someId', id: 'someOther', title: 'card' })
+            boardActions.saveCard(card)
             expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
             expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.SAVE_CARD, card: card })
         })

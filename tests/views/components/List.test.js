@@ -6,12 +6,14 @@ import List from '../../../src/views/components/List'
 import Card from '../../../src/views/components/Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
+import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
+
 describe('List', () => {
 
     let list
     let onCardClick = jest.fn()
-    const cardWithId = { listId: '1', id: 'uniqueId' }
-    const anotherCardWithId = { listId: '2', id: 'uniqueId2' }
+    const cardWithId = getCardOnlyWithIds(1)
+    const anotherCardWithId = getCardOnlyWithIds(2)
 
     beforeEach(() => {
         list = { id: 'uniqueId', cards: [] }
