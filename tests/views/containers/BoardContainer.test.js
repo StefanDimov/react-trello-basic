@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import { getBasicCard } from '../../_mocks/Card.mocks'
-import { getEmptyBoard, getEmptyBoardWithLists } from '../../_mocks/Board.mocks'
+import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
 
 import boardStore from '../../../src/stores/boardStore'
 
@@ -21,7 +21,7 @@ describe('BoardContainer', () => {
 
     beforeEach(() => {
         boardWithTitle = getEmptyBoard()
-        boardWithTitleAndOneList = getEmptyBoardWithLists(undefined, 1)
+        boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
 
         boardStore.getBoard.mockClear()
     })
@@ -48,8 +48,7 @@ describe('BoardContainer', () => {
         })
 
         it('should render correctly a board with a title and two lists', () => {
-            const boardWithTitleAndTwoLists = getEmptyBoardWithLists(undefined, 2)
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndTwoLists)
+            boardStore.getBoard.mockReturnValueOnce(getBoardWithLists(undefined, 2))
 
             const tree = renderer.create(
                 <BoardContainer />
@@ -59,7 +58,7 @@ describe('BoardContainer', () => {
         })
     })
 
-    describe('card creation', () => {
+    describe('card crud', () => {
 
         let card
 
@@ -79,6 +78,7 @@ describe('BoardContainer', () => {
             expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
             expect(wrapper.find(Modal).find(CardDetails).prop('card')).toBe(card)
             expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
+            expect(wrapper.find(Modal).find(CardDetails).prop('onCardDelete')).toBe(instance.deleteCard)
         })
 
         it('should hide card creation modal and clear the state', () => {
@@ -124,6 +124,24 @@ describe('BoardContainer', () => {
             instance.saveCard(card)
             expect(boardActions.saveCard).toHaveBeenCalledTimes(1)
             expect(boardActions.saveCard).toHaveBeenCalledWith(card)
+        })
+
+        it('should call delete card action with delete function', () => {
+            boardActions.deleteCard = jest.fn()
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+
+            const wrapper = shallow(<BoardContainer />)
+            const instance = wrapper.instance()
+            instance.closeCardDetailsModal = jest.fn()
+
+            instance.deleteCard(card)
+
+            // expect delete card action to be called
+            expect(boardActions.deleteCard).toHaveBeenCalledTimes(1)
+            expect(boardActions.deleteCard).toHaveBeenCalledWith(card)
+
+            // expect modal to be closed
+            expect(instance.closeCardDetailsModal).toHaveBeenCalledTimes(1)
         })
     })
 

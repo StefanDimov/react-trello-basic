@@ -28,4 +28,12 @@ describe('boardActions', () => {
             expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.SAVE_CARD, card: card })
         })
     })
+
+    describe('deleteCard', () => {
+        it('should pass the proper params to dispatcher', () => {
+            boardActions.deleteCard(card)
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.DELETE_CARD, card: card })
+        })
+    })
 })

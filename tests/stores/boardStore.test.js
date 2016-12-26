@@ -4,6 +4,7 @@ import boardStore from '../../src/stores/boardStore'
 import { boardActionTypes } from '../../src/actionTypes'
 
 import { getBasicCard } from '../_mocks/Card.mocks'
+import { getBoardWithListsWithCards } from '../_mocks/Board.mocks'
 
 describe('boardStore', () => {
 
@@ -101,6 +102,28 @@ describe('boardStore', () => {
             // expect card to be updated
             expect(resultFirstCard).toMatchObject(editedCard)
             expect(resultFirstCard).not.toMatchObject(intialFirstCard)
+
+            // expect to emit change event after
+            expect(boardStore.emit).toHaveBeenCalledTimes(1)
+            expect(boardStore.emit).toHaveBeenCalledWith('change')
+        })
+
+        it('should delete a card', () => {
+            const initalBoard = boardStore.getBoard()
+            const initialFirstList = R.head(initalBoard.lists)
+            const intialFirstCard = R.head(initialFirstList.cards)
+            expect(initialFirstList).toBeDefined()
+            expect(intialFirstCard).toBeDefined()
+
+            boardStore.handleActions({ type: boardActionTypes.DELETE_CARD, card: intialFirstCard })
+
+            // expect a card to be removed from list
+            const resultBoard = boardStore.getBoard()
+            const resultFirstList = R.head(resultBoard.lists)
+            const resultFirstCard = R.head(resultFirstList.cards)
+
+            expect(resultFirstCard).not.toMatchObject(intialFirstCard)
+            expect(resultFirstList.cards).not.toContainEqual(intialFirstCard)
 
             // expect to emit change event after
             expect(boardStore.emit).toHaveBeenCalledTimes(1)

@@ -1,5 +1,5 @@
 import R from 'ramda'
-import { getEmptyList } from './List.mocks'
+import { getEmptyList, getListWithCards } from './List.mocks'
 
 export function getEmptyBoard(mark='') {
     return {
@@ -9,10 +9,18 @@ export function getEmptyBoard(mark='') {
     }
 }
 
-export function getEmptyBoardWithLists(mark='', numberOfLists) {
+export function getBoardWithLists(mark='', numberOfLists) {
     return {
         id: 'boardId' + mark,
         title: 'boardTitle' + mark,
         lists: R.range(0, numberOfLists).map((i) => getEmptyList(i))
+    }
+}
+
+export function getBoardWithListsWithCards(mark='', numberOfLists, numberOfCardsInLists) {
+    return {
+        id: 'boardId' + mark,
+        title: 'boardTitle' + mark,
+        lists: R.range(0, numberOfLists).map((i) => getListWithCards(i, numberOfCardsInLists))
     }
 }

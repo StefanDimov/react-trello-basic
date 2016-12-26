@@ -14,3 +14,10 @@ export function saveCard(card) {
         card
     })
 }
+
+export function deleteCard(card) {
+    dispatcher.dispatch({
+        type: boardActionTypes.DELETE_CARD,
+        card: card
+    })
+}

@@ -7,7 +7,7 @@ import List from '../../../src/views/components/List'
 import AddNewListInput from '../../../src/views/components/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
-import { getEmptyBoard, getEmptyBoardWithLists } from '../../_mocks/Board.mocks'
+import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
 
 describe('Board', () => {
 
@@ -19,8 +19,8 @@ describe('Board', () => {
 
     beforeEach(() => {
         boardWithTitle = getEmptyBoard()
-        boardWithTitleAndOneList = getEmptyBoardWithLists(undefined, 1)
-        boardWithTitleAndTwoLists = getEmptyBoardWithLists(undefined, 2)
+        boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
+        boardWithTitleAndTwoLists = getBoardWithLists(undefined, 2)
 
         onCardClick.mockClear()
         onCreateCardClick.mockClear()

@@ -13,8 +13,6 @@ A Trello clone build with React and Flux
 
 - scroll List Container with mouse drag
 
-### Refactoring
+### Refactor
 
-- Look in to jest automocking
-- Abstracting mocks for reusability
-- Check test suites if the cover everything
+- make BoardContainer render a single component so you can test rendering the modal open

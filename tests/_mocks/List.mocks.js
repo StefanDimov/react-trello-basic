@@ -1,3 +1,4 @@
+import R from 'ramda'
 import { getBasicCard } from './Card.mocks'
 
 export function getEmptyList(mark='') {

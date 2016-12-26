@@ -1,143 +1,251 @@
 exports[`CardDetails rendering should render correctly when given card with description 1`] = `
-<form
-  onSubmit={[Function]}>
+<div
+  className="row">
   <div
-    className="form-group">
+    className="col-md-8">
+    <form
+      onSubmit={[Function]}>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-title-input">
+          Title
+        </label>
+        <input
+          className="form-control"
+          id="card-details-title-input"
+          onChange={[Function]}
+          placeholder="Title..."
+          type="text"
+          value={undefined} />
+      </div>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-description-input">
+          Description
+        </label>
+        <textarea
+          className="form-control"
+          id="card-details-description-input"
+          onChange={[Function]}
+          placeholder="Description..."
+          type={undefined}
+          value="description" />
+      </div>
+    </form>
+  </div>
+  <div
+    className="col-md-4">
     <label
       className="control-label"
       htmlFor={undefined}>
-      Title
+      Actions
     </label>
-    <input
-      className="form-control"
-      id="card-details-title-input"
-      onChange={[Function]}
-      placeholder="Title..."
-      type="text"
-      value={undefined} />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="button">
+      Copy
+    </button>
+    <button
+      className="btn btn-danger btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button">
+      Delete
+    </button>
   </div>
-  <div
-    className="form-group">
-    <label
-      className="control-label"
-      htmlFor={undefined}>
-      Description
-    </label>
-    <textarea
-      className="form-control"
-      id="card-details-description-input"
-      onChange={[Function]}
-      placeholder="Description..."
-      type={undefined}
-      value="description" />
-  </div>
-</form>
+</div>
 `;
 
 exports[`CardDetails rendering should render correctly when given card with title 1`] = `
-<form
-  onSubmit={[Function]}>
+<div
+  className="row">
   <div
-    className="form-group">
+    className="col-md-8">
+    <form
+      onSubmit={[Function]}>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-title-input">
+          Title
+        </label>
+        <input
+          className="form-control"
+          id="card-details-title-input"
+          onChange={[Function]}
+          placeholder="Title..."
+          type="text"
+          value="title" />
+      </div>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-description-input">
+          Description
+        </label>
+        <textarea
+          className="form-control"
+          id="card-details-description-input"
+          onChange={[Function]}
+          placeholder="Description..."
+          type={undefined}
+          value={undefined} />
+      </div>
+    </form>
+  </div>
+  <div
+    className="col-md-4">
     <label
       className="control-label"
       htmlFor={undefined}>
-      Title
+      Actions
     </label>
-    <input
-      className="form-control"
-      id="card-details-title-input"
-      onChange={[Function]}
-      placeholder="Title..."
-      type="text"
-      value="title" />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="button">
+      Copy
+    </button>
+    <button
+      className="btn btn-danger btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button">
+      Delete
+    </button>
   </div>
-  <div
-    className="form-group">
-    <label
-      className="control-label"
-      htmlFor={undefined}>
-      Description
-    </label>
-    <textarea
-      className="form-control"
-      id="card-details-description-input"
-      onChange={[Function]}
-      placeholder="Description..."
-      type={undefined}
-      value={undefined} />
-  </div>
-</form>
+</div>
 `;
 
 exports[`CardDetails rendering should render correctly when given card with title and description 1`] = `
-<form
-  onSubmit={[Function]}>
+<div
+  className="row">
   <div
-    className="form-group">
+    className="col-md-8">
+    <form
+      onSubmit={[Function]}>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-title-input">
+          Title
+        </label>
+        <input
+          className="form-control"
+          id="card-details-title-input"
+          onChange={[Function]}
+          placeholder="Title..."
+          type="text"
+          value="title" />
+      </div>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-description-input">
+          Description
+        </label>
+        <textarea
+          className="form-control"
+          id="card-details-description-input"
+          onChange={[Function]}
+          placeholder="Description..."
+          type={undefined}
+          value="description" />
+      </div>
+    </form>
+  </div>
+  <div
+    className="col-md-4">
     <label
       className="control-label"
       htmlFor={undefined}>
-      Title
+      Actions
     </label>
-    <input
-      className="form-control"
-      id="card-details-title-input"
-      onChange={[Function]}
-      placeholder="Title..."
-      type="text"
-      value="title" />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="button">
+      Copy
+    </button>
+    <button
+      className="btn btn-danger btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button">
+      Delete
+    </button>
   </div>
-  <div
-    className="form-group">
-    <label
-      className="control-label"
-      htmlFor={undefined}>
-      Description
-    </label>
-    <textarea
-      className="form-control"
-      id="card-details-description-input"
-      onChange={[Function]}
-      placeholder="Description..."
-      type={undefined}
-      value="description" />
-  </div>
-</form>
+</div>
 `;
 
 exports[`CardDetails rendering should render correctly when given empty card 1`] = `
-<form
-  onSubmit={[Function]}>
+<div
+  className="row">
   <div
-    className="form-group">
+    className="col-md-8">
+    <form
+      onSubmit={[Function]}>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-title-input">
+          Title
+        </label>
+        <input
+          className="form-control"
+          id="card-details-title-input"
+          onChange={[Function]}
+          placeholder="Title..."
+          type="text"
+          value={undefined} />
+      </div>
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor="card-details-description-input">
+          Description
+        </label>
+        <textarea
+          className="form-control"
+          id="card-details-description-input"
+          onChange={[Function]}
+          placeholder="Description..."
+          type={undefined}
+          value={undefined} />
+      </div>
+    </form>
+  </div>
+  <div
+    className="col-md-4">
     <label
       className="control-label"
       htmlFor={undefined}>
-      Title
+      Actions
     </label>
-    <input
-      className="form-control"
-      id="card-details-title-input"
-      onChange={[Function]}
-      placeholder="Title..."
-      type="text"
-      value={undefined} />
+    <button
+      className="btn btn-primary btn-block"
+      disabled={false}
+      type="button">
+      Copy
+    </button>
+    <button
+      className="btn btn-danger btn-block"
+      disabled={false}
+      onClick={[Function]}
+      type="button">
+      Delete
+    </button>
   </div>
-  <div
-    className="form-group">
-    <label
-      className="control-label"
-      htmlFor={undefined}>
-      Description
-    </label>
-    <textarea
-      className="form-control"
-      id="card-details-description-input"
-      onChange={[Function]}
-      placeholder="Description..."
-      type={undefined}
-      value={undefined} />
-  </div>
-</form>
+</div>
 `;

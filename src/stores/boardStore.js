@@ -35,6 +35,17 @@ function _getBoardWithSavedCard(board, card) {
     return resultBoard
 }
 
+function _getBoardWithDeletedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    const listToRemoveCardFrom = R.find(R.propEq('id', card.listId), resultBoard.lists)
+    const indexOfCardToRemove = R.findIndex(R.propEq('id', card.id), listToRemoveCardFrom.cards)
+
+    listToRemoveCardFrom.cards.splice(indexOfCardToRemove, 1)
+
+    return resultBoard
+}
+
 class BoardStore extends EventEmitter {
     constructor() {
         super()
@@ -84,6 +95,11 @@ class BoardStore extends EventEmitter {
 
             case boardActionTypes.SAVE_CARD:
                 this.board = _getBoardWithSavedCard(this.board, action.card)
+                this.emit('change')
+                break;
+
+            case boardActionTypes.DELETE_CARD:
+                this.board = _getBoardWithDeletedCard(this.board, action.card)
                 this.emit('change')
                 break;
         }

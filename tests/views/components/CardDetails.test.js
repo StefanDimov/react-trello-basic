@@ -53,16 +53,13 @@ describe('CardDetails', () => {
         })
     })
 
-    describe('container', () => {
-        it('should be a form element', () => {
-            const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} />)
-            expect(wrapper.is('form')).toBe(true)
-        })
-
+    describe('form', () => {
         it('should only preventDefault on submit', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} />)
             const event = { preventDefault: jest.fn() }
-            wrapper.simulate('submit', event)
+
+            wrapper.find('form').simulate('submit', event)
+
             expect(event.preventDefault).toHaveBeenCalledTimes(1)
             expect(onCardSave).toHaveBeenCalledTimes(0)
         })

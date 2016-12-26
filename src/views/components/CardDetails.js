@@ -1,7 +1,7 @@
 import React from 'react'
 import R from 'ramda'
 import cardUtils from '../../utils/cardUtils'
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Grid, Row, Col, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 export default class CardDetails extends React.Component {
     constructor(props) {
@@ -39,27 +39,37 @@ export default class CardDetails extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                    <ControlLabel>Title</ControlLabel>
-                    <FormControl
-                        id="card-details-title-input"
-                        type="text"
-                        value={this.state.title}
-                        placeholder="Title..."
-                        onChange={this.handleTitleChange} />
-                </FormGroup>
+            <Row>
+                <Col md={8}>
+                    <form onSubmit={this.handleSubmit}>
+                        <FormGroup>
+                            <ControlLabel htmlFor="card-details-title-input">Title</ControlLabel>
+                            <FormControl
+                                id="card-details-title-input"
+                                type="text"
+                                value={this.state.title}
+                                placeholder="Title..."
+                                onChange={this.handleTitleChange} />
+                        </FormGroup>
 
-                <FormGroup>
-                    <ControlLabel>Description</ControlLabel>
-                    <FormControl
-                        id="card-details-description-input"
-                        componentClass="textarea"
-                        value={this.state.description}
-                        placeholder="Description..."
-                        onChange={this.handleDescriptionChange} />
-                </FormGroup>
-            </form>
+                        <FormGroup>
+                            <ControlLabel htmlFor="card-details-description-input">Description</ControlLabel>
+                            <FormControl
+                                id="card-details-description-input"
+                                componentClass="textarea"
+                                value={this.state.description}
+                                placeholder="Description..."
+                                onChange={this.handleDescriptionChange} />
+                        </FormGroup>
+                    </form>
+                </Col>
+
+                <Col md={4}>
+                    <ControlLabel>Actions</ControlLabel>
+                    <Button block={true} bsStyle="primary">Copy</Button>
+                    <Button block={true} onClick={() => this.props.onCardDelete(this.props.card)} bsStyle="danger">Delete</Button>
+                </Col>
+            </Row>
         )
     }
 }
