@@ -92,18 +92,6 @@ describe('Board', () => {
             expect(wrapper.find(List).prop('onCardClick')).toBe(onCardClick)
         })
 
-        it('should have a button child', () => {
-            const wrapper = shallow(
-                <Board
-                    board={boardWithTitleAndOneList}
-                    onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
-                    onCreateNewList={onCreateNewList} />
-            )
-
-            expect(wrapper.find(List).find(Button).length).toBe(1)
-        })
-
         it('should have a button that calls onCreateCardClick with list id', () => {
             const wrapper = shallow(
                 <Board

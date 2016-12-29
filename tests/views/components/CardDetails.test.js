@@ -75,8 +75,6 @@ describe('CardDetails', () => {
     describe('title input', () => {
         it('should update state on change', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />)
-            expect(wrapper.find(titleInputSelector).prop('value')).toBeUndefined()
-
             wrapper.find(titleInputSelector).simulate('change', event)
             expect(wrapper.find(titleInputSelector).prop('value')).toBe(event.target.value)
         })
@@ -85,8 +83,6 @@ describe('CardDetails', () => {
     describe('description input', () => {
         it('should update state on change', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />)
-            expect(wrapper.find(descriptionInputSelector).prop('value')).toBeUndefined()
-
             wrapper.find(descriptionInputSelector).simulate('change', event)
             expect(wrapper.find(descriptionInputSelector).prop('value')).toBe(event.target.value)
         })
@@ -98,7 +94,7 @@ describe('CardDetails', () => {
 
             // must have a change so onCardSave will be called
             wrapper.find(titleInputSelector).simulate('change', event)
-            // should'n te called before unmount
+            // should'n be called before unmount
             expect(onCardSave).toHaveBeenCalledTimes(0)
 
             wrapper.unmount();
@@ -116,18 +112,14 @@ describe('CardDetails', () => {
 
         it('delete button should properly call onCardDelete function when card', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />)
-
             wrapper.find(deleteButtonSelector).simulate('click')
-
             expect(onCardDelete).toHaveBeenCalledTimes(1)
             expect(onCardDelete).toHaveBeenCalledWith(card)
         })
 
         it('copy button should properly call onCardCopy function when card has not been edited', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />)
-
             wrapper.find(copyButtonSelector).simulate('click')
-
             expect(onCardCopy).toHaveBeenCalledTimes(1)
             expect(onCardCopy).toHaveBeenCalledWith(card)
         })

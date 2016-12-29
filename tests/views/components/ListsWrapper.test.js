@@ -1,21 +1,22 @@
 import React from 'react'
+import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import ListsWrapper from '../../../src/views/components/ListsWrapper'
 
 describe('ListsWrapper', () => {
 
-    it('should have the proper custom styles', () => {
-        const wrapper = shallow(<ListsWrapper />)
-        expect(wrapper.prop('className')).toBe('my-lists-container')
+    it('should render correctly', () => {
+        const tree = renderer.create(<ListsWrapper />).toJSON()
+        expect(tree).toMatchSnapshot()
     })
 
-    it('should render it\'s children', () => {
-        const wrapper = shallow(
+    it('should render correctly with children', () => {
+        const tree = renderer.create(
             <ListsWrapper>
                 <span>unique</span>
             </ListsWrapper>
-        )
-        expect(wrapper.containsMatchingElement(<span>unique</span>)).toBe(true)
+        ).toJSON()
+        expect(tree).toMatchSnapshot()
     })
 })

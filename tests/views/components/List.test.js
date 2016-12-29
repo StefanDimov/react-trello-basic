@@ -3,8 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import List from '../../../src/views/components/List'
-import Card from '../../../src/views/components/Card'
-import { ListGroup, ListGroupItem } from 'react-bootstrap'
+import { ListGroupItem } from 'react-bootstrap'
 
 import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
 import { getEmptyList } from '../../_mocks/List.mocks'
@@ -13,8 +12,8 @@ describe('List', () => {
 
     const cardWithId = getCardOnlyWithIds(1)
     const anotherCardWithId = getCardOnlyWithIds(2)
+    const onCardClick = jest.fn()
     let list
-    let onCardClick = jest.fn()
 
     beforeEach(() => {
         list = getEmptyList()
@@ -22,7 +21,6 @@ describe('List', () => {
     })
 
     describe('rendering', () => {
-
         it('should render correctly with title', () => {
             list.title = 'title'
             const tree = renderer.create(
@@ -71,7 +69,6 @@ describe('List', () => {
     })
 
     describe('cards', () => {
-
         it('should each be passed to the onCardClick func on ListGroupItem click', () => {
             list.cards = [cardWithId, anotherCardWithId]
             const wrapper = shallow(<List list={list} onCardClick={onCardClick} />)

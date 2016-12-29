@@ -7,9 +7,7 @@ import { FormGroup, FormControl } from 'react-bootstrap'
 
 describe('AddNewListInput', () => {
 
-    const inputChangeEventDataWithName = {
-        target: { value: 'list name' }
-    }
+    const inputChangeEventDataWithName = { target: { value: 'list name' } }
     const onCreateList = jest.fn()
 
     beforeEach(() => {
@@ -29,19 +27,15 @@ describe('AddNewListInput', () => {
 
         const wrapper = shallow(<AddNewListInput onCreateList={onCreateList} />)
 
-        wrapper.simulate('submit', eventMock)
-        expect(onCreateList).toHaveBeenLastCalledWith('')
-
         wrapper.find(FormControl).simulate('change', inputChangeEventDataWithName)
         wrapper.simulate('submit', eventMock)
+
         expect(onCreateList).toHaveBeenLastCalledWith(inputChangeEventDataWithName.target.value)
+        expect(eventMock.preventDefault).toHaveBeenCalled()
     })
 
     it('should update state on change', () => {
         const wrapper = shallow(<AddNewListInput onCreateList={onCreateList} />)
-
-        expect(wrapper.find(FormControl).prop('value')).toBe('')
-
         wrapper.find(FormControl).simulate('change', inputChangeEventDataWithName)
         expect(wrapper.find(FormControl).prop('value')).toBe(inputChangeEventDataWithName.target.value)
     })

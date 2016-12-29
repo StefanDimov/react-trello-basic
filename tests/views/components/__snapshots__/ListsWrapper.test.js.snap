@@ -1,0 +1,13 @@
+exports[`ListsWrapper should render correctly 1`] = `
+<div
+  className="my-lists-container" />
+`;
+
+exports[`ListsWrapper should render correctly with children 1`] = `
+<div
+  className="my-lists-container">
+  <span>
+    unique
+  </span>
+</div>
+`;
