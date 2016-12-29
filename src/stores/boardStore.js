@@ -5,6 +5,7 @@ import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
 import listUtils from '../utils/listUtils'
+import cardUtils from '../utils/cardUtils'
 
 // TODO: must get id from url path and get board data from local storage
 
@@ -42,6 +43,18 @@ function _getBoardWithDeletedCard(board, card) {
     const indexOfCardToRemove = R.findIndex(R.propEq('id', card.id), listToRemoveCardFrom.cards)
 
     listToRemoveCardFrom.cards.splice(indexOfCardToRemove, 1)
+
+    return resultBoard
+}
+
+function _getBoardWithCopiedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    console.log(card);
+
+    const list = R.find(R.propEq('id', card.listId), resultBoard.lists)
+
+    list.cards.push(cardUtils.changeCardId(card))
 
     return resultBoard
 }
@@ -100,6 +113,11 @@ class BoardStore extends EventEmitter {
 
             case boardActionTypes.DELETE_CARD:
                 this.board = _getBoardWithDeletedCard(this.board, action.card)
+                this.emit('change')
+                break;
+
+            case boardActionTypes.COPY_CARD:
+                this.board = _getBoardWithCopiedCard(this.board, action.card)
                 this.emit('change')
                 break;
         }

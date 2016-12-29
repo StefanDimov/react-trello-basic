@@ -21,3 +21,10 @@ export function deleteCard(card) {
         card: card
     })
 }
+
+export function copyCard(card) {
+    dispatcher.dispatch({
+        type: boardActionTypes.COPY_CARD,
+        card: card
+    })
+}

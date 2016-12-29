@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import { getBasicCard } from '../../_mocks/Card.mocks'
-import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
+import { getEmptyBoard, getBoardWithLists, getBoardWithListsWithCards } from '../../_mocks/Board.mocks'
 
 import boardStore from '../../../src/stores/boardStore'
 
@@ -23,7 +23,7 @@ describe('BoardContainer', () => {
         boardWithTitle = getEmptyBoard()
         boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
 
-        boardStore.getBoard.mockClear()
+        boardStore.getBoard.mockReset()
     })
 
     describe('rendering', () => {
@@ -64,11 +64,10 @@ describe('BoardContainer', () => {
 
         beforeEach(() => {
             card = getBasicCard()
+            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
         })
 
         it('should open card creation modal with appropriate card and save function', () => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
-
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
@@ -79,11 +78,10 @@ describe('BoardContainer', () => {
             expect(wrapper.find(Modal).find(CardDetails).prop('card')).toBe(card)
             expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
             expect(wrapper.find(Modal).find(CardDetails).prop('onCardDelete')).toBe(instance.deleteCard)
+            expect(wrapper.find(Modal).find(CardDetails).prop('onCardCopy')).toBe(instance.copyCard)
         })
 
         it('should hide card creation modal and clear the state', () => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
-
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
@@ -99,7 +97,6 @@ describe('BoardContainer', () => {
 
         it('should call card creation modal with empty card', () => {
             const listId = 'someId'
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
 
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
@@ -116,7 +113,6 @@ describe('BoardContainer', () => {
 
         it('should call save card action with save funciton', () => {
             boardActions.saveCard = jest.fn()
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
 
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
@@ -126,9 +122,8 @@ describe('BoardContainer', () => {
             expect(boardActions.saveCard).toHaveBeenCalledWith(card)
         })
 
-        it('should call delete card action with delete function', () => {
+        it('should call delete card action with delete function and close modal', () => {
             boardActions.deleteCard = jest.fn()
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
 
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
@@ -139,6 +134,25 @@ describe('BoardContainer', () => {
             // expect delete card action to be called
             expect(boardActions.deleteCard).toHaveBeenCalledTimes(1)
             expect(boardActions.deleteCard).toHaveBeenCalledWith(card)
+
+            // expect modal to be closed
+            expect(instance.closeCardDetailsModal).toHaveBeenCalledTimes(1)
+        })
+
+        it('should call copy card action with copy function and close modal', () => {
+            boardActions.copyCard = jest.fn()
+
+            const wrapper = shallow(<BoardContainer />)
+            const instance = wrapper.instance()
+            instance.closeCardDetailsModal = jest.fn()
+
+            const firstCardFromList = boardWithTitleAndOneList.lists[0].cards[0]
+
+            instance.copyCard(firstCardFromList)
+
+            // expect copy card action to be called
+            expect(boardActions.copyCard).toHaveBeenCalledTimes(1)
+            expect(boardActions.copyCard).toHaveBeenCalledWith(firstCardFromList)
 
             // expect modal to be closed
             expect(instance.closeCardDetailsModal).toHaveBeenCalledTimes(1)

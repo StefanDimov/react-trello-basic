@@ -1,4 +1,6 @@
+import R from 'ramda'
 import cardUtils from '../../src/utils/cardUtils'
+import { getBasicCard } from '../_mocks/Card.mocks'
 
 describe('cardUtils', () => {
 
@@ -23,6 +25,23 @@ describe('cardUtils', () => {
 
             expect(emptyCard.id).not.toBe(anotherCard.id)
             expect(emptyCard.id).not.toBe(thirdCard.id)
+        })
+    })
+
+    describe('changeCardId', () => {
+        let card
+
+        beforeEach(() => {
+            card = getBasicCard()
+        })
+
+        it('it returns a card with the same props but different ids', () => {
+            const newCard = cardUtils.changeCardId(card)
+
+            expect(newCard).not.toEqual(card)
+            expect(newCard).not.toMatchObject(card)
+            expect(newCard.title).toEqual(card.title)
+            expect(newCard.description).toEqual(card.description)
         })
     })
 })

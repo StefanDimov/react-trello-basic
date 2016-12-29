@@ -36,4 +36,12 @@ describe('boardActions', () => {
             expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.DELETE_CARD, card: card })
         })
     })
+
+    describe('copyCard', () => {
+        it('should pass the proper params to dispatcher', () => {
+            boardActions.copyCard(card)
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.COPY_CARD, card: card })
+        })
+    })
 })

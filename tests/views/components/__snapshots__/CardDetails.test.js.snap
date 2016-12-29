@@ -2,7 +2,7 @@ exports[`CardDetails rendering should render correctly when given card with desc
 <div
   className="row">
   <div
-    className="col-md-8">
+    className="col-sm-9">
     <form
       onSubmit={[Function]}>
       <div
@@ -38,21 +38,24 @@ exports[`CardDetails rendering should render correctly when given card with desc
     </form>
   </div>
   <div
-    className="col-md-4">
+    className="col-sm-3">
     <label
       className="control-label"
       htmlFor={undefined}>
       Actions
     </label>
     <button
-      className="btn btn-primary btn-block"
+      className="btn btn-sm btn-primary btn-block"
       disabled={false}
+      id="card-copy-button"
+      onClick={[Function]}
       type="button">
       Copy
     </button>
     <button
-      className="btn btn-danger btn-block"
+      className="btn btn-sm btn-danger btn-block"
       disabled={false}
+      id="card-delete-button"
       onClick={[Function]}
       type="button">
       Delete
@@ -65,7 +68,7 @@ exports[`CardDetails rendering should render correctly when given card with titl
 <div
   className="row">
   <div
-    className="col-md-8">
+    className="col-sm-9">
     <form
       onSubmit={[Function]}>
       <div
@@ -101,21 +104,24 @@ exports[`CardDetails rendering should render correctly when given card with titl
     </form>
   </div>
   <div
-    className="col-md-4">
+    className="col-sm-3">
     <label
       className="control-label"
       htmlFor={undefined}>
       Actions
     </label>
     <button
-      className="btn btn-primary btn-block"
+      className="btn btn-sm btn-primary btn-block"
       disabled={false}
+      id="card-copy-button"
+      onClick={[Function]}
       type="button">
       Copy
     </button>
     <button
-      className="btn btn-danger btn-block"
+      className="btn btn-sm btn-danger btn-block"
       disabled={false}
+      id="card-delete-button"
       onClick={[Function]}
       type="button">
       Delete
@@ -128,7 +134,7 @@ exports[`CardDetails rendering should render correctly when given card with titl
 <div
   className="row">
   <div
-    className="col-md-8">
+    className="col-sm-9">
     <form
       onSubmit={[Function]}>
       <div
@@ -164,21 +170,24 @@ exports[`CardDetails rendering should render correctly when given card with titl
     </form>
   </div>
   <div
-    className="col-md-4">
+    className="col-sm-3">
     <label
       className="control-label"
       htmlFor={undefined}>
       Actions
     </label>
     <button
-      className="btn btn-primary btn-block"
+      className="btn btn-sm btn-primary btn-block"
       disabled={false}
+      id="card-copy-button"
+      onClick={[Function]}
       type="button">
       Copy
     </button>
     <button
-      className="btn btn-danger btn-block"
+      className="btn btn-sm btn-danger btn-block"
       disabled={false}
+      id="card-delete-button"
       onClick={[Function]}
       type="button">
       Delete
@@ -191,7 +200,7 @@ exports[`CardDetails rendering should render correctly when given empty card 1`]
 <div
   className="row">
   <div
-    className="col-md-8">
+    className="col-sm-9">
     <form
       onSubmit={[Function]}>
       <div
@@ -227,21 +236,24 @@ exports[`CardDetails rendering should render correctly when given empty card 1`]
     </form>
   </div>
   <div
-    className="col-md-4">
+    className="col-sm-3">
     <label
       className="control-label"
       htmlFor={undefined}>
       Actions
     </label>
     <button
-      className="btn btn-primary btn-block"
+      className="btn btn-sm btn-primary btn-block"
       disabled={false}
+      id="card-copy-button"
+      onClick={[Function]}
       type="button">
       Copy
     </button>
     <button
-      className="btn btn-danger btn-block"
+      className="btn btn-sm btn-danger btn-block"
       disabled={false}
+      id="card-delete-button"
       onClick={[Function]}
       type="button">
       Delete

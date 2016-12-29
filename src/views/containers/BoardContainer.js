@@ -18,6 +18,7 @@ export default class BoardContainer extends React.Component {
         this.initCreateCard = this.initCreateCard.bind(this)
         this.saveCard = this.saveCard.bind(this)
         this.deleteCard = this.deleteCard.bind(this)
+        this.copyCard = this.copyCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
         this.createNewList = this.createNewList.bind(this)
 
@@ -80,6 +81,11 @@ export default class BoardContainer extends React.Component {
         this.closeCardDetailsModal()
     }
 
+    copyCard(card) {
+        boardActions.copyCard(card)
+        this.closeCardDetailsModal()
+    }
+
     render() {
         const { board } = this.state
 
@@ -94,7 +100,7 @@ export default class BoardContainer extends React.Component {
                 <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
                     <Modal.Body>
                         {this.state.cardToView &&
-                            <CardDetails card={this.state.cardToView} onCardSave={this.saveCard} onCardDelete={this.deleteCard} />}
+                            <CardDetails card={this.state.cardToView} onCardSave={this.saveCard} onCardDelete={this.deleteCard} onCardCopy={this.copyCard} />}
                     </Modal.Body>
                 </Modal>
             </div>

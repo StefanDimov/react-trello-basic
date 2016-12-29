@@ -40,7 +40,7 @@ export default class CardDetails extends React.Component {
     render() {
         return (
             <Row>
-                <Col md={8}>
+                <Col sm={9}>
                     <form onSubmit={this.handleSubmit}>
                         <FormGroup>
                             <ControlLabel htmlFor="card-details-title-input">Title</ControlLabel>
@@ -64,10 +64,19 @@ export default class CardDetails extends React.Component {
                     </form>
                 </Col>
 
-                <Col md={4}>
+                <Col sm={3}>
                     <ControlLabel>Actions</ControlLabel>
-                    <Button block={true} bsStyle="primary">Copy</Button>
-                    <Button block={true} onClick={() => this.props.onCardDelete(this.props.card)} bsStyle="danger">Delete</Button>
+                    <Button
+                        id="card-copy-button"
+                        block={true}
+                        onClick={() => this.props.onCardCopy(R.clone(this.state))}
+                        bsStyle="primary" bsSize="sm">Copy</Button>
+
+                    <Button
+                        id="card-delete-button"
+                        block={true}
+                        onClick={() => this.props.onCardDelete(R.clone(this.state))}
+                        bsStyle="danger" bsSize="sm">Delete</Button>
                 </Col>
             </Row>
         )
@@ -76,5 +85,7 @@ export default class CardDetails extends React.Component {
 
 CardDetails.propTypes = {
     card: cardUtils.cardPropType.isRequired,
-    onCardSave: React.PropTypes.func.isRequired
+    onCardSave: React.PropTypes.func.isRequired,
+    onCardDelete: React.PropTypes.func.isRequired,
+    onCardCopy: React.PropTypes.func.isRequired
 }

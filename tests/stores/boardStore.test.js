@@ -129,5 +129,35 @@ describe('boardStore', () => {
             expect(boardStore.emit).toHaveBeenCalledTimes(1)
             expect(boardStore.emit).toHaveBeenCalledWith('change')
         })
+
+        it('should copy a card', () => {
+            const initalBoard = boardStore.getBoard()
+            const initialFirstList = R.head(initalBoard.lists)
+            const intialFirstCard = R.head(initialFirstList.cards)
+            expect(initialFirstList).toBeDefined()
+            expect(intialFirstCard).toBeDefined()
+
+            boardStore.handleActions({ type: boardActionTypes.COPY_CARD, card: intialFirstCard })
+
+            // expect to be two cards with the same data, but different ids
+            const resultBoard = boardStore.getBoard()
+            const resultFirstList = R.head(resultBoard.lists)
+            const resultFirstCard = R.head(resultFirstList.cards)
+            const resultLastCard = R.last(resultFirstList.cards)
+
+            // first card should be the same as the one that initiated copy
+            expect(resultFirstCard).toMatchObject(intialFirstCard)
+
+            // first card id should be different that copied card
+            expect(resultFirstCard.id).not.toEqual(resultLastCard.id)
+
+            // first card title and description should be the same as the copied card
+            expect(resultFirstCard.title).toEqual(resultLastCard.title)
+            expect(resultFirstCard.description).toEqual(resultLastCard.description)
+
+            // expect to emit change event after
+            expect(boardStore.emit).toHaveBeenCalledTimes(1)
+            expect(boardStore.emit).toHaveBeenCalledWith('change')
+        })
     })
 })

@@ -1,5 +1,6 @@
 import React from 'react'
 import { generate as generateId } from 'shortid'
+import R from 'ramda'
 
 const cardUtils = {}
 
@@ -17,6 +18,12 @@ cardUtils.createEmptyCard = (listId) => {
         title: '',
         description: ''
     }
+}
+
+cardUtils.changeCardId = (card) => {
+    const resultCard = R.clone(card)
+    resultCard.id = generateId()
+    return resultCard
 }
 
 export default cardUtils
