@@ -41,7 +41,6 @@ function _getBoardWithDeletedCard(board, card) {
 
     const listToRemoveCardFrom = R.find(R.propEq('id', card.listId), resultBoard.lists)
     const indexOfCardToRemove = R.findIndex(R.propEq('id', card.id), listToRemoveCardFrom.cards)
-
     listToRemoveCardFrom.cards.splice(indexOfCardToRemove, 1)
 
     return resultBoard
@@ -50,10 +49,7 @@ function _getBoardWithDeletedCard(board, card) {
 function _getBoardWithCopiedCard(board, card) {
     const resultBoard = R.clone(board)
 
-    console.log(card);
-
     const list = R.find(R.propEq('id', card.listId), resultBoard.lists)
-
     list.cards.push(cardUtils.changeCardId(card))
 
     return resultBoard
