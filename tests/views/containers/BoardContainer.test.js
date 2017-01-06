@@ -5,121 +5,141 @@ import { shallow } from 'enzyme'
 import { getBasicCard } from '../../_mocks/Card.mocks'
 import { getEmptyBoard, getBoardWithLists, getBoardWithListsWithCards } from '../../_mocks/Board.mocks'
 
-import boardStore from '../../../src/stores/boardStore'
-
-import BoardContainer from '../../../src/views/containers/BoardContainer'
-import Board from '../../../src/views/components/Board'
-import CardDetails from '../../../src/views/components/CardDetails'
-import { Modal } from 'react-bootstrap'
 import * as boardActions from '../../../src/actions/boardActions'
+import boardStore from '../../../src/stores/boardStore'
+import BoardContainer from '../../../src/views/containers/BoardContainer'
+import BoardModalWrapper from '../../../src/views/components/BoardModalWrapper'
 
 describe('BoardContainer', () => {
 
-    let boardWithTitle, boardWithTitleAndOneList
+    let boardWithTitle, boardWithTitleAndOneList, card
 
     boardStore.getBoard = jest.fn()
+    boardStore.on = jest.fn()
 
     beforeEach(() => {
+        card = getBasicCard()
         boardWithTitle = getEmptyBoard()
         boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
 
-        boardStore.getBoard.mockReset()
+        boardStore.on.mockClear()
+        boardStore.getBoard.mockClear()
+
+        boardStore.getBoard.mockReturnValue(boardWithTitleAndOneList)
     })
 
-    describe('rendering', () => {
-        it('should render correctly a board with a title', () => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitle)
+    describe('boardStore integration', () => {
 
-            const tree = renderer.create(
-                <BoardContainer />
-            ).toJSON()
-
-            expect(tree).toMatchSnapshot()
+        it('should get initial state from store', () => {
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(0)
+            const wrapper = shallow(<BoardContainer />)
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
+            expect(wrapper.state().board).toBe(boardWithTitleAndOneList)
         })
 
-        it('should render correctly a board with a title and a list', () => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
-
-            const tree = renderer.create(
-                <BoardContainer />
-            ).toJSON()
-
-            expect(tree).toMatchSnapshot()
+        it('should subscribe to store on mount', () => {
+            expect(boardStore.on).toHaveBeenCalledTimes(0)
+            const wrapper = shallow(<BoardContainer />)
+            expect(boardStore.on).toHaveBeenCalledTimes(1)
         })
 
-        it('should render correctly a board with a title and two lists', () => {
-            boardStore.getBoard.mockReturnValueOnce(getBoardWithLists(undefined, 2))
+        it('should subscribe to store on unmount', () => {
+            boardStore.unbindListener = jest.fn()
 
-            const tree = renderer.create(
-                <BoardContainer />
-            ).toJSON()
+            expect(boardStore.unbindListener).toHaveBeenCalledTimes(0)
+            const wrapper = shallow(<BoardContainer />)
 
-            expect(tree).toMatchSnapshot()
+            wrapper.unmount()
+            expect(boardStore.unbindListener).toHaveBeenCalledTimes(1)
+            expect(boardStore.unbindListener.mock.calls[0][0]).toBe(boardStore.on.mock.calls[0][0])
+            expect(boardStore.unbindListener.mock.calls[0][1]).toBe(boardStore.on.mock.calls[0][1])
+        })
+
+        it('should update state on store change', () => {
+            const wrapper = shallow(<BoardContainer />)
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
+            expect(wrapper.state().board).toBe(boardWithTitleAndOneList)
+
+            boardStore.getBoard.mockReturnValue(boardWithTitle)
+            boardStore.on.mock.calls[0][1]() // call passed handler
+            expect(boardStore.getBoard).toHaveBeenCalledTimes(2)
+            expect(wrapper.state().board).toBe(boardWithTitle)
         })
     })
 
-    describe('card crud', () => {
+    describe('BoardModalWrapper', () => {
+        it('should be passed proper props initialy', () => {
+            const wrapper = shallow(<BoardContainer />)
+            const instance = wrapper.instance()
+            const boardWrapper = wrapper.find(BoardModalWrapper)
 
-        let card
+            expect(boardWrapper.prop('board')).toBe(boardWithTitleAndOneList)
+            expect(boardWrapper.prop('showCardDetails')).toBe(false)
+            expect(wrapper.find(BoardModalWrapper).prop('cardToView')).toBe(null)
 
-        beforeEach(() => {
-            card = getBasicCard()
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
+            expect(boardWrapper.prop('onCardClick')).toBe(instance.viewCardDetails)
+            expect(boardWrapper.prop('onCreateCardClick')).toBe(instance.initCreateCard)
+            expect(boardWrapper.prop('onCreateNewList')).toBe(instance.createNewList)
+            expect(boardWrapper.prop('onHideCardDetails')).toBe(instance.closeCardDetailsModal)
+            expect(boardWrapper.prop('onSaveCard')).toBe(instance.saveCard)
+            expect(boardWrapper.prop('onDelteCard')).toBe(instance.deleteCard)
+            expect(boardWrapper.prop('onCopyCard')).toBe(instance.copyCard)
         })
 
-        it('should open card creation modal with appropriate card and save function', () => {
+        it('should be passed proper props when viewCardDetails is called', () => {
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
 
-            expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
-            expect(wrapper.find(Modal).find(CardDetails).prop('card')).toBe(card)
-            expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
-            expect(wrapper.find(Modal).find(CardDetails).prop('onCardDelete')).toBe(instance.deleteCard)
-            expect(wrapper.find(Modal).find(CardDetails).prop('onCardCopy')).toBe(instance.copyCard)
+            const boardWrapper = wrapper.find(BoardModalWrapper)
+            expect(boardWrapper.prop('showCardDetails')).toBe(true)
+            expect(boardWrapper.prop('cardToView')).toBe(card)
         })
 
-        it('should hide card creation modal and clear the state', () => {
+        it('should be passed proper props when closeCardDetailsModal is called after viewCardDetails', () => {
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
-            expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
 
-            expect(wrapper.find(Modal).prop('onHide')).toBe(instance.closeCardDetailsModal)
-            instance.closeCardDetailsModal()
-            expect(wrapper.find(Modal).prop('show')).toBe(false)
-            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(0)
+            const boardWrapperOpened = wrapper.find(BoardModalWrapper)
+            expect(boardWrapperOpened.prop('showCardDetails')).toBe(true)
+            expect(boardWrapperOpened.prop('cardToView')).toBe(card)
+
+            instance.closeCardDetailsModal(card)
+
+            const boardWrapperClosed = wrapper.find(BoardModalWrapper)
+            expect(boardWrapperClosed.prop('showCardDetails')).toBe(false)
+            expect(boardWrapperClosed.prop('cardToView')).toBe(null)
         })
 
-        it('should call card creation modal with empty card', () => {
-            const listId = 'someId'
-
+        it('should be passed proper props when initCreateCard is called', () => {
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
+            const listId = 'listId'
 
             instance.initCreateCard(listId)
-            expect(wrapper.find(Modal).prop('show')).toBe(true)
-            expect(wrapper.find(Modal).find(CardDetails)).toHaveLength(1)
 
-            expect(wrapper.find(Modal).prop('onHide')).toBe(instance.closeCardDetailsModal)
-            expect(wrapper.find(Modal).find(CardDetails).prop('onCardSave')).toBe(instance.saveCard)
-            expect(wrapper.find(Modal).find(CardDetails).prop('card'))
+            const boardWrapper = wrapper.find(BoardModalWrapper)
+            expect(boardWrapper.prop('showCardDetails')).toBe(true)
+            expect(boardWrapper.prop('cardToView'))
                 .toMatchObject({ listId: listId, title: '', description: '' })
         })
+    })
 
-        it('should call save card action with save funciton', () => {
+    describe('Actions', () => {
+        it('should call save card action with save funciton and not close modal', () => {
             boardActions.saveCard = jest.fn()
 
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
+            instance.closeCardDetailsModal = jest.fn()
 
             instance.saveCard(card)
             expect(boardActions.saveCard).toHaveBeenCalledTimes(1)
             expect(boardActions.saveCard).toHaveBeenCalledWith(card)
+            expect(instance.closeCardDetailsModal).toHaveBeenCalledTimes(0)
         })
 
         it('should call delete card action with delete function and close modal', () => {
@@ -157,76 +177,16 @@ describe('BoardContainer', () => {
             // expect modal to be closed
             expect(instance.closeCardDetailsModal).toHaveBeenCalledTimes(1)
         })
-    })
-
-    describe('Board', () => {
-        it('should be passed the right functions', () => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
-
-            const wrapper = shallow(<BoardContainer />)
-            const instance = wrapper.instance()
-
-            expect(wrapper.find(Board).prop('onCardClick')).toBe(instance.viewCardDetails)
-            expect(wrapper.find(Board).prop('onCreateCardClick')).toBe(instance.initCreateCard)
-            expect(wrapper.find(Board).prop('onCreateNewList')).toBe(instance.createNewList)
-        })
 
         it('should call add new list action with create list funciton', () => {
             boardActions.addNewList = jest.fn()
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
 
             const wrapper = shallow(<BoardContainer />)
             const instance = wrapper.instance()
 
-            instance.createNewList(boardWithTitleAndOneList.lists[0])
+            instance.createNewList(boardWithTitleAndOneList.lists[0].title)
             expect(boardActions.addNewList).toHaveBeenCalledTimes(1)
-            expect(boardActions.addNewList).toHaveBeenCalledWith(boardWithTitleAndOneList.lists[0])
-        })
-    })
-
-    describe('boardStore integration', () => {
-        boardStore.on = jest.fn()
-
-        beforeEach(() => {
-            boardStore.getBoard.mockReturnValueOnce(boardWithTitleAndOneList)
-            boardStore.on.mockClear()
-        })
-
-        it('should get initial state from store', () => {
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
-        })
-
-        it('should subscribe to store on mount', () => {
-            expect(boardStore.on).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.on).toHaveBeenCalledTimes(1)
-        })
-
-        it('should subscribe to store on unmount', () => {
-            boardStore.unbindListener = jest.fn()
-
-            expect(boardStore.unbindListener).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
-
-            wrapper.unmount()
-            expect(boardStore.unbindListener).toHaveBeenCalledTimes(1)
-            expect(boardStore.unbindListener.mock.calls[0][0]).toBe(boardStore.on.mock.calls[0][0])
-            expect(boardStore.unbindListener.mock.calls[0][1]).toBe(boardStore.on.mock.calls[0][1])
-        })
-
-        it('should update state on store change', () => {
-            boardStore.getBoard.mockReturnValue(boardWithTitleAndOneList)
-
-            const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
-            expect(wrapper.state().board).toBe(boardWithTitleAndOneList)
-
-            boardStore.getBoard.mockReturnValue(boardWithTitle)
-            boardStore.on.mock.calls[0][1]() // call passed handler
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(2)
-            expect(wrapper.state().board).toBe(boardWithTitle)
+            expect(boardActions.addNewList).toHaveBeenCalledWith(boardWithTitleAndOneList.lists[0].title)
         })
     })
 })

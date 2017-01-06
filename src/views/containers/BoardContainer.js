@@ -6,8 +6,7 @@ import cardUtils from '../../utils/cardUtils'
 import boardStore from '../../stores/boardStore'
 import * as boardActions from '../../actions/boardActions'
 
-import Board from '../components/Board'
-import CardDetails from '../components/CardDetails'
+import BoardModalWrapper from '../components/BoardModalWrapper'
 
 export default class BoardContainer extends React.Component {
     constructor(props) {
@@ -44,7 +43,7 @@ export default class BoardContainer extends React.Component {
         this.setState({ board: boardStore.getBoard() })
     }
 
-    // opens CardDetails with card
+    // opens CardDetails Modal with card
     viewCardDetails(card) {
         this.setState({
             showCardDetails: true,
@@ -52,7 +51,7 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    // closes CardDetails and clears state
+    // closes CardDetails Modal and clears state
     closeCardDetailsModal() {
         this.setState({
             showCardDetails: false,
@@ -60,7 +59,7 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    // opens CardDetails with new empty card
+    // opens CardDetails Modal with new empty card
     initCreateCard(listId) {
         this.setState({
             showCardDetails: true,
@@ -87,23 +86,20 @@ export default class BoardContainer extends React.Component {
     }
 
     render() {
-        const { board } = this.state
+        const { board, showCardDetails, cardToView } = this.state
 
         return (
-            <div>
-                <Board
-                    board={board}
-                    onCardClick={this.viewCardDetails}
-                    onCreateCardClick={this.initCreateCard}
-                    onCreateNewList={this.createNewList} />
-
-                <Modal show={this.state.showCardDetails} onHide={this.closeCardDetailsModal} animation={false}>
-                    <Modal.Body>
-                        {this.state.cardToView &&
-                            <CardDetails card={this.state.cardToView} onCardSave={this.saveCard} onCardDelete={this.deleteCard} onCardCopy={this.copyCard} />}
-                    </Modal.Body>
-                </Modal>
-            </div>
+            <BoardModalWrapper
+                board={board}
+                onCardClick={this.viewCardDetails}
+                onCreateCardClick={this.initCreateCard}
+                onCreateNewList={this.createNewList}
+                showCardDetails={showCardDetails}
+                onHideCardDetails={this.closeCardDetailsModal}
+                onSaveCard={this.saveCard}
+                onDelteCard={this.deleteCard}
+                onCopyCard={this.copyCard}
+                cardToView={cardToView}/>
         )
     }
 }

@@ -1,4 +1,4 @@
-exports[`BoardContainer rendering should render correctly a board with a title 1`] = `
+exports[`BoardModalWrapper rendering should render correctly a board with a title 1`] = `
 <div>
   <div
     className="my-navbar-top-padding">
@@ -36,7 +36,7 @@ exports[`BoardContainer rendering should render correctly a board with a title 1
 </div>
 `;
 
-exports[`BoardContainer rendering should render correctly a board with a title and a list 1`] = `
+exports[`BoardModalWrapper rendering should render correctly a board with a title and a list 1`] = `
 <div>
   <div
     className="my-navbar-top-padding">
@@ -92,7 +92,7 @@ exports[`BoardContainer rendering should render correctly a board with a title a
 </div>
 `;
 
-exports[`BoardContainer rendering should render correctly a board with a title and two lists 1`] = `
+exports[`BoardModalWrapper rendering should render correctly a board with a title and two lists 1`] = `
 <div>
   <div
     className="my-navbar-top-padding">
