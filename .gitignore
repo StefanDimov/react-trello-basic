@@ -3,3 +3,6 @@ node_modules
 
 # Build Folder
 build
+
+# Test Coverage Folder
+coverage

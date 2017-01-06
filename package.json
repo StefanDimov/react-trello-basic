@@ -10,7 +10,10 @@
     "lint": "eslint ./src ./tests"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "collectCoverageFrom": ["**/src/**"],
+    "coveragePathIgnorePatterns": ["./src/app.js"],
+    "coverageReporters": ["text", "html"]
   },
   "author": "StefanDimov",
   "license": "MIT",
