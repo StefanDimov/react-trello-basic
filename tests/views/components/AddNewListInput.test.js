@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import AddNewListInput from '../../../src/views/components/AddNewListInput'
-import { FormGroup, FormControl } from 'react-bootstrap'
+import { FormControl } from 'react-bootstrap'
 
 describe('AddNewListInput', () => {
 

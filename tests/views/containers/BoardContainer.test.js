@@ -1,9 +1,8 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import { getBasicCard } from '../../_mocks/Card.mocks'
-import { getEmptyBoard, getBoardWithLists, getBoardWithListsWithCards } from '../../_mocks/Board.mocks'
+import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
 
 import * as boardActions from '../../../src/actions/boardActions'
 import boardStore from '../../../src/stores/boardStore'
@@ -39,7 +38,7 @@ describe('BoardContainer', () => {
 
         it('should subscribe to store on mount', () => {
             expect(boardStore.on).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
+            shallow(<BoardContainer />)
             expect(boardStore.on).toHaveBeenCalledTimes(1)
         })
 

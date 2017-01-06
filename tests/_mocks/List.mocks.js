@@ -10,7 +10,7 @@ export function getEmptyList(mark='') {
     }
 }
 
-export function getListWithCards(mark="", numberOfCards=0) {
+export function getListWithCards(mark='', numberOfCards=0) {
     return {
         boardId: 'listBoardId' + mark,
         id: 'listId' + mark,

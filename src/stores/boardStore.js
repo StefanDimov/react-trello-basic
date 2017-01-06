@@ -97,25 +97,25 @@ class BoardStore extends EventEmitter {
 
     handleActions(action) {
         switch (action.type) {
-            case boardActionTypes.ADD_NEW_LIST:
-                this.board = _getBoardWithNewList(this.board, action.listTitle)
-                this.emit('change')
-                break;
+        case boardActionTypes.ADD_NEW_LIST:
+            this.board = _getBoardWithNewList(this.board, action.listTitle)
+            this.emit('change')
+            break
 
-            case boardActionTypes.SAVE_CARD:
-                this.board = _getBoardWithSavedCard(this.board, action.card)
-                this.emit('change')
-                break;
+        case boardActionTypes.SAVE_CARD:
+            this.board = _getBoardWithSavedCard(this.board, action.card)
+            this.emit('change')
+            break
 
-            case boardActionTypes.DELETE_CARD:
-                this.board = _getBoardWithDeletedCard(this.board, action.card)
-                this.emit('change')
-                break;
+        case boardActionTypes.DELETE_CARD:
+            this.board = _getBoardWithDeletedCard(this.board, action.card)
+            this.emit('change')
+            break
 
-            case boardActionTypes.COPY_CARD:
-                this.board = _getBoardWithCopiedCard(this.board, action.card)
-                this.emit('change')
-                break;
+        case boardActionTypes.COPY_CARD:
+            this.board = _getBoardWithCopiedCard(this.board, action.card)
+            this.emit('change')
+            break
         }
     }
 }

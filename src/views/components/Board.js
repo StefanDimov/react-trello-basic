@@ -35,7 +35,7 @@ export default class Board extends React.Component {
     }
 }
 
-const { string, array, func } = React.PropTypes
+const { func } = React.PropTypes
 Board.propTypes = {
     board: boardUtils.boardPropType.isRequired,
     onCardClick: func.isRequired,

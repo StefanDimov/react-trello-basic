@@ -1,4 +1,3 @@
-import R from 'ramda'
 import cardUtils from '../../src/utils/cardUtils'
 import { getBasicCard } from '../_mocks/Card.mocks'
 

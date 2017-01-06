@@ -47,9 +47,9 @@ describe('Board', () => {
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
-            ).toJSON();
+            ).toJSON()
 
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render properly with a title and two lists', () => {
@@ -59,9 +59,9 @@ describe('Board', () => {
                     onCardClick={onCardClick}
                     onCreateCardClick={onCreateCardClick}
                     onCreateNewList={onCreateNewList} />
-            ).toJSON();
+            ).toJSON()
 
-            expect(tree).toMatchSnapshot();
+            expect(tree).toMatchSnapshot()
         })
     })
 

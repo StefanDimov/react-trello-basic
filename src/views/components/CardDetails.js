@@ -1,7 +1,7 @@
 import React from 'react'
 import R from 'ramda'
 import cardUtils from '../../utils/cardUtils'
-import { Grid, Row, Col, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
+import { Row, Col, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 export default class CardDetails extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class CardDetails extends React.Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        event.preventDefault()
         // doesn't do anything
         // just to disable page reload on hitting enter
     }
@@ -33,7 +33,7 @@ export default class CardDetails extends React.Component {
         // also when new card: it won't go in if no field has been changed
         if (!R.equals(this.state, this.props.card)) {
             // save new card
-            this.props.onCardSave(R.clone(this.state));
+            this.props.onCardSave(R.clone(this.state))
         }
     }
 

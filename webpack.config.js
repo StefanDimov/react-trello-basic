@@ -20,6 +20,10 @@ config.devServer = {
     }
 }
 
+config.resolve = {
+    extensions: ['', '.js', '.jsx']
+}
+
 // Entry / Output
 // ---------------------------------------------
 
@@ -32,10 +36,17 @@ config.output = {
     filename: '[name].bundle.js'
 }
 
+config.eslint = {
+    configFile: '.eslintrc.json'
+}
+
 //  Loaders
 // ---------------------------------------------
 
 config.module = {
+    preLoaders: [
+        {test: /\.js?$/, loader: "eslint-loader", exclude: /node_modules/}
+    ],
     loaders: [
         { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
         { test: /\.css$/, loader: 'style-loader!css-loader' },

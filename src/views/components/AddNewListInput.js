@@ -16,7 +16,7 @@ export default class AddNewListInput extends React.Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
         this.props.onCreateList(this.state.value)
         this.setState({ value: '' })
     }

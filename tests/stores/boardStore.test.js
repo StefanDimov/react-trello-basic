@@ -4,7 +4,6 @@ import boardStore from '../../src/stores/boardStore'
 import { boardActionTypes } from '../../src/actionTypes'
 
 import { getBasicCard } from '../_mocks/Card.mocks'
-import { getBoardWithListsWithCards } from '../_mocks/Board.mocks'
 
 describe('boardStore', () => {
 

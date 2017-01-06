@@ -30,24 +30,24 @@ describe('CardDetails', () => {
         it('should render correctly when given empty card', () => {
             const tree = renderer.create(
                 <CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />
-            ).toJSON();
-            expect(tree).toMatchSnapshot();
+            ).toJSON()
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render correctly when given card with title', () => {
             card.title = 'title'
             const tree = renderer.create(
                 <CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />
-            ).toJSON();
-            expect(tree).toMatchSnapshot();
+            ).toJSON()
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render correctly when given card with description', () => {
             card.description = 'description'
             const tree = renderer.create(
                 <CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />
-            ).toJSON();
-            expect(tree).toMatchSnapshot();
+            ).toJSON()
+            expect(tree).toMatchSnapshot()
         })
 
         it('should render correctly when given card with title and description', () => {
@@ -55,8 +55,8 @@ describe('CardDetails', () => {
             card.description = 'description'
             const tree = renderer.create(
                 <CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />
-            ).toJSON();
-            expect(tree).toMatchSnapshot();
+            ).toJSON()
+            expect(tree).toMatchSnapshot()
         })
     })
 
@@ -97,13 +97,13 @@ describe('CardDetails', () => {
             // should'n be called before unmount
             expect(onCardSave).toHaveBeenCalledTimes(0)
 
-            wrapper.unmount();
+            wrapper.unmount()
             expect(onCardSave).toHaveBeenCalledTimes(1)
         })
 
         it('should not be called if the card has not changed', () => {
             const wrapper = shallow(<CardDetails card={card} onCardSave={onCardSave} onCardCopy={onCardCopy} onCardDelete={onCardDelete} />)
-            wrapper.unmount();
+            wrapper.unmount()
             expect(onCardSave).toHaveBeenCalledTimes(0)
         })
     })

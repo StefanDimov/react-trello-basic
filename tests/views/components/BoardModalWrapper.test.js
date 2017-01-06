@@ -7,7 +7,7 @@ import Board from '../../../src/views/components/Board'
 import CardDetails from '../../../src/views/components/CardDetails'
 
 import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
-import { getCardOnlyWithIds, getBasicCard } from '../../_mocks/Card.mocks'
+import { getBasicCard } from '../../_mocks/Card.mocks'
 
 import BoardModalWrapper from '../../../src/views/components/BoardModalWrapper'
 
