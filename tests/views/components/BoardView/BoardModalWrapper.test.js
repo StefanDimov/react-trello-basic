@@ -3,13 +3,13 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import { Modal } from 'react-bootstrap'
-import Board from '../../../src/views/components/Board'
-import CardDetails from '../../../src/views/components/CardDetails'
+import Board from '../../../../src/views/components/BoardView/Board'
+import CardDetails from '../../../../src/views/components/BoardView/CardDetails'
 
-import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
-import { getBasicCard } from '../../_mocks/Card.mocks'
+import { getEmptyBoard, getBoardWithLists } from '../../../_mocks/Board.mocks'
+import { getBasicCard } from '../../../_mocks/Card.mocks'
 
-import BoardModalWrapper from '../../../src/views/components/BoardModalWrapper'
+import BoardModalWrapper from '../../../../src/views/components/BoardView/BoardModalWrapper'
 
 describe('BoardModalWrapper', () => {
 

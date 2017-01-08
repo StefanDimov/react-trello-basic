@@ -3,8 +3,8 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import R from 'ramda'
 
-import CardDetails from '../../../src/views/components/CardDetails'
-import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
+import CardDetails from '../../../../src/views/components/BoardView/CardDetails'
+import { getCardOnlyWithIds } from '../../../_mocks/Card.mocks'
 
 describe('CardDetails', () => {
 

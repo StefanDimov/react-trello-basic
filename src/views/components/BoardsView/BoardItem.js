@@ -1,5 +1,5 @@
 import React from 'react'
-import boardUtils from '../../utils/boardUtils'
+import boardUtils from '../../../utils/boardUtils'
 
 export default class BoardItem extends React.Component {
     render() {

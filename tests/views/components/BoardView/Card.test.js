@@ -1,8 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Card from '../../../src/views/components/Card'
-import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
+import Card from '../../../../src/views/components/BoardView/Card'
+import { getCardOnlyWithIds } from '../../../_mocks/Card.mocks'
 
 describe('Card', () => {
 

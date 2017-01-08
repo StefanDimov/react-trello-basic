@@ -2,10 +2,10 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import { getEmptyBoard } from '../../_mocks/Board.mocks.js'
+import { getEmptyBoard } from '../../../_mocks/Board.mocks.js'
 
-import BoardItemsList from '../../../src/views/components/BoardItemsList'
-import BoardItem from '../../../src/views/components/BoardItem'
+import BoardItemsList from '../../../../src/views/components/BoardsView/BoardItemsList'
+import BoardItem from '../../../../src/views/components/BoardsView/BoardItem'
 
 describe('BoardItemsList', () => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import boardUtils from '../../utils/boardUtils'
-import cardUtils from '../../utils/cardUtils'
+import boardUtils from '../../../utils/boardUtils'
+import cardUtils from '../../../utils/cardUtils'
 
 import { Modal } from 'react-bootstrap'
 import Board from './Board'

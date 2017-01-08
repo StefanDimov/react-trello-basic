@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BoardItemsList from '../components/BoardItemsList'
+import BoardItemsList from '../components/BoardsView/BoardItemsList'
 import { getEmptyBoard } from '../../../tests/_mocks/Board.mocks.js'
 
 export default class BoardsContainer extends React.Component {

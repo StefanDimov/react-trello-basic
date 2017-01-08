@@ -2,12 +2,12 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import Board from '../../../src/views/components/Board'
-import List from '../../../src/views/components/List'
-import AddNewListInput from '../../../src/views/components/AddNewListInput'
+import Board from '../../../../src/views/components/BoardView/Board'
+import List from '../../../../src/views/components/BoardView/List'
+import AddNewListInput from '../../../../src/views/components/BoardView/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
-import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
+import { getEmptyBoard, getBoardWithLists } from '../../../_mocks/Board.mocks'
 
 describe('Board', () => {
 

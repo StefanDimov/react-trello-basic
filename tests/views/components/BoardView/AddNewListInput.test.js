@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import AddNewListInput from '../../../src/views/components/AddNewListInput'
+import AddNewListInput from '../../../../src/views/components/BoardView/AddNewListInput'
 import { FormControl } from 'react-bootstrap'
 
 describe('AddNewListInput', () => {

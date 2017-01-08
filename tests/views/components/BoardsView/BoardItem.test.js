@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { getEmptyBoard } from '../../_mocks/Board.mocks.js'
+import { getEmptyBoard } from '../../../_mocks/Board.mocks.js'
 
-import BoardItem from '../../../src/views/components/BoardItem'
+import BoardItem from '../../../../src/views/components/BoardsView/BoardItem'
 
 describe('BoardItem', () => {
 

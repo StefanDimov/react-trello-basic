@@ -2,11 +2,11 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import List from '../../../src/views/components/List'
+import List from '../../../../src/views/components/BoardView/List'
 import { ListGroupItem } from 'react-bootstrap'
 
-import { getCardOnlyWithIds } from '../../_mocks/Card.mocks'
-import { getEmptyList } from '../../_mocks/List.mocks'
+import { getCardOnlyWithIds } from '../../../_mocks/Card.mocks'
+import { getEmptyList } from '../../../_mocks/List.mocks'
 
 describe('List', () => {
 

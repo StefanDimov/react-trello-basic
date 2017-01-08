@@ -7,7 +7,7 @@ import { getEmptyBoard, getBoardWithLists } from '../../_mocks/Board.mocks'
 import * as boardActions from '../../../src/actions/boardActions'
 import boardStore from '../../../src/stores/boardStore'
 import BoardContainer from '../../../src/views/containers/BoardContainer'
-import BoardModalWrapper from '../../../src/views/components/BoardModalWrapper'
+import BoardModalWrapper from '../../../src/views/components/BoardView/BoardModalWrapper'
 
 describe('BoardContainer', () => {
 

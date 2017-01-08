@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import ListsWrapper from '../../../src/views/components/ListsWrapper'
+import ListsWrapper from '../../../../src/views/components/BoardView/ListsWrapper'
 
 describe('ListsWrapper', () => {
 

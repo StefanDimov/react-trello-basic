@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
-import listUtils from '../../utils/listUtils'
+import listUtils from '../../../utils/listUtils'
 
 export default class List extends React.Component {
     render() {

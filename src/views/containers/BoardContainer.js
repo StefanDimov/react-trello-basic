@@ -5,7 +5,7 @@ import cardUtils from '../../utils/cardUtils'
 import boardStore from '../../stores/boardStore'
 import * as boardActions from '../../actions/boardActions'
 
-import BoardModalWrapper from '../components/BoardModalWrapper'
+import BoardModalWrapper from '../components/BoardView/BoardModalWrapper'
 
 export default class BoardContainer extends React.Component {
     constructor(props) {

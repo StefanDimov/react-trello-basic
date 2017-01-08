@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Row, Col } from 'react-bootstrap'
 
-import boardUtils from '../../utils/boardUtils'
+import boardUtils from '../../../utils/boardUtils'
 import BoardItem from './BoardItem'
 
 export default class BoardItemsList extends React.Component {

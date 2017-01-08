@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar, Button } from 'react-bootstrap'
 
-import boardUtils from '../../utils/boardUtils'
+import boardUtils from '../../../utils/boardUtils'
 import List from './List'
 import ListsWrapper from './ListsWrapper'
 import AddNewListInput from './AddNewListInput'
