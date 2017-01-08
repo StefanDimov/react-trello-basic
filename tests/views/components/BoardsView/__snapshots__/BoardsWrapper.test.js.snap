@@ -1,0 +1,135 @@
+exports[`BoardsWrapper rendering should render correctly with multiple boards 1`] = `
+<div
+  className="my-navbar-top-padding">
+  <nav
+    className="navbar navbar-default navbar-fixed-top">
+    <div
+      className="container">
+      <div
+        className="navbar-header">
+        <span
+          className="navbar-brand">
+          Boards
+        </span>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="container">
+    <div
+      className="row">
+      <div
+        className="col-xs-12">
+        <h2
+          className="h4">
+          Choose a board...
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row">
+      <div
+        className="col-sm-3"
+        onClick={[Function]}>
+        <div
+          className="board-item">
+          boardTitle1
+        </div>
+      </div>
+      <div
+        className="col-sm-3"
+        onClick={[Function]}>
+        <div
+          className="board-item">
+          boardTitle2
+        </div>
+      </div>
+      <div
+        className="col-sm-3"
+        onClick={[Function]}>
+        <div
+          className="board-item">
+          boardTitle3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BoardsWrapper rendering should render correctly with no boards 1`] = `
+<div
+  className="my-navbar-top-padding">
+  <nav
+    className="navbar navbar-default navbar-fixed-top">
+    <div
+      className="container">
+      <div
+        className="navbar-header">
+        <span
+          className="navbar-brand">
+          Boards
+        </span>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="container">
+    <div
+      className="row">
+      <div
+        className="col-xs-12">
+        <h2
+          className="h4">
+          Choose a board...
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row" />
+  </div>
+</div>
+`;
+
+exports[`BoardsWrapper rendering should render correctly with one board 1`] = `
+<div
+  className="my-navbar-top-padding">
+  <nav
+    className="navbar navbar-default navbar-fixed-top">
+    <div
+      className="container">
+      <div
+        className="navbar-header">
+        <span
+          className="navbar-brand">
+          Boards
+        </span>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="container">
+    <div
+      className="row">
+      <div
+        className="col-xs-12">
+        <h2
+          className="h4">
+          Choose a board...
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row">
+      <div
+        className="col-sm-3"
+        onClick={[Function]}>
+        <div
+          className="board-item">
+          boardTitle1
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BoardItemsList from '../components/BoardsView/BoardItemsList'
+import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
 import { getEmptyBoard } from '../../../tests/_mocks/Board.mocks.js'
 
 export default class BoardsContainer extends React.Component {
@@ -15,12 +15,12 @@ export default class BoardsContainer extends React.Component {
     }
 
     selectBoard(board) {
-        console.log(board)
+        console.log(board) // eslint-disable-line
     }
 
     render() {
         return (
-            <BoardItemsList
+            <BoardsWrapper
                 boards={this.state.boards}
                 onBoardClick={this.selectBoard}/>
         )

@@ -8,4 +8,4 @@ import CustomStyles from './styles/_index.css'
 import BoardContainer from './views/containers/BoardContainer'
 import BoardsContainer from './views/containers/BoardsContainer'
 
-render(<BoardContainer />, document.getElementById('app'))
+render(<BoardsContainer />, document.getElementById('app'))
