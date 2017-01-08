@@ -34,7 +34,7 @@ export default class BoardContainer extends React.Component {
 
     componentWillUnmount() {
         // unsubscribes to store
-        boardStore.unbindListener('change', this.setBoard)
+        boardStore.removeListener('change', this.setBoard)
     }
 
     setBoard() {

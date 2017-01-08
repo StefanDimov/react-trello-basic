@@ -43,15 +43,15 @@ describe('BoardContainer', () => {
         })
 
         it('should subscribe to store on unmount', () => {
-            boardStore.unbindListener = jest.fn()
+            boardStore.removeListener = jest.fn()
 
-            expect(boardStore.unbindListener).toHaveBeenCalledTimes(0)
+            expect(boardStore.removeListener).toHaveBeenCalledTimes(0)
             const wrapper = shallow(<BoardContainer />)
 
             wrapper.unmount()
-            expect(boardStore.unbindListener).toHaveBeenCalledTimes(1)
-            expect(boardStore.unbindListener.mock.calls[0][0]).toBe(boardStore.on.mock.calls[0][0])
-            expect(boardStore.unbindListener.mock.calls[0][1]).toBe(boardStore.on.mock.calls[0][1])
+            expect(boardStore.removeListener).toHaveBeenCalledTimes(1)
+            expect(boardStore.removeListener.mock.calls[0][0]).toBe(boardStore.on.mock.calls[0][0])
+            expect(boardStore.removeListener.mock.calls[0][1]).toBe(boardStore.on.mock.calls[0][1])
         })
 
         it('should update state on store change', () => {

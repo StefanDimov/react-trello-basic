@@ -13,6 +13,22 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
             boardTitle
           </span>
         </div>
+        <ul
+          className="nav navbar-nav navbar-right"
+          role={null}>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="/#"
+              onClick={[Function]}>
+              <span
+                className="glyphicon glyphicon-th-large" />
+               Boards
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
     <div
@@ -51,6 +67,22 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
             boardTitle
           </span>
         </div>
+        <ul
+          className="nav navbar-nav navbar-right"
+          role={null}>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="/#"
+              onClick={[Function]}>
+              <span
+                className="glyphicon glyphicon-th-large" />
+               Boards
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
     <div
@@ -107,6 +139,22 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
             boardTitle
           </span>
         </div>
+        <ul
+          className="nav navbar-nav navbar-right"
+          role={null}>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="/#"
+              onClick={[Function]}>
+              <span
+                className="glyphicon glyphicon-th-large" />
+               Boards
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
     <div

@@ -11,9 +11,16 @@
   },
   "jest": {
     "verbose": true,
-    "collectCoverageFrom": ["**/src/**"],
-    "coveragePathIgnorePatterns": ["./src/app.js"],
-    "coverageReporters": ["text", "html"]
+    "collectCoverageFrom": [
+      "**/src/**"
+    ],
+    "coveragePathIgnorePatterns": [
+      "./src/app.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   },
   "author": "StefanDimov",
   "license": "MIT",
@@ -24,6 +31,7 @@
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
+    "react-router": "^3.0.0",
     "shortid": "^2.2.6"
   },
   "devDependencies": {

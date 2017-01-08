@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as boardsActions from '../../actions/boardsActions'
+// import * as boardsActions from '../../actions/boardsActions'
 
 import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
 import { getEmptyBoard } from '../../../tests/_mocks/Board.mocks.js'
@@ -17,7 +17,7 @@ export default class BoardsContainer extends React.Component {
     }
 
     selectBoard(board) {
-        boardsActions.selectBoard(board)
+        this.context.router.push('/board/' + board.id)
     }
 
     render() {
@@ -27,4 +27,8 @@ export default class BoardsContainer extends React.Component {
                 onBoardClick={this.selectBoard}/>
         )
     }
+}
+
+BoardsContainer.contextTypes = {
+    router: React.PropTypes.object
 }

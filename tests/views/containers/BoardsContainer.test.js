@@ -29,15 +29,19 @@ describe('BoardsContainer', () => {
         })
     })
 
-    describe('actions', () => {
-        it('should properly select board', () => {
+    describe('selecting a board', () => {
+        it('should pass proper url to router context', () => {
             const wrapper = shallow(<BoardsContainer />)
             const instance = wrapper.instance()
 
+            instance.context = {
+                router: { push: jest.fn() }
+            }
+
             instance.selectBoard(board)
 
-            expect(boardsActions.selectBoard).toHaveBeenCalledTimes(1)
-            expect(boardsActions.selectBoard).toHaveBeenCalledWith(board)
+            expect(instance.context.router.push).toHaveBeenCalledTimes(1)
+            expect(instance.context.router.push).toHaveBeenCalledWith('/board/' + board.id)
         })
     })
 })

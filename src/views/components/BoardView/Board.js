@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Button } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, Button, Glyphicon } from 'react-bootstrap'
 
 import boardUtils from '../../../utils/boardUtils'
 import List from './List'
@@ -24,6 +24,11 @@ export default class Board extends React.Component {
                     <Navbar.Header>
                         <Navbar.Brand>{title}</Navbar.Brand>
                     </Navbar.Header>
+                    <Nav pullRight={true}>
+                        <NavItem href="/#">
+                            <Glyphicon glyph="th-large" /> Boards
+                        </NavItem>
+                    </Nav>
                 </Navbar>
 
                 <ListsWrapper>

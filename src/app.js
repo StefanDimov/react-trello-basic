@@ -5,7 +5,13 @@ import { render } from 'react-dom'
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import CustomStyles from './styles/_index.css'
 
+import { Router, Route, hashHistory } from 'react-router'
 import BoardContainer from './views/containers/BoardContainer'
 import BoardsContainer from './views/containers/BoardsContainer'
 
-render(<BoardsContainer />, document.getElementById('app'))
+render((
+    <Router history={hashHistory}>
+        <Route path="/" component={BoardsContainer}></Route>
+        <Route path="/board/:boardId" component={BoardContainer}></Route>
+    </Router>
+), document.getElementById('app'))
