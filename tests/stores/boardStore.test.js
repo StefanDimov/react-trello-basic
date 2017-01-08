@@ -6,9 +6,7 @@ import { boardActionTypes } from '../../src/actionTypes'
 import { getBasicCard } from '../_mocks/Card.mocks'
 
 describe('boardStore', () => {
-
     describe('getBoard', () => {
-
         it('should return a board', () => {
             const board = boardStore.getBoard()
 
@@ -26,7 +24,6 @@ describe('boardStore', () => {
     })
 
     describe('handleActions', () => {
-
         let card
         boardStore.emit = jest.fn()
 

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import * as boardsActions from '../../actions/boardsActions'
+
 import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
 import { getEmptyBoard } from '../../../tests/_mocks/Board.mocks.js'
 
@@ -15,7 +17,7 @@ export default class BoardsContainer extends React.Component {
     }
 
     selectBoard(board) {
-        console.log(board) // eslint-disable-line
+        boardsActions.selectBoard(board)
     }
 
     render() {

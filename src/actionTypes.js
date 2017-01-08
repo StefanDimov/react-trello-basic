@@ -4,3 +4,7 @@ export const boardActionTypes = {
     DELETE_CARD: 'DELETE_CARD',
     COPY_CARD: 'COPY_CARD'
 }
+
+export const boardsActionTypes = {
+    SELECT_BOARD: 'SELECT_BOARD'
+}
