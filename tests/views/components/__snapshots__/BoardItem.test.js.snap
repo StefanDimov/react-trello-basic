@@ -1,0 +1,6 @@
+exports[`BoardItem rendering should render correctly 1`] = `
+<div
+  className="board-item">
+  boardTitle
+</div>
+`;
