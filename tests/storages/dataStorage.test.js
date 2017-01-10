@@ -27,16 +27,7 @@ describe('dataStorage', () => {
 
             expect(resultBoards).toBe(twoBoards)
             expect(Lockr.get).toHaveBeenCalledTimes(1)
-            expect(Lockr.get).toHaveBeenCalledWith(LOCAL_STORAGE_DATA_KEY)
-        })
-
-        it('should return correct value when storage is not set', () => {
-            Lockr.get.mockReturnValue(undefined)
-            const resultBoards = dataStorage.getAllBoards()
-
-            expect(resultBoards).toEqual([])
-            expect(Lockr.get).toHaveBeenCalledTimes(1)
-            expect(Lockr.get).toHaveBeenCalledWith(LOCAL_STORAGE_DATA_KEY)
+            expect(Lockr.get).toHaveBeenCalledWith(LOCAL_STORAGE_DATA_KEY, [])
         })
     })
 

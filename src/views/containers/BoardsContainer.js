@@ -3,14 +3,14 @@ import React from 'react'
 // import * as boardsActions from '../../actions/boardsActions'
 
 import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
-import { getEmptyBoard } from '../../../tests/_mocks/Board.mocks.js'
+import boardStore from '../../stores/boardsStore'
 
 export default class BoardsContainer extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            boards: [getEmptyBoard(1), getEmptyBoard(2)]
+            boards: boardStore.getBoards()
         }
 
         this.selectBoard = this.selectBoard.bind(this)

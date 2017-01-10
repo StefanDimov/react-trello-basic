@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 
 import { getEmptyBoard } from '../../_mocks/Board.mocks'
 
+import boardsStore from '../../../src/stores/boardsStore'
 import * as boardsActions from '../../../src/actions/boardsActions'
 
 import BoardsContainer from '../../../src/views/containers/BoardsContainer'
@@ -11,12 +12,21 @@ import BoardsWrapper from '../../../src/views/components/BoardsView/BoardsWrappe
 describe('BoardsContainer', () => {
 
     let board
+    boardsStore.getBoards = jest.fn()
     boardsActions.selectBoard = jest.fn()
 
     beforeEach(() => {
         board = getEmptyBoard()
 
+        boardsStore.getBoards.mockReset()
         boardsActions.selectBoard.mockClear()
+    })
+
+    describe('boardsStore integration', () => {
+        it('should get boards on mount', () => {
+            shallow(<BoardsContainer />)
+            expect(boardsStore.getBoards).toHaveBeenCalledTimes(1)
+        })
     })
 
     describe('BoardsWrapper', () => {
