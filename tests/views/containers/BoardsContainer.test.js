@@ -38,6 +38,8 @@ describe('BoardsContainer', () => {
 
             expect(wrapper.find(BoardsWrapper).prop('onBoardClick'))
                 .toBe(instance.selectBoard)
+            expect(wrapper.find(BoardsWrapper).prop('onCreateBoard'))
+                .toBe(instance.createBoard)
         })
     })
 

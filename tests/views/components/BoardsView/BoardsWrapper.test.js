@@ -10,6 +10,7 @@ import BoardItemsList from '../../../../src/views/components/BoardsView/BoardIte
 describe('BoardsWrapper', () => {
 
     const onBoardClick = jest.fn()
+    const onCreateBoard = jest.fn()
     let board, anotherBoard, thirdBoard
 
     beforeEach(() => {
@@ -18,12 +19,13 @@ describe('BoardsWrapper', () => {
         thirdBoard = getEmptyBoard(3)
 
         onBoardClick.mockClear()
+        onCreateBoard.mockClear()
     })
 
     describe('rendering', () => {
         it('should render correctly with no boards', () => {
             const tree = renderer.create(
-                <BoardsWrapper boards={[]} onBoardClick={onBoardClick} />
+                <BoardsWrapper boards={[]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -31,7 +33,7 @@ describe('BoardsWrapper', () => {
 
         it('should render correctly with one board', () => {
             const tree = renderer.create(
-                <BoardsWrapper boards={[board]} onBoardClick={onBoardClick} />
+                <BoardsWrapper boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -39,7 +41,7 @@ describe('BoardsWrapper', () => {
 
         it('should render correctly with multiple boards', () => {
             const tree = renderer.create(
-                <BoardsWrapper boards={[board, anotherBoard, thirdBoard]} onBoardClick={onBoardClick} />
+                <BoardsWrapper boards={[board, anotherBoard, thirdBoard]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -49,10 +51,11 @@ describe('BoardsWrapper', () => {
     describe('BoardItemsList', () => {
         it('should be passed correct params', () => {
             const wrapper = shallow(
-                <BoardsWrapper boards={[board]} onBoardClick={onBoardClick} />
+                <BoardsWrapper boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
             )
 
             expect(wrapper.find(BoardItemsList).prop('onBoardClick')).toBe(onBoardClick)
+            expect(wrapper.find(BoardItemsList).prop('onCreateBoard')).toBe(onCreateBoard)
         })
     })
 })

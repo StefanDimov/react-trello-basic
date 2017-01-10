@@ -52,6 +52,23 @@ exports[`BoardsWrapper rendering should render correctly with multiple boards 1`
           boardTitle3
         </div>
       </div>
+      <div
+        className="col-sm-3">
+        <form
+          className="my-add-new-board"
+          onSubmit={[Function]}>
+          <div
+            className="form-group">
+            <input
+              className="form-control"
+              id={undefined}
+              onChange={[Function]}
+              placeholder="Add new board..."
+              type="text"
+              value="" />
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -86,7 +103,25 @@ exports[`BoardsWrapper rendering should render correctly with no boards 1`] = `
       </div>
     </div>
     <div
-      className="row" />
+      className="row">
+      <div
+        className="col-sm-3">
+        <form
+          className="my-add-new-board"
+          onSubmit={[Function]}>
+          <div
+            className="form-group">
+            <input
+              className="form-control"
+              id={undefined}
+              onChange={[Function]}
+              placeholder="Add new board..."
+              type="text"
+              value="" />
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -128,6 +163,23 @@ exports[`BoardsWrapper rendering should render correctly with one board 1`] = `
           className="my-board-item">
           boardTitle1
         </div>
+      </div>
+      <div
+        className="col-sm-3">
+        <form
+          className="my-add-new-board"
+          onSubmit={[Function]}>
+          <div
+            className="form-group">
+            <input
+              className="form-control"
+              id={undefined}
+              onChange={[Function]}
+              placeholder="Add new board..."
+              type="text"
+              value="" />
+          </div>
+        </form>
       </div>
     </div>
   </div>

@@ -4,11 +4,11 @@ import { Row, Col } from 'react-bootstrap'
 
 import boardUtils from '../../../utils/boardUtils'
 import BoardItem from './BoardItem'
-// import AddNewBoardItem from './AddNewBoardItem'
+import AddNewBoardItem from './AddNewBoardItem'
 
 export default class BoardItemsList extends React.Component {
     render() {
-        const { boards, onBoardClick } = this.props
+        const { boards, onBoardClick, onCreateBoard } = this.props
         return (
             <Row>
                 {boards.map((board) =>
@@ -16,6 +16,9 @@ export default class BoardItemsList extends React.Component {
                         <BoardItem board={board} />
                     </Col>
                 )}
+                <Col sm={3} key={'add-new-boards-item'}>
+                    <AddNewBoardItem onCreateBoard={onCreateBoard} />
+                </Col>
             </Row>
         )
     }
@@ -23,5 +26,6 @@ export default class BoardItemsList extends React.Component {
 
 BoardItemsList.propTypes = {
     boards: React.PropTypes.arrayOf(boardUtils.boardPropType).isRequired,
-    onBoardClick: React.PropTypes.func.isRequired
+    onBoardClick: React.PropTypes.func.isRequired,
+    onCreateBoard: React.PropTypes.func.isRequired
 }

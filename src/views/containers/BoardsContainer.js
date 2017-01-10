@@ -20,11 +20,16 @@ export default class BoardsContainer extends React.Component {
         this.context.router.push('/board/' + board.id)
     }
 
+    createBoard() { // title
+        // TODO: Implement Action 
+    }
+
     render() {
         return (
             <BoardsWrapper
                 boards={this.state.boards}
-                onBoardClick={this.selectBoard}/>
+                onBoardClick={this.selectBoard}
+                onCreateBoard={this.createBoard} />
         )
     }
 }

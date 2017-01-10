@@ -8,7 +8,7 @@ import BoardItemsList from './BoardItemsList'
 
 export default class BoardsWrapper extends React.Component {
     render() {
-        const { boards, onBoardClick } = this.props
+        const { boards, onBoardClick, onCreateBoard } = this.props
 
         return (
             <div className="my-navbar-top-padding">
@@ -24,7 +24,7 @@ export default class BoardsWrapper extends React.Component {
                             <h2 className="h4">Choose a board...</h2>
                         </Col>
                     </Row>
-                    <BoardItemsList boards={boards} onBoardClick={onBoardClick} />
+                    <BoardItemsList boards={boards} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
                 </Grid>
             </div>
         )
@@ -33,5 +33,6 @@ export default class BoardsWrapper extends React.Component {
 
 BoardsWrapper.propTypes = {
     boards: React.PropTypes.arrayOf(boardUtils.boardPropType).isRequired,
-    onBoardClick: React.PropTypes.func.isRequired
+    onBoardClick: React.PropTypes.func.isRequired,
+    onCreateBoard: React.PropTypes.func.isRequired
 }
