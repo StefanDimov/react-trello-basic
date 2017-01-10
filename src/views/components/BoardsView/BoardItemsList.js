@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 
 import boardUtils from '../../../utils/boardUtils'
 import BoardItem from './BoardItem'
+// import AddNewBoardItem from './AddNewBoardItem'
 
 export default class BoardItemsList extends React.Component {
     render() {

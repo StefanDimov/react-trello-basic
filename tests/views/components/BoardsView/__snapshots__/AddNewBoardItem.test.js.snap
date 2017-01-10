@@ -1,0 +1,16 @@
+exports[`AddNewBoardItem should render correctly 1`] = `
+<form
+  className="my-add-new-board"
+  onSubmit={[Function]}>
+  <div
+    className="form-group">
+    <input
+      className="form-control"
+      id={undefined}
+      onChange={[Function]}
+      placeholder="Add new board..."
+      type="text"
+      value="" />
+  </div>
+</form>
+`;

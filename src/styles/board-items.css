@@ -8,3 +8,18 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.my-add-new-board {
+    height: 100px;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+.my-add-new-board input {
+    background: transparent;
+    border: none;
+}
+
+.my-add-new-board input:focus {
+    box-shadow: none;
+}
