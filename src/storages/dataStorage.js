@@ -4,7 +4,7 @@ import Lockr from 'lockr'
 import { LOCAL_STORAGE_DATA_KEY } from '../config'
 
 const _getAllBoards = () => {
-    return Lockr.get(LOCAL_STORAGE_DATA_KEY)
+    return Lockr.get(LOCAL_STORAGE_DATA_KEY) || []
 }
 
 const _saveAllBoards = boards => {
