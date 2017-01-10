@@ -1,6 +1,6 @@
 exports[`BoardItem rendering should render correctly 1`] = `
 <div
-  className="board-item">
+  className="my-board-item">
   boardTitle
 </div>
 `;

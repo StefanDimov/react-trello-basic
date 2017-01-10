@@ -5,7 +5,7 @@ export default class BoardItem extends React.Component {
     render() {
         const { board } = this.props
         return (
-            <div className="board-item">
+            <div className="my-board-item">
                 { board.title }
             </div>
         )

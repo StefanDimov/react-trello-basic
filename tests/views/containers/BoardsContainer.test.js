@@ -19,6 +19,8 @@ describe('BoardsContainer', () => {
         board = getEmptyBoard()
 
         boardsStore.getBoards.mockReset()
+        boardsStore.getBoards.mockReturnValue([])
+
         boardsActions.selectBoard.mockClear()
     })
 
