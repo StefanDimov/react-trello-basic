@@ -13,12 +13,21 @@ A Trello clone build with React and Flux
 
 ## Todo
 
-- drag and drop of cards
-- list in cards
+## Overall
 
-- add boards view
+- end-to-end tests
 
-- save boards in local storage
+## Boards View
+
+- Create new board
+- Delete board
+- save boards to storage
+
+## Board View
+
+- drag and drop cards
+- lists in cards
+- update board in storage
 
 ### Other
 
