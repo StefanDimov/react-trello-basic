@@ -15,6 +15,7 @@ A Trello clone build with React and Flux
 
 ## Overall
 
+- add documentation
 - end-to-end tests
 
 ## Boards View
