@@ -4,12 +4,13 @@ A Trello clone build with React and Flux
 
 ## Usage
 
-`npm start` - runs dev server
-`npm run build` - builds app
-`npm test` - runs tests
-`npm test -- -u` - overrides and deletes test snapshots
-`npm test -- --watch` - listens on file changes and runs appropriate tests
-`npm test -- --coverage` - runs tests and gathers coverage data
+- `npm start` - runs dev server
+- `npm run build` - builds app
+- `npm test` - runs tests
+- `npm test -- -u` - overrides and deletes test snapshots
+- `npm test -- --watch` - listens on file changes and runs appropriate tests
+- `npm test -- --coverage` - runs tests and gathers coverage data
+- `npm run doc` - generates documentation
 
 ## Todo
 
@@ -32,8 +33,4 @@ A Trello clone build with React and Flux
 
 ### Other
 
-- scroll List Container with mouse drag
-
-### Refactor
-
-- make BoardContainer render a single component so you can test rendering the modal open
+- scroll CardList Container with mouse drag

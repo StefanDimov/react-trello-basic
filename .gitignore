@@ -9,3 +9,6 @@ build
 
 # Test Coverage Folder
 coverage
+
+# Documentation Folder
+docs

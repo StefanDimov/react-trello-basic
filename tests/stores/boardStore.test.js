@@ -41,7 +41,7 @@ describe('boardStore', () => {
                 .toBeUndefined()
 
             // perform add list action
-            boardStore.handleActions({ type: boardActionTypes.ADD_NEW_LIST, listTitle: listTitle })
+            boardStore._handleActions({ type: boardActionTypes.ADD_NEW_LIST, listTitle: listTitle })
 
             // expect list to be present
             const resultBoard = boardStore.getBoard()
@@ -62,7 +62,7 @@ describe('boardStore', () => {
                 .toBeUndefined()
 
             // perform add action
-            boardStore.handleActions({ type: boardActionTypes.SAVE_CARD, card: card })
+            boardStore._handleActions({ type: boardActionTypes.SAVE_CARD, card: card })
 
             // expect a card to be added to list
             const resultBoard = boardStore.getBoard()
@@ -88,7 +88,7 @@ describe('boardStore', () => {
             editedCard.title = 'new title'
 
             // perform add action
-            boardStore.handleActions({ type: boardActionTypes.SAVE_CARD, card: editedCard })
+            boardStore._handleActions({ type: boardActionTypes.SAVE_CARD, card: editedCard })
 
             // expect a card to be added to list
             const resultBoard = boardStore.getBoard()
@@ -111,7 +111,7 @@ describe('boardStore', () => {
             expect(initialFirstList).toBeDefined()
             expect(intialFirstCard).toBeDefined()
 
-            boardStore.handleActions({ type: boardActionTypes.DELETE_CARD, card: intialFirstCard })
+            boardStore._handleActions({ type: boardActionTypes.DELETE_CARD, card: intialFirstCard })
 
             // expect a card to be removed from list
             const resultBoard = boardStore.getBoard()
@@ -133,7 +133,7 @@ describe('boardStore', () => {
             expect(initialFirstList).toBeDefined()
             expect(intialFirstCard).toBeDefined()
 
-            boardStore.handleActions({ type: boardActionTypes.COPY_CARD, card: intialFirstCard })
+            boardStore._handleActions({ type: boardActionTypes.COPY_CARD, card: intialFirstCard })
 
             // expect to be two cards with the same data, but different ids
             const resultBoard = boardStore.getBoard()

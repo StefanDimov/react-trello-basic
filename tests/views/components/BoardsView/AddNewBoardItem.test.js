@@ -3,9 +3,9 @@ import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import { FormControl } from 'react-bootstrap'
 
-import AddNewBoardItem from '../../../../src/views/components/BoardsView/AddNewBoardItem'
+import AddNewBoardInput from '../../../../src/views/components/BoardsView/AddNewBoardInput'
 
-describe('AddNewBoardItem', () => {
+describe('AddNewBoardInput', () => {
 
     const inputChangeEventDataWithName = { target: { value: 'list name' } }
     const onCreateBoard = jest.fn()
@@ -16,7 +16,7 @@ describe('AddNewBoardItem', () => {
 
     it('should render correctly', () => {
         const tree = renderer.create(
-            <AddNewBoardItem onCreateBoard={onCreateBoard} />
+            <AddNewBoardInput onCreateBoard={onCreateBoard} />
         ).toJSON()
 
         expect(tree).toMatchSnapshot()
@@ -25,7 +25,7 @@ describe('AddNewBoardItem', () => {
     it('should call onCreateBoard with the new list\'s name on submit', () => {
         const eventMock = { preventDefault: jest.fn() }
 
-        const wrapper = shallow(<AddNewBoardItem onCreateBoard={onCreateBoard} />)
+        const wrapper = shallow(<AddNewBoardInput onCreateBoard={onCreateBoard} />)
 
         wrapper.find(FormControl).simulate('change', inputChangeEventDataWithName)
         wrapper.simulate('submit', eventMock)
@@ -35,7 +35,7 @@ describe('AddNewBoardItem', () => {
     })
 
     it('should update state on change', () => {
-        const wrapper = shallow(<AddNewBoardItem onCreateBoard={onCreateBoard} />)
+        const wrapper = shallow(<AddNewBoardInput onCreateBoard={onCreateBoard} />)
         wrapper.find(FormControl).simulate('change', inputChangeEventDataWithName)
         expect(wrapper.find(FormControl).prop('value')).toBe(inputChangeEventDataWithName.target.value)
     })

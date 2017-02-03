@@ -1,21 +1,28 @@
 import React from 'react'
 import { Navbar, Nav, NavItem, Button, Glyphicon } from 'react-bootstrap'
 
-import boardUtils from '../../../utils/boardUtils'
-import List from './List'
+import * as boardUtils from '../../../utils/boardUtils'
+import CardList from './CardList'
 import ListsWrapper from './ListsWrapper'
 import AddNewListInput from './AddNewListInput'
 
-
+/**
+ * Component that visualizes a Board's lists and holds all the functionality regarding them.
+ * @class comp/Board
+ * @param {object} board The Board to be visualized
+ * @param {function} onCardClick callback for when a card is clicked
+ * @param {function} onCreateCard callback to which the data for a new card will be passed
+ * @param {function} onCreateNewList callback to which the data for a new list will be passed
+ */
 export default class Board extends React.Component {
-    render() {
-        const { board, onCardClick, onCreateCardClick, onCreateNewList } = this.props
+    render() { // eslint-disable-line
+        const { board, onCardClick, onCreateCard, onCreateNewList } = this.props
         const { title, lists } = board
 
         const listElements = lists.map(list =>
-            <List key={list.id} list={list} onCardClick={onCardClick}>
-                <Button bsStyle="primary" block onClick={() => onCreateCardClick(list.id)}>Add Card</Button>
-            </List>
+            <CardList key={list.id} list={list} onCardClick={onCardClick}>
+                <Button bsStyle="primary" block onClick={() => onCreateCard(list.id)}>Add Card</Button>
+            </CardList>
         )
 
         return (
@@ -44,6 +51,6 @@ const { func } = React.PropTypes
 Board.propTypes = {
     board: boardUtils.boardPropType.isRequired,
     onCardClick: func.isRequired,
-    onCreateCardClick: func.isRequired,
+    onCreateCard: func.isRequired,
     onCreateNewList: func.isRequired
 }

@@ -1,4 +1,4 @@
-exports[`List rendering should render correctly with a card 1`] = `
+exports[`CardList rendering should render correctly with a card 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>
@@ -25,7 +25,7 @@ exports[`List rendering should render correctly with a card 1`] = `
 </div>
 `;
 
-exports[`List rendering should render correctly with children 1`] = `
+exports[`CardList rendering should render correctly with children 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>
@@ -42,7 +42,7 @@ exports[`List rendering should render correctly with children 1`] = `
 </div>
 `;
 
-exports[`List rendering should render correctly with no cards 1`] = `
+exports[`CardList rendering should render correctly with no cards 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>
@@ -53,7 +53,7 @@ exports[`List rendering should render correctly with no cards 1`] = `
 </div>
 `;
 
-exports[`List rendering should render correctly with title 1`] = `
+exports[`CardList rendering should render correctly with title 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>
@@ -64,7 +64,7 @@ exports[`List rendering should render correctly with title 1`] = `
 </div>
 `;
 
-exports[`List rendering should render correctly with two card 1`] = `
+exports[`CardList rendering should render correctly with two card 1`] = `
 <div
   className="my-list-container-item panel panel-default"
   id={undefined}>

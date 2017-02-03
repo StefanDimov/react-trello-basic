@@ -1,3 +1,4 @@
+/* eslint require-jsdoc: off */
 import R from 'ramda'
 import { getBasicCard } from './Card.mocks'
 

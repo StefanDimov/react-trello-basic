@@ -4,59 +4,16 @@ import R from 'ramda'
 import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
-import listUtils from '../utils/listUtils'
-import cardUtils from '../utils/cardUtils'
+import * as listUtils from '../utils/listUtils'
+import * as cardUtils from '../utils/cardUtils'
 
 // TODO: must get id from url path and get board data from local storage
 
-function _getBoardWithNewList(board, listTitle) {
-    const resultBoard = R.clone(board)
-
-    const newList = listUtils.createEmptyList(resultBoard.id)
-    newList.title = listTitle
-    resultBoard.lists.push(newList)
-
-    return resultBoard
-}
-
-function _getBoardWithSavedCard(board, card) {
-    const resultBoard = R.clone(board)
-
-    const listToSaveCardTo = R.find(R.propEq('id', card.listId), resultBoard.lists)
-    const cardInListIndex = R.findIndex(R.propEq('id', card.id), listToSaveCardTo.cards)
-
-    // if it exists in list - update
-    if (cardInListIndex !== -1) {
-        listToSaveCardTo.cards[cardInListIndex] = card
-    } else {
-        // if new card - add to cards
-        listToSaveCardTo.cards.push(card)
-    }
-
-    return resultBoard
-}
-
-function _getBoardWithDeletedCard(board, card) {
-    const resultBoard = R.clone(board)
-
-    const listToRemoveCardFrom = R.find(R.propEq('id', card.listId), resultBoard.lists)
-    const indexOfCardToRemove = R.findIndex(R.propEq('id', card.id), listToRemoveCardFrom.cards)
-    listToRemoveCardFrom.cards.splice(indexOfCardToRemove, 1)
-
-    return resultBoard
-}
-
-function _getBoardWithCopiedCard(board, card) {
-    const resultBoard = R.clone(board)
-
-    const list = R.find(R.propEq('id', card.listId), resultBoard.lists)
-    list.cards.push(cardUtils.changeCardId(card))
-
-    return resultBoard
-}
-
+/**
+ * Store that manages a certain loaded board
+ */
 class BoardStore extends EventEmitter {
-    constructor() {
+    constructor() { // eslint-disable-line
         super()
 
         this.board = {
@@ -91,11 +48,20 @@ class BoardStore extends EventEmitter {
         }
     }
 
+    /**
+     * Returns the board
+     * @return {object} The board
+     */
     getBoard() {
         return R.clone(this.board)
     }
 
-    handleActions(action) {
+    /**
+     * Callback for the dispatcher to handle actions
+     * @param {object} action Action data to handle
+     * @private
+     */
+    _handleActions(action) {
         switch (action.type) {
         case boardActionTypes.ADD_NEW_LIST:
             this.board = _getBoardWithNewList(this.board, action.listTitle)
@@ -121,6 +87,80 @@ class BoardStore extends EventEmitter {
 }
 
 const boardStore = new BoardStore()
-dispatcher.register(boardStore.handleActions.bind(boardStore))
+dispatcher.register(boardStore._handleActions.bind(boardStore))
 
 export default boardStore
+
+/**
+ * Returns a copy of the board with added new list
+ * @private
+ * @param  {object} board     Board to copy and return
+ * @param  {string} listTitle Title of the list to add
+ * @return {object}           Copy of the board with the new list
+ */
+function _getBoardWithNewList(board, listTitle) {
+    const resultBoard = R.clone(board)
+
+    const newList = listUtils.createEmptyList(resultBoard.id)
+    newList.title = listTitle
+    resultBoard.lists.push(newList)
+
+    return resultBoard
+}
+
+/**
+ * Returns a copy of the board with updated or newly addded card
+ * @private
+ * @param  {object} board Board to copy and return
+ * @param  {object} card  Card to update or save
+ * @return {object}       Copy of the board with the new card
+ */
+function _getBoardWithSavedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    const listToSaveCardTo = R.find(R.propEq('id', card.listId), resultBoard.lists)
+    const cardInListIndex = R.findIndex(R.propEq('id', card.id), listToSaveCardTo.cards)
+
+    // if it exists in list - update
+    if (cardInListIndex !== -1) {
+        listToSaveCardTo.cards[cardInListIndex] = card
+    } else {
+        // if new card - add to cards
+        listToSaveCardTo.cards.push(card)
+    }
+
+    return resultBoard
+}
+
+/**
+ * Returns a copy of the board without a certain card
+ * @private
+ * @param  {object} board Board to copy and return
+ * @param  {object} card  Card to delete
+ * @return {object}       Copy of the board with the new card
+ */
+function _getBoardWithDeletedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    const listToRemoveCardFrom = R.find(R.propEq('id', card.listId), resultBoard.lists)
+    const indexOfCardToRemove = R.findIndex(R.propEq('id', card.id), listToRemoveCardFrom.cards)
+    listToRemoveCardFrom.cards.splice(indexOfCardToRemove, 1)
+
+    return resultBoard
+}
+
+/**
+ * Returns a copy of the board with a copied card
+ * @private
+ * @param  {object} board Board to copy and return
+ * @param  {object} card  Card to copy
+ * @return {object}       Copy of the board with the copied card
+ */
+function _getBoardWithCopiedCard(board, card) {
+    const resultBoard = R.clone(board)
+
+    const list = R.find(R.propEq('id', card.listId), resultBoard.lists)
+    list.cards.push(cardUtils.changeCardId(card))
+
+    return resultBoard
+}

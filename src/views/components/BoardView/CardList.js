@@ -2,10 +2,16 @@ import React from 'react'
 import Card from './Card'
 import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap'
 
-import listUtils from '../../../utils/listUtils'
+import * as listUtils from '../../../utils/listUtils'
 
-export default class List extends React.Component {
-    render() {
+/**
+ * Component that visualizes a list of Card components
+ * @class comp/CardList
+ * @param {array} list list with the cards to visualize
+ * @param {function} onCardClick callback to be called when a card is clicked
+ */
+export default class CardList extends React.Component {
+    render() { // eslint-disable-line
         const { list, onCardClick, children} = this.props
         const { title, cards } = list
 
@@ -24,7 +30,7 @@ export default class List extends React.Component {
     }
 }
 
-List.propTypes = {
+CardList.propTypes = {
     list: listUtils.listPropType.isRequired,
     onCardClick: React.PropTypes.func.isRequired
 }

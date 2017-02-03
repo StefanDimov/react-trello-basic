@@ -1,3 +1,4 @@
+/* eslint require-jsdoc: off */
 export function getCardOnlyWithIds(mark='') {
     return {
         listId: 'cardListId' + mark,

@@ -29,6 +29,36 @@
             "error",
             "never"
         ],
+        "require-jsdoc": [
+            "error",
+            {
+                "require": {
+                    "FunctionDeclaration": true,
+                    "MethodDefinition": true,
+                    "ClassDeclaration": true,
+                    "ArrowFunctionExpression": true
+                }
+            }
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "prefer": {
+                    "arg": "param",
+                    "argument": "param",
+                    "returns": "return"
+                },
+                "preferType": {
+                    "Boolean": "bool",
+                    "boolean": "bool",
+                    "Number": "number",
+                    "Object": "object",
+                    "String": "string",
+                    "Function": "function"
+                },
+                "requireReturn": false
+            }
+        ],
         "react/jsx-uses-vars": 2,
         "no-unused-vars": [
             "error",

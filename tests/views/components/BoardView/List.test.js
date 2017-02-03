@@ -2,13 +2,13 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import List from '../../../../src/views/components/BoardView/List'
+import CardList from '../../../../src/views/components/BoardView/CardList'
 import { ListGroupItem } from 'react-bootstrap'
 
 import { getCardOnlyWithIds } from '../../../_mocks/Card.mocks'
-import { getEmptyList } from '../../../_mocks/List.mocks'
+import { getEmptyList } from '../../../_mocks/CardList.mocks'
 
-describe('List', () => {
+describe('CardList', () => {
 
     const cardWithId = getCardOnlyWithIds(1)
     const anotherCardWithId = getCardOnlyWithIds(2)
@@ -24,7 +24,7 @@ describe('List', () => {
         it('should render correctly with title', () => {
             list.title = 'title'
             const tree = renderer.create(
-                <List list={list} onCardClick={onCardClick} />
+                <CardList list={list} onCardClick={onCardClick} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -32,9 +32,9 @@ describe('List', () => {
 
         it('should render correctly with children', () => {
             const tree = renderer.create(
-                <List list={list} onCardClick={onCardClick}>
+                <CardList list={list} onCardClick={onCardClick}>
                     <span>unique</span>
-                </List>
+                </CardList>
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -43,7 +43,7 @@ describe('List', () => {
         it('should render correctly with a card', () => {
             list.cards = [cardWithId]
             const tree = renderer.create(
-                <List list={list} onCardClick={onCardClick} />
+                <CardList list={list} onCardClick={onCardClick} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -52,7 +52,7 @@ describe('List', () => {
         it('should render correctly with two card', () => {
             list.cards = [cardWithId, anotherCardWithId]
             const tree = renderer.create(
-                <List list={list} onCardClick={onCardClick} />
+                <CardList list={list} onCardClick={onCardClick} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -61,7 +61,7 @@ describe('List', () => {
         it('should render correctly with no cards', () => {
             list.cards = []
             const tree = renderer.create(
-                <List list={list} onCardClick={onCardClick} />
+                <CardList list={list} onCardClick={onCardClick} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -71,7 +71,7 @@ describe('List', () => {
     describe('cards', () => {
         it('should each be passed to the onCardClick func on ListGroupItem click', () => {
             list.cards = [cardWithId, anotherCardWithId]
-            const wrapper = shallow(<List list={list} onCardClick={onCardClick} />)
+            const wrapper = shallow(<CardList list={list} onCardClick={onCardClick} />)
 
             wrapper.find(ListGroupItem).first().simulate('click')
             expect(onCardClick).toHaveBeenLastCalledWith(cardWithId)

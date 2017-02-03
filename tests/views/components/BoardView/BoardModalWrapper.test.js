@@ -14,7 +14,7 @@ import BoardModalWrapper from '../../../../src/views/components/BoardView/BoardM
 describe('BoardModalWrapper', () => {
 
     const onCardClick = jest.fn(),
-        onCreateCardClick = jest.fn(),
+        onCreateCard = jest.fn(),
         onCreateNewList = jest.fn(),
         onHideCardDetails = jest.fn(),
         onSaveCard = jest.fn(),
@@ -35,7 +35,7 @@ describe('BoardModalWrapper', () => {
                 <BoardModalWrapper
                     board={emptyBoard}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
@@ -53,7 +53,7 @@ describe('BoardModalWrapper', () => {
                 <BoardModalWrapper
                     board={getBoardWithLists(undefined, 1)}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
@@ -71,7 +71,7 @@ describe('BoardModalWrapper', () => {
                 <BoardModalWrapper
                     board={getBoardWithLists(undefined, 2)}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
@@ -93,7 +93,7 @@ describe('BoardModalWrapper', () => {
             const wrapper = shallow(<BoardModalWrapper
                 board={emptyBoard}
                 onCardClick={onCardClick}
-                onCreateCardClick={onCreateCardClick}
+                onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
@@ -115,7 +115,7 @@ describe('BoardModalWrapper', () => {
             const wrapper = shallow(<BoardModalWrapper
                 board={emptyBoard}
                 onCardClick={onCardClick}
-                onCreateCardClick={onCreateCardClick}
+                onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
@@ -137,7 +137,7 @@ describe('BoardModalWrapper', () => {
             const wrapper = shallow(<BoardModalWrapper
                 board={emptyBoard}
                 onCardClick={onCardClick}
-                onCreateCardClick={onCreateCardClick}
+                onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
@@ -156,7 +156,7 @@ describe('BoardModalWrapper', () => {
             const wrapper = shallow(<BoardModalWrapper
                 board={emptyBoard}
                 onCardClick={onCardClick}
-                onCreateCardClick={onCreateCardClick}
+                onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
@@ -168,7 +168,7 @@ describe('BoardModalWrapper', () => {
 
             expect(wrapper.find(Board).prop('board')).toBe(emptyBoard)
             expect(wrapper.find(Board).prop('onCardClick')).toBe(onCardClick)
-            expect(wrapper.find(Board).prop('onCreateCardClick')).toBe(onCreateCardClick)
+            expect(wrapper.find(Board).prop('onCreateCard')).toBe(onCreateCard)
             expect(wrapper.find(Board).prop('onCreateNewList')).toBe(onCreateNewList)
         })
     })

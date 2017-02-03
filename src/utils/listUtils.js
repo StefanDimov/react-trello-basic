@@ -1,16 +1,24 @@
+/** @module listUtils */
 import React from 'react'
 import { generate as generateId } from 'shortid'
 
-const listUtils = {}
-
-listUtils.listPropType = React.PropTypes.shape({
+/**
+ * React propType for the board list
+ * @type {object}
+ */
+export const listPropType = React.PropTypes.shape({
     boardId: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired,
     cards: React.PropTypes.array.isRequired
 })
 
-listUtils.createEmptyList = (boardId) => {
+/**
+ * Creates an empty list
+ * @param  {string} boardId Id of the board the list belongs to
+ * @return {object}         The created list
+ */
+export function createEmptyList(boardId){
     return {
         boardId: boardId || null,
         id: generateId(),
@@ -18,5 +26,3 @@ listUtils.createEmptyList = (boardId) => {
         cards: []
     }
 }
-
-export default listUtils

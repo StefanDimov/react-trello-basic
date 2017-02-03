@@ -1,5 +1,6 @@
+/* eslint require-jsdoc: off */
 import R from 'ramda'
-import { getEmptyList, getListWithCards } from './List.mocks'
+import { getEmptyList, getListWithCards } from './CardList.mocks'
 
 export function getEmptyBoard(mark='') {
     return {

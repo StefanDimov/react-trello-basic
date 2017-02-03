@@ -2,12 +2,19 @@ import React from 'react'
 
 import { Row, Col } from 'react-bootstrap'
 
-import boardUtils from '../../../utils/boardUtils'
+import * as boardUtils from '../../../utils/boardUtils'
 import BoardItem from './BoardItem'
-import AddNewBoardItem from './AddNewBoardItem'
+import AddNewBoardInput from './AddNewBoardInput'
 
+/**
+ * Component that displays BoardItems. Has an input for adding a new board.
+ * @class comp/BoardItemsList
+ * @param {array} boards Boards to display
+ * @param {function} onBoardClick callback for when a board is clicked
+ * @param {function} onCreateBoard callback with the data to from the new board input
+ */
 export default class BoardItemsList extends React.Component {
-    render() {
+    render() { // eslint-disable-line
         const { boards, onBoardClick, onCreateBoard } = this.props
         return (
             <Row>
@@ -17,7 +24,7 @@ export default class BoardItemsList extends React.Component {
                     </Col>
                 )}
                 <Col sm={3} key={'add-new-boards-item'}>
-                    <AddNewBoardItem onCreateBoard={onCreateBoard} />
+                    <AddNewBoardInput onCreateBoard={onCreateBoard} />
                 </Col>
             </Row>
         )

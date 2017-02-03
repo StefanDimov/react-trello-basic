@@ -1,4 +1,4 @@
-import boardUtils from '../../src/utils/boardUtils'
+import * as boardUtils from '../../src/utils/boardUtils'
 
 describe('boardUtils', () => {
 

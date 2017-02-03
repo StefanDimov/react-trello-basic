@@ -5,8 +5,11 @@ import React from 'react'
 import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
 import boardStore from '../../stores/boardsStore'
 
-export default class BoardsContainer extends React.Component {
-    constructor(props) {
+/**
+ * Component that holds all the business logic for the Boards view.
+ */
+class BoardsContainer extends React.Component {
+    constructor(props) { // eslint-disable-line
         super(props)
 
         this.state = {
@@ -16,15 +19,22 @@ export default class BoardsContainer extends React.Component {
         this.selectBoard = this.selectBoard.bind(this)
     }
 
+    /**
+     * Navigates to a given board view.
+     * @param {object} board The board to which to navigate to
+     */
     selectBoard(board) {
         this.context.router.push('/board/' + board.id)
     }
 
+    /**
+     * Calls boardAction to create a new board
+     */
     createBoard() { // title
-        // TODO: Implement Action 
+        // TODO: Implement Action
     }
 
-    render() {
+    render() { // eslint-disable-line
         return (
             <BoardsWrapper
                 boards={this.state.boards}
@@ -37,3 +47,5 @@ export default class BoardsContainer extends React.Component {
 BoardsContainer.contextTypes = {
     router: React.PropTypes.object
 }
+
+export default BoardsContainer

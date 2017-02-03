@@ -77,7 +77,7 @@ describe('BoardContainer', () => {
             expect(wrapper.find(BoardModalWrapper).prop('cardToView')).toBe(null)
 
             expect(boardWrapper.prop('onCardClick')).toBe(instance.viewCardDetails)
-            expect(boardWrapper.prop('onCreateCardClick')).toBe(instance.initCreateCard)
+            expect(boardWrapper.prop('onCreateCard')).toBe(instance.initCreateCard)
             expect(boardWrapper.prop('onCreateNewList')).toBe(instance.createNewList)
             expect(boardWrapper.prop('onHideCardDetails')).toBe(instance.closeCardDetailsModal)
             expect(boardWrapper.prop('onSaveCard')).toBe(instance.saveCard)

@@ -1,14 +1,18 @@
 import React from 'react'
 
-import cardUtils from '../../utils/cardUtils'
+import * as cardUtils from '../../utils/cardUtils'
 
 import boardStore from '../../stores/boardStore'
 import * as boardActions from '../../actions/boardActions'
 
 import BoardModalWrapper from '../components/BoardView/BoardModalWrapper'
 
-export default class BoardContainer extends React.Component {
-    constructor(props) {
+/**
+ * Component that holds all the business logic for the Board view.
+ * Visualing and managing the board's list, cards.
+ */
+class BoardContainer extends React.Component {
+    constructor(props) { // eslint-disable-line
         super(props)
 
         this.setBoard = this.setBoard.bind(this)
@@ -27,22 +31,33 @@ export default class BoardContainer extends React.Component {
         }
     }
 
+    /**
+     * When component mounts, it will subscibe to boardStore
+     * @private
+     */
     componentWillMount() {
-        // subscribes to store
         boardStore.on('change', this.setBoard)
     }
 
+    /**
+     * When component unmounts, it will unsubscibe to boardStore
+     * @private
+     */
     componentWillUnmount() {
-        // unsubscribes to store
         boardStore.removeListener('change', this.setBoard)
     }
 
+    /**
+     * Gets board from boardStore and set's it as state
+     */
     setBoard() {
-        // sets board state from store
         this.setState({ board: boardStore.getBoard() })
     }
 
-    // opens CardDetails Modal with card
+    /**
+     * Opens CardDetails Modal with a certain card.
+     * @param {object} card The card to be used in the CardDetails Modal
+     */
     viewCardDetails(card) {
         this.setState({
             showCardDetails: true,
@@ -50,7 +65,9 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    // closes CardDetails Modal and clears state
+    /**
+     * Closes CardDetails Modal and clears state
+     */
     closeCardDetailsModal() {
         this.setState({
             showCardDetails: false,
@@ -58,7 +75,10 @@ export default class BoardContainer extends React.Component {
         })
     }
 
-    // opens CardDetails Modal with new empty card
+    /**
+     * Opens CardDetails Modal with new empty card
+     * @param {string} listId The listId to be set on the new card
+     */
     initCreateCard(listId) {
         this.setState({
             showCardDetails: true,
@@ -66,32 +86,48 @@ export default class BoardContainer extends React.Component {
         })
     }
 
+    /**
+     * Calls boardAction to creat a new list
+     * @param {string} listName The name of the list that should be created
+     */
     createNewList(listName) {
         boardActions.addNewList(listName)
     }
 
+    /**
+     * Calls boardAction to save a card
+     * @param {object} card The card that needs to be saved
+     */
     saveCard(card) {
         boardActions.saveCard(card)
     }
 
+    /**
+     * Calls boardAction to delete a card
+     * @param {object} card The card that needs to be deleted
+     */
     deleteCard(card) {
         boardActions.deleteCard(card)
         this.closeCardDetailsModal()
     }
 
+    /**
+     * Calls boardAction to copy a card
+     * @param {object} card The card that needs to be copied
+     */
     copyCard(card) {
         boardActions.copyCard(card)
         this.closeCardDetailsModal()
     }
 
-    render() {
+    render() { // eslint-disable-line
         const { board, showCardDetails, cardToView } = this.state
 
         return (
             <BoardModalWrapper
                 board={board}
                 onCardClick={this.viewCardDetails}
-                onCreateCardClick={this.initCreateCard}
+                onCreateCard={this.initCreateCard}
                 onCreateNewList={this.createNewList}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={this.closeCardDetailsModal}
@@ -102,3 +138,5 @@ export default class BoardContainer extends React.Component {
         )
     }
 }
+
+export default BoardContainer

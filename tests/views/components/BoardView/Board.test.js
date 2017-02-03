@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
 import Board from '../../../../src/views/components/BoardView/Board'
-import List from '../../../../src/views/components/BoardView/List'
+import CardList from '../../../../src/views/components/BoardView/CardList'
 import AddNewListInput from '../../../../src/views/components/BoardView/AddNewListInput'
 import { Button } from 'react-bootstrap'
 
@@ -12,7 +12,7 @@ import { getEmptyBoard, getBoardWithLists } from '../../../_mocks/Board.mocks'
 describe('Board', () => {
 
     const onCardClick = jest.fn()
-    const onCreateCardClick = jest.fn()
+    const onCreateCard = jest.fn()
     const onCreateNewList = jest.fn()
 
     let boardWithTitle, boardWithTitleAndOneList, boardWithTitleAndTwoLists
@@ -23,7 +23,7 @@ describe('Board', () => {
         boardWithTitleAndTwoLists = getBoardWithLists(undefined, 2)
 
         onCardClick.mockClear()
-        onCreateCardClick.mockClear()
+        onCreateCard.mockClear()
         onCreateNewList.mockClear()
     })
 
@@ -33,7 +33,7 @@ describe('Board', () => {
                 <Board
                     board={boardWithTitle}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             ).toJSON()
 
@@ -45,7 +45,7 @@ describe('Board', () => {
                 <Board
                     board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             ).toJSON()
 
@@ -57,7 +57,7 @@ describe('Board', () => {
                 <Board
                     board={boardWithTitleAndTwoLists}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             ).toJSON()
 
@@ -71,7 +71,7 @@ describe('Board', () => {
                 <Board
                     board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             )
 
@@ -85,26 +85,26 @@ describe('Board', () => {
                 <Board
                     board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             )
 
-            expect(wrapper.find(List).prop('onCardClick')).toBe(onCardClick)
+            expect(wrapper.find(CardList).prop('onCardClick')).toBe(onCardClick)
         })
 
-        it('should have a button that calls onCreateCardClick with list id', () => {
+        it('should have a button that calls onCreateCard with list id', () => {
             const wrapper = shallow(
                 <Board
                     board={boardWithTitleAndOneList}
                     onCardClick={onCardClick}
-                    onCreateCardClick={onCreateCardClick}
+                    onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList} />
             )
 
-            wrapper.find(List).find(Button).simulate('click')
+            wrapper.find(CardList).find(Button).simulate('click')
 
-            expect(onCreateCardClick).toHaveBeenCalledTimes(1)
-            expect(onCreateCardClick).toHaveBeenCalledWith(boardWithTitleAndOneList.lists[0].id)
+            expect(onCreateCard).toHaveBeenCalledTimes(1)
+            expect(onCreateCard).toHaveBeenCalledWith(boardWithTitleAndOneList.lists[0].id)
         })
     })
 })

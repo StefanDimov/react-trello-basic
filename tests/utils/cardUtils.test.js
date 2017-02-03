@@ -1,4 +1,4 @@
-import cardUtils from '../../src/utils/cardUtils'
+import * as cardUtils from '../../src/utils/cardUtils'
 import { getBasicCard } from '../_mocks/Card.mocks'
 
 describe('cardUtils', () => {

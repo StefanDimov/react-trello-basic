@@ -1,4 +1,4 @@
-import listUtils from '../../src/utils/listUtils'
+import * as listUtils from '../../src/utils/listUtils'
 
 describe('listUtils', () => {
 

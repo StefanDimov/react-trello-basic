@@ -1,6 +1,11 @@
+/** @module boardActions */
 import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
+/**
+ * Dispatches a ADD_NEW_LIST event in to the dispatcher
+ * @param {string} listTitle Title of the list to be added
+ */
 export function addNewList(listTitle) {
     dispatcher.dispatch({
         type: boardActionTypes.ADD_NEW_LIST,
@@ -8,6 +13,10 @@ export function addNewList(listTitle) {
     })
 }
 
+/**
+ * Dispatches a SAVE_CARD event in to the dispatcher
+ * @param {object} card Card to save
+ */
 export function saveCard(card) {
     dispatcher.dispatch({
         type: boardActionTypes.SAVE_CARD,
@@ -15,6 +24,10 @@ export function saveCard(card) {
     })
 }
 
+/**
+ * Dispatches a DELETE_CARD event in to the dispatcher
+ * @param {object} card Card to delete
+ */
 export function deleteCard(card) {
     dispatcher.dispatch({
         type: boardActionTypes.DELETE_CARD,
@@ -22,6 +35,10 @@ export function deleteCard(card) {
     })
 }
 
+/**
+ * Dispatches a COPY_CARD event in to the dispatcher
+ * @param {object} card Card to copy
+ */
 export function copyCard(card) {
     dispatcher.dispatch({
         type: boardActionTypes.COPY_CARD,

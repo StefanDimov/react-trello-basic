@@ -6,7 +6,7 @@ import { getEmptyBoard } from '../../../_mocks/Board.mocks.js'
 
 import BoardItemsList from '../../../../src/views/components/BoardsView/BoardItemsList'
 import BoardItem from '../../../../src/views/components/BoardsView/BoardItem'
-import AddNewBoardItem from '../../../../src/views/components/BoardsView/AddNewBoardItem'
+import AddNewBoardInput from '../../../../src/views/components/BoardsView/AddNewBoardInput'
 
 describe('BoardItemsList', () => {
 
@@ -78,11 +78,11 @@ describe('BoardItemsList', () => {
 
     describe('onCreateBoard', () => {
 
-        it('should be set on AddNewBoardItem', () => {
+        it('should be set on AddNewBoardInput', () => {
             const wrapper = shallow(
                 <BoardItemsList boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
             )
-            expect(wrapper.find(AddNewBoardItem).prop('onCreateBoard')).toBe(onCreateBoard)
+            expect(wrapper.find(AddNewBoardInput).prop('onCreateBoard')).toBe(onCreateBoard)
         })
     })
 })

@@ -1,4 +1,4 @@
-import dataStorage from '../../src/storages/dataStorage'
+import * as dataStorage from '../../src/storages/dataStorage'
 import boardsStore from '../../src/stores/boardsStore'
 
 import { getEmptyBoard } from '../_mocks/Board.mocks'
@@ -21,7 +21,7 @@ describe('boardsStore', () => {
 
         it('should returned board should not be a reference to the private state', () => {
             dataStorage.getAllBoards.mockReturnValue(boards)
-            
+
             const boardsFirst = boardsStore.getBoards()
             const boardsSecond = boardsStore.getBoards()
 

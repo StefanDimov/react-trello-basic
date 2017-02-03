@@ -2,12 +2,19 @@ import React from 'react'
 
 import { Navbar, Grid, Row, Col } from 'react-bootstrap'
 
-import boardUtils from '../../../utils/boardUtils'
+import * as boardUtils from '../../../utils/boardUtils'
 
 import BoardItemsList from './BoardItemsList'
 
+/**
+ * Component that wrapps all the components and functionality of the Boards view.
+ * @class comp/BoardsWrapper
+ * @param {object} boards Boards to be visualized
+ * @param {function} onBoardClick callback for when a board is clicked
+ * @param {function} onCreateBoard callback in which data for creating a board will be passed
+ */
 export default class BoardsWrapper extends React.Component {
-    render() {
+    render() { // eslint-disable-line
         const { boards, onBoardClick, onCreateBoard } = this.props
 
         return (

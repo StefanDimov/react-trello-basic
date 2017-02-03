@@ -1,9 +1,14 @@
 import React from 'react'
-import cardUtils from '../../../utils/cardUtils'
+import * as cardUtils from '../../../utils/cardUtils'
 import { Glyphicon } from 'react-bootstrap'
 
+/**
+ * Component for visualizing a card title with some icons depending on the data it holds.
+ * Ment to be used in CardList Component
+ * @class comp/Card
+ */
 export default class Card extends React.Component {
-    render() {
+    render() { // eslint-disable-line
         const { title, description } = this.props.card
         return (
             <div>

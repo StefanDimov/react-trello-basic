@@ -1,4 +1,4 @@
-exports[`AddNewBoardItem should render correctly 1`] = `
+exports[`AddNewBoardInput should render correctly 1`] = `
 <form
   className="my-add-new-board"
   onSubmit={[Function]}>

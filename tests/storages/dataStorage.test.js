@@ -4,7 +4,7 @@ import Lockr from 'lockr'
 import { getEmptyBoard } from '../_mocks/Board.mocks'
 import { LOCAL_STORAGE_DATA_KEY } from '../../src/config'
 
-import dataStorage from '../../src/storages/dataStorage'
+import * as dataStorage from '../../src/storages/dataStorage'
 
 describe('dataStorage', () => {
 

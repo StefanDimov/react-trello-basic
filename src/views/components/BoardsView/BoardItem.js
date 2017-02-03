@@ -1,8 +1,13 @@
 import React from 'react'
-import boardUtils from '../../../utils/boardUtils'
+import * as boardUtils from '../../../utils/boardUtils'
 
+/**
+ * Component that represents a Board Item. Ment to be used with BoardItemsList Component
+ * @class comp/BoardItem
+ * @param {object} board - The Board data
+ */
 export default class BoardItem extends React.Component {
-    render() {
+    render() { // eslint-disable-line
         const { board } = this.props
         return (
             <div className="my-board-item">
