@@ -14,12 +14,13 @@ export const boardPropType = React.PropTypes.shape({
 
 /**
  * Creates an empty card
+ * @param {string} [title=''] The title of the board
  * @return {object} The created card
  */
-export function createEmptyBoard() {
+export function createEmptyBoard(title='') {
     return {
         id: generateId(),
-        title: '',
+        title,
         lists: []
     }
 }

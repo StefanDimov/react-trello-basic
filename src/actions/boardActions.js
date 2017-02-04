@@ -3,7 +3,7 @@ import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
 /**
- * Dispatches a ADD_NEW_LIST event in to the dispatcher
+ * Dispatches a ADD_NEW_LIST event to the dispatcher
  * @param {string} listTitle Title of the list to be added
  */
 export function addNewList(listTitle) {
@@ -14,7 +14,7 @@ export function addNewList(listTitle) {
 }
 
 /**
- * Dispatches a SAVE_CARD event in to the dispatcher
+ * Dispatches a SAVE_CARD event to the dispatcher
  * @param {object} card Card to save
  */
 export function saveCard(card) {
@@ -25,7 +25,7 @@ export function saveCard(card) {
 }
 
 /**
- * Dispatches a DELETE_CARD event in to the dispatcher
+ * Dispatches a DELETE_CARD event to the dispatcher
  * @param {object} card Card to delete
  */
 export function deleteCard(card) {
@@ -36,7 +36,7 @@ export function deleteCard(card) {
 }
 
 /**
- * Dispatches a COPY_CARD event in to the dispatcher
+ * Dispatches a COPY_CARD event to the dispatcher
  * @param {object} card Card to copy
  */
 export function copyCard(card) {

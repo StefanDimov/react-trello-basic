@@ -23,7 +23,7 @@ describe('boardStore', () => {
         })
     })
 
-    describe('handleActions', () => {
+    describe('_handleActions', () => {
         let card
         boardStore.emit = jest.fn()
 

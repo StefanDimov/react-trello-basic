@@ -6,5 +6,5 @@ export const boardActionTypes = {
 }
 
 export const boardsActionTypes = {
-    SELECT_BOARD: 'SELECT_BOARD'
+    ADD_NEW_BOARD: 'ADD_NEW_BOARD'
 }

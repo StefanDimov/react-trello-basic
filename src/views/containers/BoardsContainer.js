@@ -1,9 +1,9 @@
 import React from 'react'
 
-// import * as boardsActions from '../../actions/boardsActions'
+import * as boardsActions from '../../actions/boardsActions'
 
 import BoardsWrapper from '../components/BoardsView/BoardsWrapper'
-import boardStore from '../../stores/boardsStore'
+import boardsStore from '../../stores/boardsStore'
 
 /**
  * Component that holds all the business logic for the Boards view.
@@ -13,10 +13,36 @@ class BoardsContainer extends React.Component {
         super(props)
 
         this.state = {
-            boards: boardStore.getBoards()
+            boards: boardsStore.getBoards()
         }
 
         this.selectBoard = this.selectBoard.bind(this)
+        this.addNewBoard = this.addNewBoard.bind(this)
+        this.setBoards = this.setBoards.bind(this)
+    }
+
+    /**
+     * When component mounts, it will subscibe to boardsStore
+     * @private
+     */
+    componentWillMount() {
+        boardsStore.on('change', this.setBoards)
+    }
+
+    /**
+     * When component unmounts, it will unsubscibe to boardsStore
+     * @private
+     */
+    componentWillUnmount() {
+        boardsStore.removeListener('change', this.setBoards)
+    }
+
+    /**
+     * Gets boards data from boardsStore and set's it as state
+     * @private
+     */
+    setBoards() {
+        this.setState({ boards: boardsStore.getBoards() })
     }
 
     /**
@@ -29,9 +55,10 @@ class BoardsContainer extends React.Component {
 
     /**
      * Calls boardAction to create a new board
+     * @param {string} title The title of the board to be created
      */
-    createBoard() { // title
-        // TODO: Implement Action
+    addNewBoard(title) { // title
+        boardsActions.addNewBoard(title)
     }
 
     render() { // eslint-disable-line
@@ -39,7 +66,7 @@ class BoardsContainer extends React.Component {
             <BoardsWrapper
                 boards={this.state.boards}
                 onBoardClick={this.selectBoard}
-                onCreateBoard={this.createBoard} />
+                onCreateBoard={this.addNewBoard} />
         )
     }
 }
