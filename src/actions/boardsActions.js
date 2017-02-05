@@ -11,3 +11,14 @@ export function addNewBoard(title) {
         title
     })
 }
+
+/**
+ * Dispatches a DELETE_BOARD event to the dispatcher
+ * @param {object} board The board that should be deleted
+ */
+export function deleteBoard(board) {
+    dispatcher.dispatch({
+        type: boardsActionTypes.DELETE_BOARD,
+        board
+    })
+}

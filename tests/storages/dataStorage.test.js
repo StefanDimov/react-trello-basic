@@ -78,4 +78,16 @@ describe('dataStorage', () => {
             expect(Lockr.set).toHaveBeenCalledWith(LOCAL_STORAGE_DATA_KEY, [modifiedBoard, twoBoards[1]])
         })
     })
+
+    describe('deleteBoard', () => {
+        it('should delete board from storage', () => {
+            Lockr.get.mockReturnValue(twoBoards)
+            const boardToDelete = R.clone(twoBoards[0])
+
+            dataStorage.deleteBoard(boardToDelete)
+
+            expect(Lockr.set).toHaveBeenCalledTimes(1)
+            expect(Lockr.set).toHaveBeenCalledWith(LOCAL_STORAGE_DATA_KEY, [twoBoards[1]])
+        })
+    })
 })

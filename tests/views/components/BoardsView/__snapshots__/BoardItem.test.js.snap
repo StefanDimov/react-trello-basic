@@ -1,6 +1,44 @@
 exports[`BoardItem rendering should render correctly 1`] = `
 <div
   className="my-board-item">
-  boardTitle
+  <div
+    className="my-board-item-title">
+    boardTitle
+  </div>
+  <div
+    className="dropdown btn-group btn-group-link">
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="my-board-item-dropdown-overrides dropdown-toggle btn btn-link"
+      disabled={false}
+      id="boardId-dropdown"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      type="button">
+       
+      <span
+        className="caret" />
+    </button>
+    <ul
+      aria-labelledby="boardId-dropdown"
+      className="dropdown-menu dropdown-menu-right"
+      role="menu">
+      <li
+        className=""
+        role="presentation"
+        style={undefined}>
+        <a
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="menuitem"
+          tabIndex="-1">
+          Delete
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 `;

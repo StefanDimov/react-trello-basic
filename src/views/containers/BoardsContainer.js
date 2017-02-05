@@ -18,6 +18,7 @@ class BoardsContainer extends React.Component {
 
         this.selectBoard = this.selectBoard.bind(this)
         this.addNewBoard = this.addNewBoard.bind(this)
+        this.deleteBoard = this.deleteBoard.bind(this)
         this.setBoards = this.setBoards.bind(this)
     }
 
@@ -61,12 +62,21 @@ class BoardsContainer extends React.Component {
         boardsActions.addNewBoard(title)
     }
 
+    /**
+     * Calls boardAction to delete a board
+     * @param {object} board The board to be deleted
+     */
+    deleteBoard(board) {
+        boardsActions.deleteBoard(board)
+    }
+
     render() { // eslint-disable-line
         return (
             <BoardsWrapper
                 boards={this.state.boards}
                 onBoardClick={this.selectBoard}
-                onCreateBoard={this.addNewBoard} />
+                onCreateBoard={this.addNewBoard}
+                onDeleteBoard={this.deleteBoard}/>
         )
     }
 }

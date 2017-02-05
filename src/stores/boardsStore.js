@@ -29,22 +29,18 @@ class BoardsStore extends EventEmitter {
      */
     _handleActions(action) { // eslint-disable-line
         switch (action.type) {
+
         case boardsActionTypes.ADD_NEW_BOARD:
-            _createAndAddNewBoardToStorage(action.title)
+            dataStorage.addBoard(boardUtils.createEmptyBoard(action.title))
+            this.emit('change')
+            break
+
+        case boardsActionTypes.DELETE_BOARD:
+            dataStorage.deleteBoard(action.board)
             this.emit('change')
             break
         }
     }
-}
-
-/**
- * Creates a board with a given title and adds it to storage
- * @private
- * @param  {string} title The title that should be set on the new board
- */
-function _createAndAddNewBoardToStorage(title) {
-    const newBoard = boardUtils.createEmptyBoard(title)
-    dataStorage.addBoard(newBoard)
 }
 
 const boardsStore = new BoardsStore()

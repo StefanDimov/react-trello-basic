@@ -6,7 +6,45 @@ exports[`BoardItemsList rendering should render properly with multiple boards 1`
     onClick={[Function]}>
     <div
       className="my-board-item">
-      boardTitle1
+      <div
+        className="my-board-item-title">
+        boardTitle1
+      </div>
+      <div
+        className="dropdown btn-group btn-group-link">
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="my-board-item-dropdown-overrides dropdown-toggle btn btn-link"
+          disabled={false}
+          id="boardId1-dropdown"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          type="button">
+           
+          <span
+            className="caret" />
+        </button>
+        <ul
+          aria-labelledby="boardId1-dropdown"
+          className="dropdown-menu dropdown-menu-right"
+          role="menu">
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="menuitem"
+              tabIndex="-1">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div
@@ -14,7 +52,45 @@ exports[`BoardItemsList rendering should render properly with multiple boards 1`
     onClick={[Function]}>
     <div
       className="my-board-item">
-      boardTitle2
+      <div
+        className="my-board-item-title">
+        boardTitle2
+      </div>
+      <div
+        className="dropdown btn-group btn-group-link">
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="my-board-item-dropdown-overrides dropdown-toggle btn btn-link"
+          disabled={false}
+          id="boardId2-dropdown"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          type="button">
+           
+          <span
+            className="caret" />
+        </button>
+        <ul
+          aria-labelledby="boardId2-dropdown"
+          className="dropdown-menu dropdown-menu-right"
+          role="menu">
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="menuitem"
+              tabIndex="-1">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div
@@ -22,7 +98,45 @@ exports[`BoardItemsList rendering should render properly with multiple boards 1`
     onClick={[Function]}>
     <div
       className="my-board-item">
-      boardTitle3
+      <div
+        className="my-board-item-title">
+        boardTitle3
+      </div>
+      <div
+        className="dropdown btn-group btn-group-link">
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="my-board-item-dropdown-overrides dropdown-toggle btn btn-link"
+          disabled={false}
+          id="boardId3-dropdown"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          type="button">
+           
+          <span
+            className="caret" />
+        </button>
+        <ul
+          aria-labelledby="boardId3-dropdown"
+          className="dropdown-menu dropdown-menu-right"
+          role="menu">
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="menuitem"
+              tabIndex="-1">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div
@@ -76,7 +190,45 @@ exports[`BoardItemsList rendering should render properly with one board 1`] = `
     onClick={[Function]}>
     <div
       className="my-board-item">
-      boardTitle1
+      <div
+        className="my-board-item-title">
+        boardTitle1
+      </div>
+      <div
+        className="dropdown btn-group btn-group-link">
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="my-board-item-dropdown-overrides dropdown-toggle btn btn-link"
+          disabled={false}
+          id="boardId1-dropdown"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          type="button">
+           
+          <span
+            className="caret" />
+        </button>
+        <ul
+          aria-labelledby="boardId1-dropdown"
+          className="dropdown-menu dropdown-menu-right"
+          role="menu">
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="menuitem"
+              tabIndex="-1">
+              Delete
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <div

@@ -17,6 +17,8 @@ describe('BoardsContainer', () => {
     boardsStore.getBoards = jest.fn()
     boardsActions.addNewBoard = jest.fn()
 
+    boardsActions.deleteBoard = jest.fn()
+
     beforeEach(() => {
         board = getEmptyBoard()
 
@@ -27,6 +29,7 @@ describe('BoardsContainer', () => {
         boardsStore.getBoards.mockReturnValue([])
 
         boardsActions.addNewBoard.mockClear()
+        boardsActions.deleteBoard.mockClear()
     })
 
     describe('boardsStore integration', () => {
@@ -77,6 +80,8 @@ describe('BoardsContainer', () => {
                 .toBe(instance.selectBoard)
             expect(wrapper.find(BoardsWrapper).prop('onCreateBoard'))
                 .toBe(instance.addNewBoard)
+            expect(wrapper.find(BoardsWrapper).prop('onDeleteBoard'))
+                .toBe(instance.deleteBoard)
         })
     })
 
@@ -106,6 +111,18 @@ describe('BoardsContainer', () => {
 
             expect(boardsActions.addNewBoard).toHaveBeenCalledTimes(1)
             expect(boardsActions.addNewBoard).toHaveBeenCalledWith(title)
+        })
+    })
+
+    describe('deleteBoard', () => {
+        it('should call action with proper params', () => {
+            const wrapper = shallow(<BoardsContainer />)
+            const instance = wrapper.instance()
+
+            instance.deleteBoard(board)
+
+            expect(boardsActions.deleteBoard).toHaveBeenCalledTimes(1)
+            expect(boardsActions.deleteBoard).toHaveBeenCalledWith(board)
         })
     })
 })

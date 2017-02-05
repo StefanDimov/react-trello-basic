@@ -15,7 +15,7 @@ import BoardItemsList from './BoardItemsList'
  */
 export default class BoardsWrapper extends React.Component {
     render() { // eslint-disable-line
-        const { boards, onBoardClick, onCreateBoard } = this.props
+        const { boards, onBoardClick, onCreateBoard, onDeleteBoard } = this.props
 
         return (
             <div className="my-navbar-top-padding">
@@ -31,7 +31,10 @@ export default class BoardsWrapper extends React.Component {
                             <h2 className="h4">Choose a board...</h2>
                         </Col>
                     </Row>
-                    <BoardItemsList boards={boards} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                    <BoardItemsList boards={boards}
+                        onBoardClick={onBoardClick}
+                        onCreateBoard={onCreateBoard}
+                        onDeleteBoard={onDeleteBoard} />
                 </Grid>
             </div>
         )
@@ -41,5 +44,6 @@ export default class BoardsWrapper extends React.Component {
 BoardsWrapper.propTypes = {
     boards: React.PropTypes.arrayOf(boardUtils.boardPropType).isRequired,
     onBoardClick: React.PropTypes.func.isRequired,
-    onCreateBoard: React.PropTypes.func.isRequired
+    onCreateBoard: React.PropTypes.func.isRequired,
+    onDeleteBoard: React.PropTypes.func.isRequired
 }

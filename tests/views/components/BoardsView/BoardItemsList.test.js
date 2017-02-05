@@ -12,6 +12,7 @@ describe('BoardItemsList', () => {
 
     const onBoardClick = jest.fn()
     const onCreateBoard = jest.fn()
+    const onDeleteBoard = jest.fn()
     let board, anotherBoard, thirdBoard
 
     beforeEach(() => {
@@ -21,13 +22,17 @@ describe('BoardItemsList', () => {
 
         onBoardClick.mockClear()
         onCreateBoard.mockClear()
+        onDeleteBoard.mockClear()
     })
 
     describe('rendering', () => {
 
         it('should render properly with no boards', () => {
             const tree = renderer.create(
-                <BoardItemsList boards={[]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -35,7 +40,10 @@ describe('BoardItemsList', () => {
 
         it('should render properly with one board', () => {
             const tree = renderer.create(
-                <BoardItemsList boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[board]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -43,7 +51,10 @@ describe('BoardItemsList', () => {
 
         it('should render properly with multiple boards', () => {
             const tree = renderer.create(
-                <BoardItemsList boards={[board, anotherBoard, thirdBoard]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[board, anotherBoard, thirdBoard]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             ).toJSON()
 
             expect(tree).toMatchSnapshot()
@@ -53,7 +64,10 @@ describe('BoardItemsList', () => {
     describe('onBoardClick', () => {
         it('should be set on all BoardItems container', () => {
             const wrapper = shallow(
-                <BoardItemsList boards={[board, anotherBoard]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[board, anotherBoard]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             )
 
             const firstContainer = wrapper.find(BoardItem).first().parent()
@@ -65,7 +79,10 @@ describe('BoardItemsList', () => {
 
         it('should be called with appropriate params on click', () => {
             const wrapper = shallow(
-                <BoardItemsList boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[board]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             )
 
             const container = wrapper.find(BoardItem).parent()
@@ -77,12 +94,27 @@ describe('BoardItemsList', () => {
     })
 
     describe('onCreateBoard', () => {
-
         it('should be set on AddNewBoardInput', () => {
             const wrapper = shallow(
-                <BoardItemsList boards={[board]} onBoardClick={onBoardClick} onCreateBoard={onCreateBoard} />
+                <BoardItemsList boards={[board]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
             )
             expect(wrapper.find(AddNewBoardInput).prop('onCreateBoard')).toBe(onCreateBoard)
+        })
+    })
+
+    describe('onDeleteBoard', () => {
+        it('should be set each rendered BoardItem', () => {
+            const wrapper = shallow(
+                <BoardItemsList boards={[board, anotherBoard]}
+                    onBoardClick={onBoardClick}
+                    onCreateBoard={onCreateBoard}
+                    onDeleteBoard={onDeleteBoard} />
+            )
+            expect(wrapper.find(BoardItem).first().prop('onDeleteBoard')).toBe(onDeleteBoard)
+            expect(wrapper.find(BoardItem).last().prop('onDeleteBoard')).toBe(onDeleteBoard)
         })
     })
 })

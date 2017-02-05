@@ -61,3 +61,13 @@ export function updateBoard(board) {
     const updatedBoards = R.update(boardToUpdateIndex, board, allBoards)
     _saveAllBoards(updatedBoards)
 }
+
+/**
+ * Delets a board from storage
+ * @param  {board} board The board that should be deleted
+ */
+export function deleteBoard(board) {
+    const allBoards = _getAllBoards()
+    const leftBoards = R.without([board], allBoards)
+    _saveAllBoards(leftBoards)
+}

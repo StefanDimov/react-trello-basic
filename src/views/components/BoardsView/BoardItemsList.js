@@ -12,15 +12,16 @@ import AddNewBoardInput from './AddNewBoardInput'
  * @param {array} boards Boards to display
  * @param {function} onBoardClick callback for when a board is clicked
  * @param {function} onCreateBoard callback with the data to from the new board input
+ * @param {function} onDeleteBoard callback which will be called when a board should be deleted
  */
 export default class BoardItemsList extends React.Component {
     render() { // eslint-disable-line
-        const { boards, onBoardClick, onCreateBoard } = this.props
+        const { boards, onBoardClick, onCreateBoard, onDeleteBoard } = this.props
         return (
             <Row>
                 {boards.map((board) =>
                     <Col sm={3} key={board.id} onClick={() => onBoardClick(board)}>
-                        <BoardItem board={board} />
+                        <BoardItem board={board} onDeleteBoard={onDeleteBoard} />
                     </Col>
                 )}
                 <Col sm={3} key={'add-new-boards-item'}>
@@ -34,5 +35,6 @@ export default class BoardItemsList extends React.Component {
 BoardItemsList.propTypes = {
     boards: React.PropTypes.arrayOf(boardUtils.boardPropType).isRequired,
     onBoardClick: React.PropTypes.func.isRequired,
-    onCreateBoard: React.PropTypes.func.isRequired
+    onCreateBoard: React.PropTypes.func.isRequired,
+    onDeleteBoard: React.PropTypes.func.isRequired
 }
