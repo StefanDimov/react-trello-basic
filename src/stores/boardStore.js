@@ -1,6 +1,8 @@
 import { EventEmitter } from 'events'
 import R from 'ramda'
 
+import * as dataStorage from '../storages/dataStorage'
+
 import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
@@ -10,42 +12,13 @@ import * as cardUtils from '../utils/cardUtils'
 // TODO: must get id from url path and get board data from local storage
 
 /**
- * Store that manages a certain loaded board
+ * Store that manages a certain loaded board. Board must be loaded at first.
  */
 class BoardStore extends EventEmitter {
     constructor() { // eslint-disable-line
         super()
-
-        this.board = {
-            title: 'First Board',
-            id: '1',
-            lists: [
-                {
-                    boardId: '1',
-                    id: '1',
-                    title: 'Backlog',
-                    cards: [{ listId: '1', id:'1', title: 'Develop app', description: 'Amazing' }, { listId: '1', id:'2', title: 'Test app' }]
-                },
-                {
-                    boardId: '1',
-                    id: '2',
-                    title: 'ToDo',
-                    cards: [{ listId: '2', id:'3', title: 'Learn Redux' }]
-                },
-                {
-                    boardId: '1',
-                    id: '3',
-                    title: 'In Progress',
-                    cards: [{ listId: '3', id:'4', title: 'Learn React' }, { listId: '3', id:'5', title: 'Try Flux' }]
-                },
-                {
-                    boardId: '1',
-                    id: '4',
-                    title: 'Done',
-                    cards: []
-                }
-            ]
-        }
+        this.isBoardLoaded = false
+        this.board = null
     }
 
     /**
@@ -63,22 +36,32 @@ class BoardStore extends EventEmitter {
      */
     _handleActions(action) {
         switch (action.type) {
+        case boardActionTypes.LOAD_BOARD:
+            this.board = dataStorage.getBoard(action.boardId)
+            this.isBoardLoaded = true
+            this.emit('change')
+            break
+
         case boardActionTypes.ADD_NEW_LIST:
+            if (!this.isBoardLoaded) break
             this.board = _getBoardWithNewList(this.board, action.listTitle)
             this.emit('change')
             break
 
         case boardActionTypes.SAVE_CARD:
+            if (!this.isBoardLoaded) break
             this.board = _getBoardWithSavedCard(this.board, action.card)
             this.emit('change')
             break
 
         case boardActionTypes.DELETE_CARD:
+            if (!this.isBoardLoaded) break
             this.board = _getBoardWithDeletedCard(this.board, action.card)
             this.emit('change')
             break
 
         case boardActionTypes.COPY_CARD:
+            if (!this.isBoardLoaded) break
             this.board = _getBoardWithCopiedCard(this.board, action.card)
             this.emit('change')
             break

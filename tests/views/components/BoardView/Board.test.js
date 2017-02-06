@@ -19,8 +19,8 @@ describe('Board', () => {
 
     beforeEach(() => {
         boardWithTitle = getEmptyBoard()
-        boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
-        boardWithTitleAndTwoLists = getBoardWithLists(undefined, 2)
+        boardWithTitleAndOneList = getBoardWithLists({ numberOfLists: 1 })
+        boardWithTitleAndTwoLists = getBoardWithLists({ numberOfLists: 2 })
 
         onCardClick.mockClear()
         onCreateCard.mockClear()

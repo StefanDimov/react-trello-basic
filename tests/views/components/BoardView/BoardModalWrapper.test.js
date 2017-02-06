@@ -51,7 +51,7 @@ describe('BoardModalWrapper', () => {
         it('should render correctly a board with a title and a list', () => {
             const tree = renderer.create(
                 <BoardModalWrapper
-                    board={getBoardWithLists(undefined, 1)}
+                    board={getBoardWithLists({ numberOfLists: 1 })}
                     onCardClick={onCardClick}
                     onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
@@ -69,7 +69,7 @@ describe('BoardModalWrapper', () => {
         it('should render correctly a board with a title and two lists', () => {
             const tree = renderer.create(
                 <BoardModalWrapper
-                    board={getBoardWithLists(undefined, 2)}
+                    board={getBoardWithLists({ numberOfLists: 2 })}
                     onCardClick={onCardClick}
                     onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}

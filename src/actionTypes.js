@@ -1,4 +1,5 @@
 export const boardActionTypes = {
+    LOAD_BOARD: 'LOAD_BOARD',
     ADD_NEW_LIST: 'ADD_NEW_LIST',
     SAVE_CARD: 'SAVE_CARD',
     DELETE_CARD: 'DELETE_CARD',

@@ -13,6 +13,15 @@ describe('boardActions', () => {
         dispatcher.dispatch.mockClear()
     })
 
+    describe('loadBoard', () => {
+        it('should pass the proper params to dispatcher', () => {
+            const boardId = 'boardId'
+            boardActions.loadBoard(boardId)
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.LOAD_BOARD, boardId })
+        })
+    })
+
     describe('addNewList', () => {
         it('should pass the proper params to dispatcher', () => {
             boardActions.addNewList('list title')

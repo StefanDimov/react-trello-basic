@@ -11,7 +11,10 @@ import BoardModalWrapper from '../../../src/views/components/BoardView/BoardModa
 
 describe('BoardContainer', () => {
 
+    const params = { boardId: 'boardId' }
     let boardWithTitle, boardWithTitleAndOneList, card
+
+    boardActions.loadBoard = jest.fn()
 
     boardStore.getBoard = jest.fn()
     boardStore.on = jest.fn()
@@ -19,34 +22,32 @@ describe('BoardContainer', () => {
     beforeEach(() => {
         card = getBasicCard()
         boardWithTitle = getEmptyBoard()
-        boardWithTitleAndOneList = getBoardWithLists(undefined, 1)
+        boardWithTitleAndOneList = getBoardWithLists({ numberOfLists: 1 })
+
+        boardActions.loadBoard.mockClear()
 
         boardStore.on.mockClear()
         boardStore.getBoard.mockClear()
-
         boardStore.getBoard.mockReturnValue(boardWithTitleAndOneList)
     })
 
     describe('boardStore integration', () => {
 
-        it('should get initial state from store', () => {
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
-            expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
-            expect(wrapper.state().board).toBe(boardWithTitleAndOneList)
+        it('should subscribe to store on mount', () => {
+            shallow(<BoardContainer params={params} />)
+            expect(boardStore.on).toHaveBeenCalledTimes(1)
         })
 
-        it('should subscribe to store on mount', () => {
-            expect(boardStore.on).toHaveBeenCalledTimes(0)
-            shallow(<BoardContainer />)
-            expect(boardStore.on).toHaveBeenCalledTimes(1)
+        it('should call loadBoard action on mount', () => {
+            shallow(<BoardContainer params={params} />)
+            expect(boardActions.loadBoard).toHaveBeenCalledTimes(1)
         })
 
         it('should subscribe to store on unmount', () => {
             boardStore.removeListener = jest.fn()
 
             expect(boardStore.removeListener).toHaveBeenCalledTimes(0)
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
 
             wrapper.unmount()
             expect(boardStore.removeListener).toHaveBeenCalledTimes(1)
@@ -55,12 +56,16 @@ describe('BoardContainer', () => {
         })
 
         it('should update state on store change', () => {
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
+
+            // manually trigger boardStore change event
+            boardStore.on.mock.calls[0][1]()
             expect(boardStore.getBoard).toHaveBeenCalledTimes(1)
             expect(wrapper.state().board).toBe(boardWithTitleAndOneList)
 
             boardStore.getBoard.mockReturnValue(boardWithTitle)
-            boardStore.on.mock.calls[0][1]() // call passed handler
+            // manually trigger boardStore change event
+            boardStore.on.mock.calls[0][1]()
             expect(boardStore.getBoard).toHaveBeenCalledTimes(2)
             expect(wrapper.state().board).toBe(boardWithTitle)
         })
@@ -68,7 +73,10 @@ describe('BoardContainer', () => {
 
     describe('BoardModalWrapper', () => {
         it('should be passed proper props initialy', () => {
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
+            // manually trigger boardStore change event so board can be set to state
+            boardStore.on.mock.calls[0][1]()
+
             const instance = wrapper.instance()
             const boardWrapper = wrapper.find(BoardModalWrapper)
 
@@ -86,7 +94,9 @@ describe('BoardContainer', () => {
         })
 
         it('should be passed proper props when viewCardDetails is called', () => {
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
+            // manually trigger boardStore change event so board can be set to state
+            boardStore.on.mock.calls[0][1]()
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
@@ -97,7 +107,9 @@ describe('BoardContainer', () => {
         })
 
         it('should be passed proper props when closeCardDetailsModal is called after viewCardDetails', () => {
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
+            // manually trigger boardStore change event so board can be set to state
+            boardStore.on.mock.calls[0][1]()
             const instance = wrapper.instance()
 
             instance.viewCardDetails(card)
@@ -114,7 +126,9 @@ describe('BoardContainer', () => {
         })
 
         it('should be passed proper props when initCreateCard is called', () => {
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
+            // manually trigger boardStore change event so board can be set to state
+            boardStore.on.mock.calls[0][1]()
             const instance = wrapper.instance()
             const listId = 'listId'
 
@@ -131,7 +145,7 @@ describe('BoardContainer', () => {
         it('should call save card action with save funciton and not close modal', () => {
             boardActions.saveCard = jest.fn()
 
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
             const instance = wrapper.instance()
             instance.closeCardDetailsModal = jest.fn()
 
@@ -144,7 +158,7 @@ describe('BoardContainer', () => {
         it('should call delete card action with delete function and close modal', () => {
             boardActions.deleteCard = jest.fn()
 
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
             const instance = wrapper.instance()
             instance.closeCardDetailsModal = jest.fn()
 
@@ -161,7 +175,7 @@ describe('BoardContainer', () => {
         it('should call copy card action with copy function and close modal', () => {
             boardActions.copyCard = jest.fn()
 
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
             const instance = wrapper.instance()
             instance.closeCardDetailsModal = jest.fn()
 
@@ -180,7 +194,7 @@ describe('BoardContainer', () => {
         it('should call add new list action with create list funciton', () => {
             boardActions.addNewList = jest.fn()
 
-            const wrapper = shallow(<BoardContainer />)
+            const wrapper = shallow(<BoardContainer params={params} />)
             const instance = wrapper.instance()
 
             instance.createNewList(boardWithTitleAndOneList.lists[0].title)

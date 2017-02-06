@@ -12,7 +12,12 @@ import BoardModalWrapper from '../components/BoardView/BoardModalWrapper'
  * Visualing and managing the board's list, cards.
  */
 class BoardContainer extends React.Component {
-    constructor(props) { // eslint-disable-line
+    /**
+     * The constructor for the Container
+     * @param {object} props React props object
+     * @param {string} props.params.boardId The board id in the url passed from react router
+     */
+    constructor(props) {
         super(props)
 
         this.setBoard = this.setBoard.bind(this)
@@ -25,7 +30,7 @@ class BoardContainer extends React.Component {
         this.createNewList = this.createNewList.bind(this)
 
         this.state = {
-            board: boardStore.getBoard(),
+            board: null,
             showCardDetails: false,
             cardToView: null
         }
@@ -37,6 +42,7 @@ class BoardContainer extends React.Component {
      */
     componentWillMount() {
         boardStore.on('change', this.setBoard)
+        boardActions.loadBoard(this.props.params.boardId)
     }
 
     /**
@@ -124,17 +130,20 @@ class BoardContainer extends React.Component {
         const { board, showCardDetails, cardToView } = this.state
 
         return (
-            <BoardModalWrapper
-                board={board}
-                onCardClick={this.viewCardDetails}
-                onCreateCard={this.initCreateCard}
-                onCreateNewList={this.createNewList}
-                showCardDetails={showCardDetails}
-                onHideCardDetails={this.closeCardDetailsModal}
-                onSaveCard={this.saveCard}
-                onDelteCard={this.deleteCard}
-                onCopyCard={this.copyCard}
-                cardToView={cardToView}/>
+            <div>
+                {board &&
+                    <BoardModalWrapper
+                    board={board}
+                    onCardClick={this.viewCardDetails}
+                    onCreateCard={this.initCreateCard}
+                    onCreateNewList={this.createNewList}
+                    showCardDetails={showCardDetails}
+                    onHideCardDetails={this.closeCardDetailsModal}
+                    onSaveCard={this.saveCard}
+                    onDelteCard={this.deleteCard}
+                    onCopyCard={this.copyCard}
+                    cardToView={cardToView}/>}
+            </div>
         )
     }
 }

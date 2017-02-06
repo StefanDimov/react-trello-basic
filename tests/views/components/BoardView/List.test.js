@@ -10,8 +10,8 @@ import { getEmptyList } from '../../../_mocks/CardList.mocks'
 
 describe('CardList', () => {
 
-    const cardWithId = getCardOnlyWithIds(1)
-    const anotherCardWithId = getCardOnlyWithIds(2)
+    const cardWithId = getCardOnlyWithIds({ mark: 1 })
+    const anotherCardWithId = getCardOnlyWithIds({ mark: 2 })
     const onCardClick = jest.fn()
     let list
 

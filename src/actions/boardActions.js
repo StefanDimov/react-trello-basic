@@ -3,6 +3,17 @@ import dispatcher from '../dispatcher'
 import { boardActionTypes } from '../actionTypes'
 
 /**
+ * Dispatches a LOAD_BOARD event to the dispatcher
+ * @param  {string} boardId The id of the board to be loaded
+ */
+export function loadBoard(boardId) {
+    dispatcher.dispatch({
+        type: boardActionTypes.LOAD_BOARD,
+        boardId
+    })
+}
+
+/**
  * Dispatches a ADD_NEW_LIST event to the dispatcher
  * @param {string} listTitle Title of the list to be added
  */

@@ -10,18 +10,20 @@ export function getEmptyBoard(mark='') {
     }
 }
 
-export function getBoardWithLists(mark='', numberOfLists) {
+export function getBoardWithLists({ mark='', numberOfLists=0 } = {}) {
+    const id = 'boardId' + mark
     return {
-        id: 'boardId' + mark,
+        id,
         title: 'boardTitle' + mark,
-        lists: R.range(0, numberOfLists).map((i) => getEmptyList(i))
+        lists: R.range(0, numberOfLists).map((i) => getEmptyList({ mark: i, boardId: id }))
     }
 }
 
-export function getBoardWithListsWithCards(mark='', numberOfLists, numberOfCardsInLists) {
+export function getBoardWithListsWithCards({ mark='', numberOfLists=0, numberOfCardsInLists=0 } = {}) {
+    const id = 'boardId' + mark
     return {
-        id: 'boardId' + mark,
+        id,
         title: 'boardTitle' + mark,
-        lists: R.range(0, numberOfLists).map((i) => getListWithCards(i, numberOfCardsInLists))
+        lists: R.range(0, numberOfLists).map((i) => getListWithCards({ mark: i, boardId: id, numberOfCards: numberOfCardsInLists }))
     }
 }

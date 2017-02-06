@@ -2,20 +2,21 @@
 import R from 'ramda'
 import { getBasicCard } from './Card.mocks'
 
-export function getEmptyList(mark='') {
+export function getEmptyList({ mark='', boardId } = {}) {
     return {
-        boardId: 'listBoardId' + mark,
+        boardId: boardId || 'listBoardId' + mark,
         id: 'listId' + mark,
         title: 'list title' + mark,
         cards: []
     }
 }
 
-export function getListWithCards(mark='', numberOfCards=0) {
+export function getListWithCards({ mark='', boardId, numberOfCards=0 } = {}) {
+    const id = 'listId' + mark
     return {
-        boardId: 'listBoardId' + mark,
-        id: 'listId' + mark,
+        boardId: boardId || 'listBoardId' + mark,
+        id,
         title: 'list title' + mark,
-        cards: R.range(0, numberOfCards).map((i) => getBasicCard(i))
+        cards: R.range(0, numberOfCards).map((i) => getBasicCard({ mark: i, listId: id }))
     }
 }
