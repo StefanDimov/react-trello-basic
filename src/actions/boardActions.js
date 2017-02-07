@@ -14,6 +14,17 @@ export function loadBoard(boardId) {
 }
 
 /**
+ * Dispatches a UPDATE_BOARD event to the dispatcher
+ * @param  {object} board The board that should be updated
+ */
+export function updateBoard(board) {
+    dispatcher.dispatch({
+        type: boardActionTypes.UPDATE_BOARD,
+        board
+    })
+}
+
+/**
  * Dispatches a ADD_NEW_LIST event to the dispatcher
  * @param {string} listTitle Title of the list to be added
  */

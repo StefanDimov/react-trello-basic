@@ -19,7 +19,8 @@ describe('BoardModalWrapper', () => {
         onHideCardDetails = jest.fn(),
         onSaveCard = jest.fn(),
         onDelteCard = jest.fn(),
-        onCopyCard = jest.fn()
+        onCopyCard = jest.fn(),
+        onSaveBoard = jest.fn()
 
     let emptyBoard, card, showCardDetails
 
@@ -37,6 +38,7 @@ describe('BoardModalWrapper', () => {
                     onCardClick={onCardClick}
                     onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
+                    onSaveBoard={onSaveBoard}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
                     onSaveCard={onSaveCard}
@@ -55,6 +57,7 @@ describe('BoardModalWrapper', () => {
                     onCardClick={onCardClick}
                     onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
+                    onSaveBoard={onSaveBoard}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
                     onSaveCard={onSaveCard}
@@ -73,6 +76,7 @@ describe('BoardModalWrapper', () => {
                     onCardClick={onCardClick}
                     onCreateCard={onCreateCard}
                     onCreateNewList={onCreateNewList}
+                    onSaveBoard={onSaveBoard}
                     showCardDetails={showCardDetails}
                     onHideCardDetails={onHideCardDetails}
                     onSaveCard={onSaveCard}
@@ -95,6 +99,7 @@ describe('BoardModalWrapper', () => {
                 onCardClick={onCardClick}
                 onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
+                onSaveBoard={onSaveBoard}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
                 onSaveCard={onSaveCard}
@@ -117,6 +122,7 @@ describe('BoardModalWrapper', () => {
                 onCardClick={onCardClick}
                 onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
+                onSaveBoard={onSaveBoard}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
                 onSaveCard={onSaveCard}
@@ -139,6 +145,7 @@ describe('BoardModalWrapper', () => {
                 onCardClick={onCardClick}
                 onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
+                onSaveBoard={onSaveBoard}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
                 onSaveCard={onSaveCard}
@@ -158,6 +165,7 @@ describe('BoardModalWrapper', () => {
                 onCardClick={onCardClick}
                 onCreateCard={onCreateCard}
                 onCreateNewList={onCreateNewList}
+                onSaveBoard={onSaveBoard}
                 showCardDetails={showCardDetails}
                 onHideCardDetails={onHideCardDetails}
                 onSaveCard={onSaveCard}
@@ -170,6 +178,7 @@ describe('BoardModalWrapper', () => {
             expect(wrapper.find(Board).prop('onCardClick')).toBe(onCardClick)
             expect(wrapper.find(Board).prop('onCreateCard')).toBe(onCreateCard)
             expect(wrapper.find(Board).prop('onCreateNewList')).toBe(onCreateNewList)
+            expect(wrapper.find(Board).prop('onSaveBoard')).toBe(onSaveBoard)
         })
     })
 })

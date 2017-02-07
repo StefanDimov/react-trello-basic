@@ -28,6 +28,7 @@ class BoardContainer extends React.Component {
         this.copyCard = this.copyCard.bind(this)
         this.closeCardDetailsModal = this.closeCardDetailsModal.bind(this)
         this.createNewList = this.createNewList.bind(this)
+        this.updateBoard = this.updateBoard.bind(this)
 
         this.state = {
             board: null,
@@ -79,6 +80,14 @@ class BoardContainer extends React.Component {
             showCardDetails: false,
             cardToView: null
         })
+    }
+
+    /**
+     *  Calls boardAction to update board
+     *  @param {object} board The board to update
+     */
+    updateBoard(board) {
+        boardActions.updateBoard(board)
     }
 
     /**
@@ -142,6 +151,7 @@ class BoardContainer extends React.Component {
                     onSaveCard={this.saveCard}
                     onDelteCard={this.deleteCard}
                     onCopyCard={this.copyCard}
+                    onSaveBoard={this.updateBoard}
                     cardToView={cardToView}/>}
             </div>
         )

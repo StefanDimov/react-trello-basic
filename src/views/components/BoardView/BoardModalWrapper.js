@@ -16,6 +16,7 @@ import CardDetails from './CardDetails'
  * @param {function} onCardClick callback for when a card is clicked
  * @param {function} onCreateCard callback to which data for creating a new card will be passed
  * @param {function} onCreateNewList callback to which data for creating a new list will be passed
+ * @param {function} onSaveBoard callback to which the data for updating a board will be passed
  * @param {function} onHideCardDetails callback for when CardDetails Modal hides itself
  * @param {function} onSaveCard callback for when CardDetails Modal wants a card to be saved
  * @param {function} onDelteCard callback for when CardDetails Modal wants a card to be deleted
@@ -29,7 +30,8 @@ export default class BoardModalWrapper extends React.Component {
                     board={this.props.board}
                     onCardClick={this.props.onCardClick}
                     onCreateCard={this.props.onCreateCard}
-                    onCreateNewList={this.props.onCreateNewList} />
+                    onCreateNewList={this.props.onCreateNewList}
+                    onSaveBoard={this.props.onSaveBoard} />
 
                 <Modal show={this.props.showCardDetails} onHide={this.props.onHideCardDetails} animation={false}>
                     <Modal.Body>
@@ -53,6 +55,7 @@ BoardModalWrapper.propTypes = {
     onCardClick: func.isRequired,
     onCreateCard: func.isRequired,
     onCreateNewList: func.isRequired,
+    onSaveBoard: func.isRequired,
     showCardDetails: bool.isRequired,
     onHideCardDetails: func.isRequired,
     onSaveCard: func.isRequired,

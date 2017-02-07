@@ -15,6 +15,7 @@ describe('BoardContainer', () => {
     let boardWithTitle, boardWithTitleAndOneList, card
 
     boardActions.loadBoard = jest.fn()
+    boardActions.updateBoard = jest.fn()
 
     boardStore.getBoard = jest.fn()
     boardStore.on = jest.fn()
@@ -25,6 +26,7 @@ describe('BoardContainer', () => {
         boardWithTitleAndOneList = getBoardWithLists({ numberOfLists: 1 })
 
         boardActions.loadBoard.mockClear()
+        boardActions.updateBoard.mockClear()
 
         boardStore.on.mockClear()
         boardStore.getBoard.mockClear()
@@ -91,6 +93,7 @@ describe('BoardContainer', () => {
             expect(boardWrapper.prop('onSaveCard')).toBe(instance.saveCard)
             expect(boardWrapper.prop('onDelteCard')).toBe(instance.deleteCard)
             expect(boardWrapper.prop('onCopyCard')).toBe(instance.copyCard)
+            expect(boardWrapper.prop('onSaveBoard')).toBe(instance.updateBoard)
         })
 
         it('should be passed proper props when viewCardDetails is called', () => {
@@ -142,6 +145,15 @@ describe('BoardContainer', () => {
     })
 
     describe('Actions', () => {
+        it('should call update board action', () => {
+            const wrapper = shallow(<BoardContainer params={params} />)
+            const instance = wrapper.instance()
+            instance.updateBoard(boardWithTitle)
+
+            expect(boardActions.updateBoard).toHaveBeenCalledTimes(1)
+            expect(boardActions.updateBoard).toHaveBeenCalledWith(boardWithTitle)
+        })
+
         it('should call save card action with save funciton and not close modal', () => {
             boardActions.saveCard = jest.fn()
 

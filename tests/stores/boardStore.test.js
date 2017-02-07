@@ -13,14 +13,16 @@ describe('boardStore', () => {
 
     let emptyBoard, boardWithAListWithACard, card
     dataStorage.getBoard = jest.fn()
+    dataStorage.updateBoard = jest.fn()
     boardStore.emit = jest.fn()
 
     beforeEach(() => {
         emptyBoard = getEmptyBoard()
-        boardWithAListWithACard = getBoardWithListsWithCards({ numberOfLists: 1, numberOfCardsInLists: 1 })
+        boardWithAListWithACard = getBoardWithListsWithCards({ mark: '1', numberOfLists: 1, numberOfCardsInLists: 1 })
         card = getBasicCard()
 
         dataStorage.getBoard.mockClear()
+        dataStorage.updateBoard.mockClear()
         boardStore.emit.mockClear()
 
         // reset boardStore state
@@ -57,6 +59,30 @@ describe('boardStore', () => {
             // expect to emit change event after
             expect(boardStore.emit).toHaveBeenCalledTimes(1)
             expect(boardStore.emit).toHaveBeenCalledWith('change')
+        })
+
+        describe('update board', () => {
+            it('should update board when board is the same as loaded board', () => {
+                loadBoardInStore(emptyBoard)
+                boardStore._handleActions({ type: boardActionTypes.UPDATE_BOARD, board: emptyBoard })
+
+                expect(dataStorage.updateBoard).toHaveBeenCalledTimes(1)
+                expect(dataStorage.updateBoard).toHaveBeenCalledWith(emptyBoard)
+            })
+
+            it('should not update board when board is not the same as loaded board', () => {
+                loadBoardInStore(emptyBoard)
+                boardStore._handleActions({ type: boardActionTypes.UPDATE_BOARD, board: boardWithAListWithACard })
+
+                expect(emptyBoard.id).not.toBe(boardWithAListWithACard.id)
+                expect(dataStorage.updateBoard).toHaveBeenCalledTimes(0)
+            })
+
+            it('should not throw error if board is not loaded', () => {
+                expect(() => {
+                    boardStore._handleActions({ type: boardActionTypes.UPDATE_BOARD, board: emptyBoard })
+                }).not.toThrow()
+            })
         })
 
         describe('add new list', () => {

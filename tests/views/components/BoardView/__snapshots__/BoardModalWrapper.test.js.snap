@@ -21,6 +21,19 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
             role="presentation"
             style={undefined}>
             <a
+              href="#"
+              onClick={[Function]}
+              role="button">
+              <span
+                className="glyphicon glyphicon-floppy-disk" />
+               Save Board
+            </a>
+          </li>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
               href="/#"
               onClick={[Function]}>
               <span
@@ -70,6 +83,19 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
         <ul
           className="nav navbar-nav navbar-right"
           role={null}>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              role="button">
+              <span
+                className="glyphicon glyphicon-floppy-disk" />
+               Save Board
+            </a>
+          </li>
           <li
             className=""
             role="presentation"
@@ -142,6 +168,19 @@ exports[`BoardModalWrapper rendering should render correctly a board with a titl
         <ul
           className="nav navbar-nav navbar-right"
           role={null}>
+          <li
+            className=""
+            role="presentation"
+            style={undefined}>
+            <a
+              href="#"
+              onClick={[Function]}
+              role="button">
+              <span
+                className="glyphicon glyphicon-floppy-disk" />
+               Save Board
+            </a>
+          </li>
           <li
             className=""
             role="presentation"

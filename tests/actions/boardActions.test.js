@@ -3,10 +3,12 @@ import { boardActionTypes } from '../../src/actionTypes'
 import dispatcher from '../../src/dispatcher'
 
 import { getBasicCard } from '../_mocks/Card.mocks'
+import { getEmptyBoard } from '../_mocks/Board.mocks'
 
 describe('boardActions', () => {
 
     const card = getBasicCard()
+    const board = getEmptyBoard()
     dispatcher.dispatch = jest.fn()
 
     beforeEach(() => {
@@ -19,6 +21,14 @@ describe('boardActions', () => {
             boardActions.loadBoard(boardId)
             expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
             expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.LOAD_BOARD, boardId })
+        })
+    })
+
+    describe('updateBoard', () => {
+        it('should pass the proper params to dispatcher', () => {
+            boardActions.updateBoard(board)
+            expect(dispatcher.dispatch).toHaveBeenCalledTimes(1)
+            expect(dispatcher.dispatch).toHaveBeenCalledWith({ type: boardActionTypes.UPDATE_BOARD, board })
         })
     })
 

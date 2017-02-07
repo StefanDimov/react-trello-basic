@@ -42,6 +42,13 @@ class BoardStore extends EventEmitter {
             this.emit('change')
             break
 
+        case boardActionTypes.UPDATE_BOARD:
+            if (!this.isBoardLoaded) break
+            if (action.board.id !== this.board.id) break
+
+            dataStorage.updateBoard(this.board)
+            break
+
         case boardActionTypes.ADD_NEW_LIST:
             if (!this.isBoardLoaded) break
             this.board = _getBoardWithNewList(this.board, action.listTitle)

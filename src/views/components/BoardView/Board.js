@@ -13,10 +13,11 @@ import AddNewListInput from './AddNewListInput'
  * @param {function} onCardClick callback for when a card is clicked
  * @param {function} onCreateCard callback to which the data for a new card will be passed
  * @param {function} onCreateNewList callback to which the data for a new list will be passed
+ * @param {function} onSaveBoard callback to which the data for updating a board will be passed
  */
 export default class Board extends React.Component {
     render() { // eslint-disable-line
-        const { board, onCardClick, onCreateCard, onCreateNewList } = this.props
+        const { board, onCardClick, onCreateCard, onCreateNewList, onSaveBoard } = this.props
         const { title, lists } = board
 
         const listElements = lists.map(list =>
@@ -32,6 +33,9 @@ export default class Board extends React.Component {
                         <Navbar.Brand>{title}</Navbar.Brand>
                     </Navbar.Header>
                     <Nav pullRight={true}>
+                        <NavItem onClick={() => { onSaveBoard(board) }}>
+                            <Glyphicon glyph="floppy-disk" /> Save Board
+                        </NavItem>
                         <NavItem href="/#">
                             <Glyphicon glyph="th-large" /> Boards
                         </NavItem>
@@ -52,5 +56,6 @@ Board.propTypes = {
     board: boardUtils.boardPropType.isRequired,
     onCardClick: func.isRequired,
     onCreateCard: func.isRequired,
-    onCreateNewList: func.isRequired
+    onCreateNewList: func.isRequired,
+    onSaveBoard: func.isRequired
 }

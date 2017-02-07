@@ -20,6 +20,19 @@ exports[`Board rendering should render properly with a title and a single list 1
           role="presentation"
           style={undefined}>
           <a
+            href="#"
+            onClick={[Function]}
+            role="button">
+            <span
+              className="glyphicon glyphicon-floppy-disk" />
+             Save Board
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}>
+          <a
             href="/#"
             onClick={[Function]}>
             <span
@@ -90,6 +103,19 @@ exports[`Board rendering should render properly with a title and no lists 1`] = 
           role="presentation"
           style={undefined}>
           <a
+            href="#"
+            onClick={[Function]}
+            role="button">
+            <span
+              className="glyphicon glyphicon-floppy-disk" />
+             Save Board
+          </a>
+        </li>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}>
+          <a
             href="/#"
             onClick={[Function]}>
             <span
@@ -137,6 +163,19 @@ exports[`Board rendering should render properly with a title and two lists 1`] =
       <ul
         className="nav navbar-nav navbar-right"
         role={null}>
+        <li
+          className=""
+          role="presentation"
+          style={undefined}>
+          <a
+            href="#"
+            onClick={[Function]}
+            role="button">
+            <span
+              className="glyphicon glyphicon-floppy-disk" />
+             Save Board
+          </a>
+        </li>
         <li
           className=""
           role="presentation"
