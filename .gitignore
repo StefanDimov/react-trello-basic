@@ -12,3 +12,7 @@ coverage
 
 # Documentation Folder
 docs
+
+# E2E Tests
+tests_output
+debug.log

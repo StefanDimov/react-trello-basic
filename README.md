@@ -11,11 +11,4 @@ A Trello clone build with React and Flux
 - `npm test -- --watch` - listens on file changes and runs appropriate tests
 - `npm test -- --coverage` - runs tests and gathers coverage data
 - `npm run doc` - generates documentation
-
-## Todo
-
-## Overall
-- end-to-end tests
-
-## Board View
-- update board in storage
+- `npm run e2e` - run integration tests

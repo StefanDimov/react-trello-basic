@@ -8,7 +8,8 @@
     "build": "webpack",
     "test": "jest",
     "lint": "eslint ./src ./tests",
-    "doc": "jsdoc src -r -d docs -t node_modules/minami -R README.md"
+    "doc": "jsdoc src -r -d docs -t node_modules/minami -R README.md",
+    "e2e": "nightwatch"
   },
   "jest": {
     "verbose": true,
@@ -42,6 +43,7 @@
     "babel-loader": "^6.2.8",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "chromedriver": "^2.27.2",
     "css-loader": "^0.26.0",
     "enzyme": "^2.6.0",
     "eslint": "^3.12.2",
@@ -51,6 +53,7 @@
     "html-webpack-plugin": "^2.24.1",
     "jest": "^18.0.0",
     "jsdoc": "^3.4.3",
+    "nightwatch": "^0.9.12",
     "react-addons-test-utils": "^15.4.1",
     "react-test-renderer": "^15.4.1",
     "style-loader": "^0.13.1",

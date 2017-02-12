@@ -42,6 +42,7 @@ export default class AddNewBoardInput extends React.Component {
                 <FormGroup>
                     <FormControl
                         type="text"
+                        id="add-new-board-input"
                         value={this.state.value}
                         onChange={this.changeValueHandler}
                         placeholder="Add new board..." />

@@ -18,7 +18,7 @@ export default class BoardsWrapper extends React.Component {
         const { boards, onBoardClick, onCreateBoard, onDeleteBoard } = this.props
 
         return (
-            <div className="my-navbar-top-padding">
+            <div id="boardsView" className="my-navbar-top-padding">
                 <Navbar fixedTop={true}>
                     <Navbar.Header>
                         <Navbar.Brand>Boards</Navbar.Brand>

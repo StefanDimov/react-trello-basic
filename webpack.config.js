@@ -45,7 +45,7 @@ config.eslint = {
 
 config.module = {
     preLoaders: [
-        {test: /\.js?$/, loader: "eslint-loader", exclude: /node_modules/}
+        {test: /\.js?$/, loader: 'eslint-loader', exclude: /node_modules/}
     ],
     loaders: [
         { test: /\.js?$/, exclude: /node_modules/, loader: 'babel-loader' },
@@ -74,10 +74,10 @@ if (isProduction) {
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-               warnings: false
+                warnings: false
             }
         })
     )
 }
 
-module.exports = config;
+module.exports = config
