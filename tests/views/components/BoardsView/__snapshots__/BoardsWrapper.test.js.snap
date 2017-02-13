@@ -1,6 +1,7 @@
 exports[`BoardsWrapper rendering should render correctly with multiple boards 1`] = `
 <div
-  className="my-navbar-top-padding">
+  className="my-navbar-top-padding"
+  id="boardsView">
   <nav
     className="navbar navbar-default navbar-fixed-top">
     <div
@@ -175,7 +176,7 @@ exports[`BoardsWrapper rendering should render correctly with multiple boards 1`
             className="form-group">
             <input
               className="form-control"
-              id={undefined}
+              id="add-new-board-input"
               onChange={[Function]}
               placeholder="Add new board..."
               type="text"
@@ -190,7 +191,8 @@ exports[`BoardsWrapper rendering should render correctly with multiple boards 1`
 
 exports[`BoardsWrapper rendering should render correctly with no boards 1`] = `
 <div
-  className="my-navbar-top-padding">
+  className="my-navbar-top-padding"
+  id="boardsView">
   <nav
     className="navbar navbar-default navbar-fixed-top">
     <div
@@ -227,7 +229,7 @@ exports[`BoardsWrapper rendering should render correctly with no boards 1`] = `
             className="form-group">
             <input
               className="form-control"
-              id={undefined}
+              id="add-new-board-input"
               onChange={[Function]}
               placeholder="Add new board..."
               type="text"
@@ -242,7 +244,8 @@ exports[`BoardsWrapper rendering should render correctly with no boards 1`] = `
 
 exports[`BoardsWrapper rendering should render correctly with one board 1`] = `
 <div
-  className="my-navbar-top-padding">
+  className="my-navbar-top-padding"
+  id="boardsView">
   <nav
     className="navbar navbar-default navbar-fixed-top">
     <div
@@ -325,7 +328,7 @@ exports[`BoardsWrapper rendering should render correctly with one board 1`] = `
             className="form-group">
             <input
               className="form-control"
-              id={undefined}
+              id="add-new-board-input"
               onChange={[Function]}
               placeholder="Add new board..."
               type="text"
